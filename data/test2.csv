@@ -1,0 +1,60 @@
+FIPS,State,County,# Drug Overdose Deaths,Drug Overdose Mortality Rate,FIPSCode,FIPSCode
+6000,California,,13834,12,000,000
+6001,California,Alameda,528,11,001,001
+6003,California,Alpine,,,003,003
+6005,California,Amador,28,25,005,005
+6007,California,Butte,212,31,007,007
+6009,California,Calaveras,26,19,009,009
+6011,California,Colusa,,,011,011
+6013,California,Contra Costa,356,11,013,013
+6015,California,Del Norte,14,17,015,015
+6017,California,El Dorado,128,23,017,017
+6019,California,Fresno,414,14,019,019
+6021,California,Glenn,17,20,021,021
+6023,California,Humboldt,138,34,023,023
+6025,California,Imperial,103,19,025,025
+6027,California,Inyo,15,27,027,027
+6029,California,Kern,631,24,029,029
+6031,California,Kings,51,11,031,031
+6033,California,Lake,85,44,033,033
+6035,California,Lassen,33,35,035,035
+6037,California,Los Angeles,2288,8,037,037
+6039,California,Madera,65,14,039,039
+6041,California,Marin,76,10,041,041
+6043,California,Mariposa,11,21,043,043
+6045,California,Mendocino,70,27,045,045
+6047,California,Merced,109,14,047,047
+6049,California,Modoc,,,049,049
+6051,California,Mono,,,051,051
+6053,California,Monterey,147,11,053,053
+6055,California,Napa,43,10,055,055
+6057,California,Nevada,56,19,057,057
+6059,California,Orange,1168,12,059,059
+6061,California,Placer,127,11,061,061
+6063,California,Plumas,19,34,063,063
+6065,California,Riverside,1017,14,065,065
+6067,California,Sacramento,760,17,067,067
+6069,California,San Benito,13,7,069,069
+6071,California,San Bernardino,320,5,071,071
+6073,California,San Diego,1272,13,073,073
+6075,California,San Francisco,546,21,075,075
+6077,California,San Joaquin,345,16,077,077
+6079,California,San Luis Obispo,130,15,079,079
+6081,California,San Mateo,187,8,081,081
+6083,California,Santa Barbara,195,15,083,083
+6085,California,Santa Clara,425,7,085,085
+6087,California,Santa Cruz,157,19,087,087
+6089,California,Shasta,107,20,089,089
+6091,California,Sierra,,,091,091
+6093,California,Siskiyou,36,28,093,093
+6095,California,Solano,176,13,095,095
+6097,California,Sonoma,214,14,097,097
+6099,California,Stanislaus,241,15,099,099
+6101,California,Sutter,27,9,101,101
+6103,California,Tehama,24,13,103,103
+6105,California,Trinity,,,105,105
+6107,California,Tulare,123,9,107,107
+6109,California,Tuolumne,56,35,109,109
+6111,California,Ventura,350,14,111,111
+6113,California,Yolo,90,14,113,113
+6115,California,Yuba,36,16,115,115

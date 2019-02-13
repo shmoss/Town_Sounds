@@ -1,0 +1,555 @@
+@font-face {
+    font-family: 'JLL';
+    src: url('Coworking Proliferation - Copy/JLL Hand.ttf') format("truetype");
+}
+
+.tabs {
+    text-align: center;
+    padding-top: 0px;
+	padding-bottom: 25px;
+}
+
+.Meghan{
+	padding-top: 10px;
+
+}
+
+.projectImage{
+	padding-bottom: 50px;
+}
+
+
+/*.projectPage_gray{
+	text-align: center;
+	color: gray;
+}*/
+.projectPage{
+	text-align: center;
+
+}
+
+.projectText{
+	text-align: justify;
+	padding-bottom: 25px;
+}
+.indexText{
+	text-align: justify;
+}
+
+.img_test{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.1);
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 20px;
+}
+
+.column img {
+  margin-top: 35px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.hamburger{
+	background-color: #292929 !important;
+}
+
+#navText {
+	color: black;
+
+}
+
+
+#icons {
+	width: 150px;
+
+}
+
+.free_write_indent{
+	text-indent: 25px;
+	padding-top: 20px;
+}
+
+.back_top{
+	text-align: right!important;
+}
+
+.teaching_outline{
+	padding-top: 20px;
+}
+
+.portfolio-mapbox{
+	background-color: white;
+	border-width: 0px;
+	border-style: solid;
+	border-color: black;
+	width: 100%;
+	height: 100%;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
+
+
+}
+
+.logo{
+	background-color: white;
+	border-width: 10px;
+	border-style: solid;
+	border-color: white;
+}
+
+
+.main{
+	background-color: white;
+	border-width: 0px;
+	border-style: solid;
+	border-color: black;
+}
+.jumbotron{
+	padding-top: 15px;
+	padding-bottom: 0px;
+	background-color: white;
+}
+
+.navbar{
+	padding-left:0%;
+	padding-top:0px;
+
+}
+
+.navbar-brand{
+	color: #2e2e2e;
+	padding-left: 50px;
+}
+
+.navbar-toggle{
+	background-color: white;
+}
+
+
+.title{
+	padding-top: 70px;
+}
+.header{
+	padding-top: 70px;
+	padding-left: 35%;
+}
+.header2{
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 35%;
+}
+
+
+p {
+   font-family: 'JLL', "Book Antiqua", Palatino, serif; 
+   font-weight: 300;
+   font-size: 16px !important;
+   color: #424242;
+}
+
+h1, h2, h3, h4{font-family: 'JLL', Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+   color: #292929;
+}
+
+h1{
+	padding-bottom: 15px;
+
+}
+
+svg {
+	
+    left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+}
+.subtitle  {
+	font: 14px Baskerville; 
+}
+
+#play-button {
+      position: inline-block;
+      top: 140px;
+      left: 50px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 60px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+
+#play-button-leaflet {
+      position: inline-block;
+      top: 140px;
+      left: 50px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 60px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+ #map {
+ 	top: 1500px
+ 	l
+ }
+
+    #play-button:hover {
+      background-color: #696969;
+    }
+
+     #play-button-leaflet:hover {
+      background-color: #696969;
+    }
+
+#timeslide {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 10px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+
+#timeslide::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;   
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f08080; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+#timeslide-leaflet {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 10px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+
+#timeslide-leaflet::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;   
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f08080; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 25px;   
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #f08080; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+
+
+#stop {
+      position: inline-block;
+      top: 240px;
+      left: 900px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 60px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    #stop:hover {
+      background-color: #696969;
+    }
+
+#stop-leaflet {
+      position: inline-block;
+      top: 140px;
+      left: 50px;
+      background: #f08080;
+      padding-right: 26px;
+      border-radius: 3px;
+      border: none;
+      color: white;
+      margin: 0;
+      padding: 0 12px;
+      width: 60px;
+      cursor: pointer;
+      height: 30px;
+    }
+
+    #stop-leaflet:hover {
+      background-color: #696969;
+    }
+
+
+.current {
+	left: 0; 
+  	right: 0; 
+  	margin-left: auto; 
+  	margin-right: auto;
+}
+
+
+  @-webkit-keyframes pulse 
+    {       
+      0% {-webkit-transform: scale(1.0); opacity: 1;}
+      100% {-webkit-transform: scale(1.0); opacity: 0;}
+    }
+    
+    .pulse
+    {
+      /* Giving Animation Function */
+      -webkit-animation: pulse 2s linear infinite;
+    }
+    
+    .blur {
+      -webkit-filter: blur(10px);
+    }
+    
+    .shadow {
+    -webkit-filter: drop-shadow( 0px 0px 5px white );
+            filter: drop-shadow( 0px 0px 5px #000 ); /* Same syntax as box-shadow */
+}
+
+.tenants {
+
+ 
+
+}
+
+
+
+.state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.bubble {
+
+	fill:blue;
+	 stroke:white;
+ 	
+}
+
+.countyHover {
+    
+    opacity:.9;
+    stroke-width: 3px;
+    stroke:black;  
+}
+
+
+
+div.countyTooltip {  
+    word-wrap: normal;
+    position: absolute;
+    text-align: center;
+    min-height: 20px;
+    min-width: 30px;                      
+    padding: 2px;               
+    font: 14px Baskerville;      
+    color: #fff;
+    background-color: rgba(51,51,51,.85);
+    border: solid thin black;
+    padding: 5px 10px 10px 5px;
+    top: -75px;       
+    pointer-events: none;           
+}
+
+div.county2014Tooltip {  
+    word-wrap: normal;
+    position: absolute;
+    text-align: center;
+    min-height: 20px;
+    min-width: 30px;                      
+    padding: 2px;               
+    font: 14px Baskerville;      
+    color: #fff;
+    background-color: rgba(51,51,51,.85);
+    border: solid thin black;
+    padding: 5px 10px 10px 5px;
+    top: -75px;       
+    pointer-events: none;           
+}
+
+.d3-slider {
+    position: relative;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    border: 1px solid #aaaaaa;
+    z-index: 2;
+}
+
+.d3-slider-horizontal {
+    height: .8em;
+}  
+
+.d3-slider-range {
+  background:#2980b9;
+  left:0px;
+  right:0px;
+  height: 0.8em;
+  position: absolute;
+}
+
+.d3-slider-range-vertical {
+  background:#2980b9;
+  left:0px;
+  right:0px;
+  position: absolute;
+  top:0;
+}
+
+.d3-slider-vertical {
+    width: .8em;
+    height: 100px;
+}      
+
+.d3-slider-handle {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    background: #eee;
+    background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
+    z-index: 3;
+}
+
+.d3-slider-handle:hover {
+    border: 1px solid #999999;
+}
+
+.d3-slider-horizontal .d3-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+
+.d3-slider-axis {
+    position: relative;
+    z-index: 1;    
+}
+
+.d3-slider-axis-bottom {
+    top: .8em;
+}
+
+.d3-slider-axis-right {
+    left: .8em;
+}
+
+.d3-slider-axis path {
+    stroke-width: 0;
+    fill: none;
+}
+
+.d3-slider-axis line {
+    fill: none;
+    stroke: #aaa;
+    shape-rendering: crispEdges;
+}
+
+.d3-slider-axis text {
+    font-size: 11px;
+}
+
+.d3-slider-vertical .d3-slider-handle {
+    left: -.25em;
+    margin-left: 0;
+    margin-bottom: -.6em;      
+}
+
+#slider3 {
+  margin: 20px 0 10px 20px;
+  width: 900px;
+}
+
+div.leafletDiv {  
+    word-wrap: normal;
+    position: absolute;
+    text-align: center;
+    min-height: 20px;
+    min-width: 30px;                      
+    padding: 2px;               
+    font: 14px Baskerville;      
+    color: #fff;
+    background-color: rgba(51,51,51,.85);
+    border: solid thin black;
+    padding: 5px 10px 10px 5px;
+    top: -75px;       
+    pointer-events: none;           
+}
+.leaflet-container > svg .svglayer path {
+    pointer-events: auto ;
+}
+
+#map{
+	pointer-events:all;
+}
+
+.containerID {
+	width: 500px;
+	height: 200px;
+}

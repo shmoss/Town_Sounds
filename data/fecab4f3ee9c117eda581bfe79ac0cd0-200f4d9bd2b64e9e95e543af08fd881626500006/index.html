@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: sans-serif;
+}
+#map {
+  width: 800px;
+  height: 500px;
+}
+#date-value, #sum-div {
+  position: absolute;
+  font-size: 16px;
+  left: 15px;
+  z-index: 1000000;
+}
+#date-value {
+  top: 465px;
+}
+#sum-div {
+  top: 485px;
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ff9800;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+</style>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" media="screen" title="no title" charset="utf-8">
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js" charset="utf-8"></script>
+
+<div id="map"></div>
+
+<div class="">
+  <input style="width: 800px;" type="range" min="1222484400000" max="1463454000000" id="date" value="1222484400000" step="2592000">
+</div>
+<div id="goal-value"></div>&nbsp;
+<div id="sum-div">
+  Total de ciclovias: <span id="sum-value"></span>&nbsp;km
+</div>
+
+<script>
+var start = new Date('2008/09/27').getTime(); //Unix: 1222484400000
+var end = new Date('2016/05/17').getTime(); //Unix: 1463454000000
+var step = 2592000;
+
+// adapted from
+// https://bost.ocks.org/mike/leaflet/
+var map = new L.Map("map", {center: [-23.555077, -46.643395], zoom: 11, zoomControl: false})
+    .addLayer(new L.TileLayer("https://api.mapbox.com/styles/v1/bernardol/cirlb5p8l000zg1nbrr9y1ohx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVybmFyZG9sIiwiYSI6IjJ1TXQ4MjQifQ.-39L9AlA_DDLhlC6znjZbQ" , {
+      attribution: '<a href="http://mapbox.com">Mapbox</a>',
+    }));
+
+var svg = d3.select(map.getPanes().overlayPane).append("svg"),
+    g = svg.append("g").attr("class", "leaflet-zoom-hide");
+
+d3.json("https://bernardol.carto.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM ciclovias_4326", function(error, collection) {
+  if (error) throw error;
+
+  var transform = d3.geo.transform({point: projectPoint}),
+      path = d3.geo.path().projection(transform);
+
+  var feature = g.selectAll("path")
+      .data(collection.features)
+    .enter().append("path")
+    .attr("d", path)
+    .style("fill", "none")
+    .style("stroke-width", "1.5")
+    .style("stroke", "#ff9800");
+
+  map.on("viewreset", reset);
+  reset();
+
+  // Reposition the SVG to cover the features.
+  function reset() {
+    var bounds = path.bounds(collection),
+        topLeft = bounds[0],
+        bottomRight = bounds[1];
+
+    svg .attr("width", bottomRight[0] - topLeft[0])
+        .attr("height", bottomRight[1] - topLeft[1])
+        .style("left", topLeft[0] + "px")
+        .style("top", topLeft[1] + "px");
+
+    g   .attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+
+    feature.attr("d", path);
+  }
+
+  // Use Leaflet to implement a D3 geometric transformation.
+  function projectPoint(x, y) {
+    var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+    this.stream.point(point.x, point.y);
+  }
+});
+
+var sum;
+
+d3.select("#date").on("input", function() {
+  sum = 0;
+  date = this.value;
+  var data = new Date(parseInt(date));
+  var mes = (data.getMonth() + 1);
+  d3.select('#date-value').text(mes + '/' + data.getFullYear());
+  g.selectAll("svg path").each(function(d) {
+      if (new Date(d.properties.data).getTime() < date) {
+        this.style.opacity = 1;
+        sum += d.properties.exten;
+      } else {
+        this.style.opacity = 0;
+      }
+    });
+  d3.select('#sum-value').text(Math.round(sum * 10) / 10);
+});
+
+</script>
+</body>

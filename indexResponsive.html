@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords" content="maps, cartography"/>
+		<title>Meghan Kelly Cartography</title>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8 indexText" style="padding-top:100px" >
+
+					<p>While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.</p>
+
+				</div>
+
+				<div class="col-md-2">
+				</div>
+			</div>
+		</div>
+
+		<!--put your Bootstrap stylesheet links above style.css-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		 <link rel="stylesheet" type="text/css" href="stylesheetResponsive.css">
+
+    <!-- bulma css-->
+    <link rel="stylesheet"  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+
+    <!-- CSS stylesheet -->
+   
+
+     <link 
+        rel="stylesheet" 
+        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+    >
+    
+
+    <!-- D3.js CDN source -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src = "js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="//d3projection.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="data/CaliforniaCountiesOverdoses.json"></script>z
+    <script src="data/Chitown.json"></script>
+    <script src="data/statesProj.json"></script>
+    <script src="data/Counties_proj.json"></script>
+    <script src="data/SFCounty_proj.json"></script>
+    <script src="data/coworkingTenants_4.json"></script>
+    <script src="data/coworkingTenants_5.json"></script>
+     <script src="data/coworkingTenants_6.json"></script>
+     <script src="data/coworkingTenants_9.json"></script>
+    <script src="data/SanFrancisco_CoWorkingTenants.json"></script>
+    <script src="js/d3.slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  
+
+  </head>
+  
+  <body >
+
+  	
+
+		
+
+        <div class="container">
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8 indexText">
+
+					<div  id="sliderContainer" style=" width:500px;  height:80px; text-align: center; margin-top:40px"> 
+
+         		<input id="timeslide-leaflet" type="range" min="0" max="25" value="0" step="1" /><br>
+         		<span id="range-leaflet" >Hit "Play" to scroll through time.</span>
+
+    			<div id="vis" style=" padding-top: 10px"  >
+  					<button id="play-button-leaflet" style="text-align:center" >Play</button>
+  					<button type="button" id="stop-leaflet">Pause</button>
+				</div>
+
+				<div id="vis">				
+				</div>      	
+        </div>
+
+				</div>
+
+				<div class="col-md-2">
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8 indexText">
+
+					<p>I'm a cartographer and PhD student at the <a href="https://www.geography.wisc.edu/">University of Wisconsin–Madison</a>! I'm interested in all things mapping related. I make maps, teach mapmaking, and think and rethink mapping practice. My dissertation explores the intersections of mapping and feminist theory. Broadly, I ask what can feminist cartographies look like? You can find my CV <a href="assets/MeghanKellyCV_November2018.pdf">here</a>. Thanks for stopping by!</p>
+
+				</div>
+
+				<div class="col-md-2">
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+
+					<img src="assets/MeghanKelly.jpg" alt="" style="width:100%" class="Meghan"/>
+
+				</div>
+				<div class="col-md-4">
+				</div>
+			</div>
+		</div>
+
+  	
+ 
+    <div class="container">  
+
+    	
+   		
+        <!-- Title -->
+        <h1 class="title has-text-centered">Coworking Nation?</h1>
+        <h2 class="subtitle has-text-centered"></h2>
+
+        <div class="columns">
+          <div class="column is-half">
+          	<h2 class="subtitle has-text-centered" style="margin-left:-150px;"></h2>         
+          </div>
+         </div>
+        <p class="subtitle is-5 has-text-centered" style="margin-top:0px">While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  </p>
+
+         <div class="container" >
+
+
+         <div class="column is-half" style="text-align:center">
+
+         	<div id="sliderContainer" style=" width:500px;  height:80px; text-align: center; margin-top:40px"> 
+
+         		<input id="timeslide" type="range" class="slider" min="0" max="25" value="0" step="1"   /><br>
+         		 <span id="range" >1993</span>
+
+    			<div id="vis" style=" padding-top: 10px"  >
+  					<button id="play-button" style=" text-align: center">Play</button>
+  					<button type="button" id="stop" style=" text-align: center">Pause</button>
+				</div>
+
+				<div id="vis">
+ 					
+				</div>
+       	
+       
+        </div>
+
+        
+</div>
+</div>
+    </div >
+
+  
+
+<div class="container" >
+
+	   <p class="subtitle is-5 has-text-centered" style="margin-top:0px">While coworking appears to be a recent phenomenon, the trend towards coworking has been years in the making.  In the mid-nineties, only a few coworking concepts existed nationally.  That number has steadily grown as the concept of coworking has evolved and proliferated across the US - especially in metros like New York, San Francisco, Silicon Valley, Los Angeles, Denver, and New York. Not only have the number of coworking spaces increased dramatically, but they are occupying larger blocks of space.  In 2018 alone, 8,559,229 square feet were leased for coworking/flexible space - with most of these leases signed in New York, San Francisco, Washington DC, Chicago, and Seattle.  </p>
+
+
+         <div class="column is-half" style="text-align:center">
+
+
+         	
+
+        
+</div>
+</div>
+
+    	
+	
+
+
+
+<div class="container" style="width:100%; height:100%; position:center; transition:height .5s ease-in-out" >
+
+	
+	<div id="map" class="subtitle is-5 has-text-centered" style="width: 900px; height: 600px; min-height:50%, min-width:50%; display:flex;flex-wrap:wrap; text-align:center; padding-right:0px;padding-left:0px;margin-left:100px" pointer-events="all">  
+</div>
+</div>
+<script>
+
+ 	var value 
+
+    var inputValue = null;
+    var years = ["1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009", "2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"];
+
+    var currentMap = d3.map();
+
+    d3.queue()
+    .defer(d3.csv, "data/statesProj.json", function(d) { 
+        console.log('s')
+    })
+    .defer(d3.csv, "data/coworkingTenants_4.json", function(d) { 
+        console.log('h')
+    })
+    .defer(d3.csv, "data/coworkingTenants_5.json", function(d) { 
+        console.log('h')
+    })
+    .defer(d3.csv, "data/coworkingTenants_6.json", function(d) { 
+        console.log('h')
+    })
+    .defer(d3.csv, "data/coworkingTenants_9.json", function(d) { 
+        console.log('h')
+    })
+    .defer(d3.csv, "data/SFCounty_proj.json", function(c) { 
+        console.log('c')
+    })
+    .defer(d3.csv, "data/SanFrancisco_CoWorkingTenants.json", function(cw) { 
+        console.log('cw')
+    })
+ 	.await(ready);
+
+ 	function ready(error) {
+
+ 		var SFData = SFCoworking.features
+     		console.log(SFData)
+
+     	var NationalData = coworkingTenantsNational.features
+     		console.log(NationalData)
+
+ 		var width = 2070;
+		var height = 600;
+
+		var SFwidth = 1070;
+		var SFheight = 600;
+
+		// Create SVG
+		var svg = d3.select( ".container" )
+    		.insert( "svg", "#map" )
+    		.attr("preserveAspectRatio", "xMinYMin meet")
+			.attr("viewBox", "0 0 960 600")
+   		 	//.attr("class", 'col-md-8 indexText')
+   		 	// .attr("transform", "translate(-200,-80)")
+
+     	//Create SVG
+		var sf = d3.select( "body" )
+    		.append( "svg" )
+    		.attr("position", 'center')
+    		.attr("preserveAspectRatio", "xMinYMin meet")
+			.attr("viewBox", "0 0 960 600")
+    		.attr("id", 'sf')
+
+		// Append empty placeholder g element to the SVG
+		// g will contain geometry elements
+		var g = svg.append( "g" );
+	
+ 		//projection
+ 	 	var albersProjection = d3.geoAlbers()
+    		.scale( 1200)
+    		.rotate ( [98.5795,] )
+    		.center( [0, 39.8283] )
+
+    	//GeoPath
+  		var geoPath = d3.geoPath()
+    		.projection( albersProjection );
+
+    	var geoPath2 = d3.geoPath()
+    		.projection( albersProjection );
+
+
+    	g.selectAll( "path" )
+    		.data( statesProj.features )
+    		.enter()
+    		.insert( "path" )
+    		.attr( "fill", '#000019' )
+    		.attr( "opacity", .9 )
+    		.attr( "stroke", "#696969" )
+   			// .attr("transform", "translate(-200,-80)")
+    		.attr( "border-radius", '50%' )
+    		.attr( "stroke-width", .4 )
+    		.attr( "d", geoPath2 )
+    		.attr("class","states");
+        	
+
+    	var points = svg.append( "g" );
+
+   		var radiusNational = d3.scaleLinear()
+      		.domain([20000, 40000, 60000, 80000, 100000]) 
+     		 .range([4, 6]);
+
+    	var b = points.selectAll("path")
+    		.data( coworkingTenantsNational.features )
+    		.enter()
+    		.append( "path" )
+    		.attr( "fill", '#ffba00' )
+    		.attr( "fill-opacity", initialdateMatch )
+    		//.attr( "stroke", "#696969" )
+    		//.attr("transform", "translate(-200,-80)")
+    		.attr( "border-radius", '50%' )
+    		.attr( "stroke-width", ".35" )
+    		.attr("d", geoPath.pointRadius(function(d) { return radiusNational(d.properties.Lease_Size); }))
+        	.attr("class","tenants")
+        	
+        	/*
+var defs = svg.append("defs");
+
+//Filter for the outside glow
+var filter = defs.append("filter")
+    .attr("id","glow");
+filter.append("feGaussianBlur")
+    .attr("stdDeviation","3.5")
+    .attr("result","coloredBlur");
+var feMerge = filter.append("feMerge");
+feMerge.append("feMergeNode")
+    .attr("in","coloredBlur");
+feMerge.append("feMergeNode")
+    .attr("in","SourceGraphic");
+
+    //Apply to your element(s)
+d3.selectAll(".tenants")
+    .style("filter", "url(#glow)");
+*/
+function pulse() {
+			var circle = svg.select(".tenants");
+			(function repeat() {
+				circle = circle.transition()
+					.duration(2000)
+					.attr("stroke-width", 20)
+					.attr("r", 10)
+					.transition()
+					.duration(2000)
+					.attr('stroke-width', 0.5)
+					.attr("r", 200)
+					.ease('sine')
+					.each("end", repeat);
+			})();
+		}
+
+
+     	var county2014Div = d3.select("body").append("div")   
+    		.attr("class", "county2014Tooltip")               
+    		.style("opacity", 0)
+    	//.style("left", (d3.event.pageX) + "px")     
+    	//.style("top", (d3.event.pageY - 28) + "px");
+
+   		var myTimer;
+		d3.select("#play-button").on("click", function() {
+ 		clearInterval (myTimer);
+		myTimer = setInterval (function() {
+    	var b= d3.select("#timeslide");
+      	var t = (+b.property("value") + 1) % (+b.property("max") + 1);
+     	if (t == 0) { t = +b.property("min"); }
+     	b.property("value", t);
+     	update (t);
+   		}, 400);
+		});
+
+
+		d3.select("#stop").on("click", function() {
+			clearInterval (myTimer);
+		});
+    
+    	d3.select("#timeslide").on("input", function() {    	
+    		console.log(value)
+        	update(+this.value);   
+    	});
+
+
+    function update(value) {
+
+   		console.log(value)
+    	document.getElementById("range").innerHTML=years[value];
+    	inputValue = years[value];
+    	console.log(inputValue)
+    
+    	d3.selectAll(".tenants")
+        	.attr("fill-opacity", dateMatch);
+	}
+
+
+    function dateMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+  
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+
+    	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
+    		      	
+       	 return ".3";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function initialdateMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+
+    	if (yearInt <= 1993 ) {
+    		console.log('match!'+ year)
+        	
+       	 return ".3";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	//projection
+ 	 var albersProjectionBay = d3.geoAlbers()
+    	.scale( 282000)
+    	.rotate ( [122.4077441,] )
+    	.center( [0, 37.7801177] )
+
+    var geoPathBayArea = d3.geoPath()
+    	.projection( albersProjectionBay );
+
+    var countiesBayArea = sf.append( "g" );
+	//Draw SF Bay Map
+	countiesBayArea.selectAll( "path" )
+    	.data( SFCounty.features )
+    	.enter()
+    	.append( "path" )
+    	.attr( "fill", "black" )
+    	.attr( "opacity", .9 )
+    	.attr( "stroke", "#696969" )
+   		// .attr("transform", "translate(200,10)")
+    	.attr( "border-radius", '50%' )
+    	.attr( "stroke-width", ".35" )
+    	.attr( "d", geoPathBayArea )
+    	.attr("class","sf");
+
+
+    var SFtenants = sf.append( "g" );
+
+    var radius = d3.scaleLinear()
+      .domain([20000, 40000, 60000, 80000, 100000]) 
+      .range([4, 8]);
+
+
+    var type = d3.scaleOrdinal()
+      .domain(['WeWork', 'Regus', 'Pacific Business Centers', 'ServCorp', 'RocketSpace'])
+      .range(['red', 'blue', 'green', 'purple', 'yellow']);
+
+     // SF d3 map
+    SFtenants.selectAll("path")
+    	.data( SFCoworking.features )
+    	.enter()
+    	.append( "path" )
+    	.attr( "fill", 'red' )
+    	.attr( "opacity", .8 )
+    	.attr( "stroke", "#696969" )
+    	//.attr("transform", "translate(-200,-80)")
+    	.attr( "border-radius", '50%' )
+    	.attr( "stroke-width", ".35" )
+    	.attr("d", geoPathBayArea.pointRadius(function(d) { return radius(d.properties.Lease_Size); }))
+        .attr("class","SFtenants")
+        .on("mouseover", function(d) { 
+		
+		var value2014 = currentMap.get(d.properties.Tenant);     
+           	county2014Div.transition()        
+                .duration(200)      
+                .style("opacity", .9);
+
+            county2014Div .html('<br/>' + d.properties.Tenant + '<br/>' + d.properties.Sign_Date)  
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 88) + "px"); 
+                d3.select(this).attr("class","countyHover");   
+            })
+            .on("mouseout", function(d) {       
+            		county2014Div.transition()        
+                	.duration(200)      
+                	.style("opacity", 0);  
+            		d3.select(this).attr("class","tenants"); 
+            });
+
+		}
+
+
+	d3.queue()
+    .defer(d3.csv, "data/coworkingTenants_4.json", function(cw) { 
+       
+    })
+ 	.await(readyLeaflet);
+
+
+ 	// Build Leaflet Map
+    function readyLeaflet(error) {
+
+ 		var radius = d3.scaleLinear()
+    		.domain([20000, 40000, 60000, 80000, 100000]) //568158 37691912
+      		.range([8, 10, 12, 14, 16]);
+
+
+    	var type = d3.scaleOrdinal()
+      		.domain(['WeWork', 'Regus', 'Spaces', 'Knotel', 'RocketSpace', 'HQ Global Workplaces'])
+     		.range(['red', 'blue', 'green', 'purple', 'yellow', 'orange'])
+     		 .unknown("white");
+
+
+ 		//Read in coworking data
+ 		var SFData = nationalCoworkingTenantsLeaflet.features
+     		
+
+ 		//Build Leaflet Map
+        L.mapbox.accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug';
+        var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
+            //var accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjam13ZHlxbXgwdncwM3FvMnJjeGVubjI5In0.-ridMV6bkkyNhbPfMJhVzw';
+        var map = L.map('map').setView([37.7801177, -122.40], 13);
+        		mapLink = 
+            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+        L.tileLayer(
+   			'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+       			tileSize: 512,
+        		zoomOffset: -1,
+        		attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    	}).addTo(map);
+     	
+        setTimeout(function(){ map.invalidateSize()}, 400);
+   		var svgLayer = L.svg()
+			svgLayer.addTo(map);
+			
+		var svgMap = d3.select("#map").select("svg");
+			var mapG = svgMap.select('g');
+
+
+		var LeafletDiv = d3.select("body").append("div")   
+    		.attr("class", "county2014Tooltip")               
+    		.style("opacity", 0)
+    	//.style("left", (d3.event.pageX) + "px")     
+    	//.style("top", (d3.event.pageY - 28) + "px");
+			
+		d3.json("data/coworkingTenants_9.json", function(SFData) {
+        	var SFData = nationalCoworkingTenantsLeaflet.features
+        	})
+
+		//var coords = SFData.geometry.coordinates;
+		//console.log(coords)
+
+		SFData.forEach(function(d) {
+			var coords = d.geometry.coordinates
+			console.log(coords)
+			d.latLong = new L.LatLng(coords[1],
+									coords[0]);
+		
+		})
+
+		var feature = mapG.selectAll("circle")
+    		.data(SFData)
+    		.enter().append("circle")
+   		 	.style("stroke", "white")
+   		 	//.style("fill", "gray")
+   		 	.style("stroke-opacity", .7)
+    		.style("fill-opacity", .6)
+    		.style("fill", function(d) { return type(d.properties.Tenant)})
+   			.attr("r", function(d) { return radius(d.properties.Lease_Size)})
+   			.attr("class", 'features')
+   			.attr("id", 'foo')
+   			.attr("classed", initialClassMatch)
+   			.attr("pointer-events", initialClassMatch)
+   			console.log(feature)
+			
+		function drawAndUpdateCircles() {
+    		feature.attr("transform",
+        		function(d) {
+            		var layerPoint = map.latLngToLayerPoint(d.latLong);
+            		return "translate("+ layerPoint.x +","+ layerPoint.y +")";
+        		}
+    		)
+		}
+
+		drawAndUpdateCircles();
+			map.on("moveend", drawAndUpdateCircles);
+			//this does not work - elistener won't trigger on mouse events?
+			
+
+
+		var myTimer;
+		d3.select("#play-button-leaflet").on("click", function() {
+		clearInterval (myTimer);
+		myTimer = setInterval (function() {
+    	var b= d3.select("#timeslide-leaflet");
+      	var t = (+b.property("value") + 1) % (+b.property("max") + 1);
+      	if (t == 0) { t = +b.property("min"); }
+      		b.property("value", t);
+      		update (t);
+    		}, 400);
+		});
+
+		d3.select("#stop-leaflet").on("click", function() {
+			clearInterval (myTimer);
+		})
+
+	 	d3.select("#timeslide-leaflet").on("input", function() {    	
+        	update(+this.value);   
+    	});
+
+
+		function update(value) {
+    		document.getElementById("range-leaflet").innerHTML=years[value];
+    		inputValue = years[value];
+    		console.log(inputValue)
+
+    		d3.selectAll(".features")
+        		.attr("opacity", dateMatch)
+        		.attr("pointer-events", ClassMatch)
+	}
+
+
+	 	function dateMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expir_Date);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+    	console.log(yearExpirationInt)
+
+
+    	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
+    		console.log('match!'+ year)
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+
+
+	function initialDateMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+
+
+
+    	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
+    		console.log('match!'+ year)
+        	
+       	 return ".7";
+    	} else {
+        	return "0";
+    	};
+	}
+
+	function ClassMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+    	console.log(yearInt, inputValueInt)
+
+    	if (yearInt <= inputValueInt && yearExpirationInt >= inputValueInt) {
+    		console.log('match!'+ year)
+        	
+       	 return "all";
+    	} else {
+        	return "none";
+    	};
+	}
+
+	function initialClassMatch(data, value) {
+
+    	var date = (data.properties.Sign_Date);
+    	var year = date.substring(0, 4);
+
+    	var inputValueInt = parseInt(inputValue, 10);
+    	var yearInt = parseInt(year, 10);
+
+    	var dateExpiration = (data.properties.Expiration);
+    	var yearExpiration = dateExpiration.substring(0, 4);
+    	var yearExpirationInt = parseInt(yearExpiration, 10);
+    	console.log(yearInt)
+    	if (yearInt = 1998 ) {
+    		console.log('match!'+ year)
+        	
+       	 return "all";
+    	} else {
+        	return "none";
+    	};
+	}
+
+
+	d3.selectAll(".features")
+					.on("mouseover", function(d) { 
+						console.log("visible")
+					
+						var value2014 = currentMap.get(d.properties.Tenant);     
+          		 		LeafletDiv.transition()        
+               			 .duration(200)      
+                		.style("opacity", .9);
+
+            			LeafletDiv .html('<br/>' + '<b>'+d.properties.Tenant+'</b>' + '<br/>'
+            				+ "Address: " + d.properties.Address + '<br/>' 
+            				+ "City: " + d.properties.City + '<br/>' 
+            				+ "SF: " + d.properties.Lease_Size.toLocaleString() + '<br/>' 
+            				+ "Sign Date: " + d.properties.Sign_Date.substring(0,4) + '<br/>'
+            				+ "Expiration Date: " + d.properties.Expiration.substring(0,4) + '<br/>'
+            			    + "Building Leasing: " + d.properties.Bldg_Leasi)
+                		.style("left", (d3.event.pageX+ 15) + "px")     
+               			.style("top", (d3.event.pageY - 150) + "px")
+               			.style("text-align", 'left'); 
+               		 d3.select(this).attr("class","countyHover");   
+            	})
+
+            	.on("mouseout", function(d) {       
+            		LeafletDiv.transition()        
+                	.duration(200)      
+                	.style("opacity", 0);  
+            		d3.select(this).attr("class","features"); 
+            	});
+			//this does work
+			//d3.selectAll(".features").style("opacity", .1)
+		
+	}
+		
+
+
+    </script>
+  </body>
+</html>

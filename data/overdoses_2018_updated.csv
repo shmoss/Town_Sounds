@@ -1,0 +1,59 @@
+FIPS,State,County,# DrugOverdoseDeaths,DrugOverdoseMortalityRate
+06001,California,Alameda,528,11
+06003,California,Alpine,0,0
+06005,California,Amador,28,25
+06007,California,Butte,212,31
+06009,California,Calaveras,26,19
+06011,California,Colusa,0,0
+06013,California,Contra Costa,356,11
+06015,California,Del Norte,14,17
+06017,California,El Dorado,128,23
+06019,California,Fresno,414,14
+06021,California,Glenn,17,20
+06023,California,Humboldt,138,34
+06025,California,Imperial,103,19
+06027,California,Inyo,15,27
+06029,California,Kern,631,24
+06031,California,Kings,51,11
+06033,California,Lake,85,44
+06035,California,Lassen,33,35
+06037,California,Los Angeles,2288,8
+06039,California,Madera,65,14
+06041,California,Marin,76,10
+06043,California,Mariposa,11,21
+06045,California,Mendocino,70,27
+06047,California,Merced,109,14
+06049,California,Modoc,0,0
+06051,California,Mono,0,0
+06053,California,Monterey,147,11
+06055,California,Napa,43,10
+06057,California,Nevada,56,19
+06059,California,Orange,1168,12
+06061,California,Placer,127,11
+06063,California,Plumas,19,34
+06065,California,Riverside,1017,14
+06067,California,Sacramento,760,17
+06069,California,San Benito,13,7
+06071,California,San Bernardino,320,5
+06073,California,San Diego,1272,13
+06075,California,San Francisco,546,21
+06077,California,San Joaquin,345,16
+06079,California,San Luis Obispo,130,15
+06081,California,San Mateo,187,8
+06083,California,Santa Barbara,195,15
+06085,California,Santa Clara,425,7
+06087,California,Santa Cruz,157,19
+06089,California,Shasta,107,20
+06091,California,Sierra,0,0
+06093,California,Siskiyou,36,28
+06095,California,Solano,176,13
+06097,California,Sonoma,214,14
+06099,California,Stanislaus,241,15
+06101,California,Sutter,27,9
+06103,California,Tehama,24,13
+06105,California,Trinity,0,0
+06107,California,Tulare,123,9
+06109,California,Tuolumne,56,35
+06111,California,Ventura,350,14
+06113,California,Yolo,90,14
+06115,California,Yuba,36,16
