@@ -27,6 +27,8 @@ a, a:hover, a:focus {
     align-items: stretch;
 }
 
+
+
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
     background: #7386D5;
