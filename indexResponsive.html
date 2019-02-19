@@ -342,14 +342,14 @@
   
 });
     
-    function dateMatch(){
+    function dateMatch(data){
         //console.log(selectedDate)
-    if (selectedDate === 'Tue Feb 19 2019') {
+    if (selectedDate === data.dateFormatted) {
         //console.log('yes!')
-        //console.log(selectedDate)
-        return 'blue'
+        console.log(selectedDate)
+        return '.2'
     } else {
-        //console.log('nope!')
+       return '0'
     }
 }
     //var SFData = SFCoworking.features
@@ -495,8 +495,8 @@ combineArray(SFEvents);
         .enter().append("circle")
         .style("stroke", "black")
         .attr("class", 'events')
-        //.style("fill", '#ffba00')
-        .style("opacity",.3)
+        .style("fill", '#ffba00')
+        //.style("opacity", '0')
         .attr("r", 4.5)
         .style("display", "all")
         .style("pointer-events", "all")
@@ -536,7 +536,7 @@ drawAndUpdateEventCircles();
 function update(value) {
     
     d3.selectAll(".events")
-        .attr("fill", dateMatch);
+        .style("opacity", dateMatch);
 }
 
 var date
