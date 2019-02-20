@@ -47,7 +47,7 @@
     <script src="data/statesProj.json"></script>
     <script src="data/Counties_proj.json"></script>
     <script src="https://unpkg.com/leaflet-sidebar"></script>
-    <script src="data/allSanFranciscoEvents13.json"></script>
+    <script src="data/allSanFranciscoEvents14.json"></script>
     <script src="data/SFCounty_proj.json"></script>
     <script src="data/coworkingTenants_4.json"></script>
     <script src="data/coworkingTenants_5.json"></script>
@@ -197,7 +197,7 @@
     .defer(d3.csv, "data/SanFrancisco_CoWorkingTenants.json", function(cw) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/allSanFranciscoEvents13.json", function(cw) { 
+    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(cw) { 
        // console.log('cw')
     })
     .await(ready);
@@ -263,7 +263,7 @@
 
     d3.queue()
     
-    .defer(d3.csv, "data/allSanFranciscoEvents13.json", function(d) { 
+    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(d) { 
        // console.log('cw')
     })
     .await(readyLeaflet);
