@@ -346,14 +346,12 @@
         //console.log(selectedDate)
     if (selectedDate === data.dateFormatted) {
         //console.log(data.dateFormatted)
-        console.log("selectedDate is: " + selectedDate+ " and dateFormatted is: "+data.dateFormatted)
+        console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
     } else {
        return 'none'
     }
 }
-
-    
     //var SFData = SFCoworking.features
         //console.log(SFData)
     var allSFEvents
@@ -593,7 +591,7 @@ var date
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                d3.select(this).attr("class","features"); 
+                d3.select(this).attr("class","events"); 
               });  
 
     
