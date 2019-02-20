@@ -133,7 +133,7 @@
           
 
             <div class="line">
-                <div id="map" style="min-width: 100vh; min-height: 100vh" >
+                <div id="map" style="min-width: 100vh; min-height: 100vh" pointer-events="all">
             </div>
 
             <h2>Lorem Ipsum Dolor</h2>
@@ -347,33 +347,13 @@
     if (selectedDate === data.dateFormatted) {
         //console.log(data.dateFormatted)
         console.log("selectedDate is: " + selectedDate+ " and dateFormatted is: "+data.dateFormatted)
-        return '.4'
-    } else {
-       return '0'
-    }
-}
-
-
-     function initialdateMatch(data){
-        //console.log(selectedDate)
-    if (selectedDate === data.dateFormatted) {
-        //console.log(data.dateFormatted)
-        console.log("selectedDate is: " + selectedDate+ " and dateFormatted is: "+data.dateFormatted)
-        return '.4'
-    } else {
-       return '0'
-    }
-}
-
-    function setPopups(data){
-        //console.log(selectedDate)
-    if (selectedDate === data.dateFormatted) {
-        console.log('pointer events disabled')
-        return 'all'
+        return 'inline'
     } else {
        return 'none'
     }
 }
+
+    
     //var SFData = SFCoworking.features
         //console.log(SFData)
     var allSFEvents
@@ -518,7 +498,7 @@ combineArray(SFEvents);
         .style("stroke", "black")
         .attr("class", 'events')
         .style("fill", '#ffba00')
-        .style("opacity", '0')
+        .style("opacity", '.7')
         .attr("r", 4.5)
         
         .style("pointer-events", "all")
@@ -546,7 +526,7 @@ drawAndUpdateEventCircles();
     var today  = new Date();
     var todayString = today.toString().split(" " ,4)
     var todayClean = todayString.toString().replace(/,/g, ' ')
-    console.log(todayClean)
+    //console.log(todayClean)
 
 
 
@@ -558,8 +538,7 @@ drawAndUpdateEventCircles();
 function update(value) {
     
     d3.selectAll(".events")
-        .style("opacity", dateMatch)
-        //.style("pointer-events", setPopups);
+        .style("display", dateMatch);
 }
 
 var date
