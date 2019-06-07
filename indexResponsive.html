@@ -61,6 +61,7 @@
     <script src="js/datepicker.min.js"></script>
     <script src="js/datepick.js"></script>
     <script src="https://unpkg.com/js-datepicker"></script> 
+    <script src="data/testScrape.json"></script>
 
 
     <!-- Content Starts here -->
@@ -200,6 +201,8 @@
     .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(cw) { 
        // console.log('cw')
     })
+    .defer(d3.csv, "data/testScrape.json", function(cw) {      
+    })
     .await(ready);
 
     function ready(error) {
@@ -266,6 +269,9 @@
     .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(d) { 
        // console.log('cw')
     })
+    .defer(d3.csv, "data/testScrape.json", function(d) { 
+       // console.log('cw')
+    })
     .await(readyLeaflet);
 
 
@@ -297,7 +303,7 @@
     selectedDate = instanceClean
     update()
     if (instanceClean === 'Mon Feb 18 2019') {
-                console.log('yes, datematch!')
+                //console.log('yes, datematch!')
                 return 'blue'
             }
         //sconsole.log(selectedDate)
@@ -311,7 +317,7 @@
   },
   onMonthChange: function(instance) {
     // Show the month of the selected date.
-    console.log(instance.currentMonthName);
+    //console.log(instance.currentMonthName);
   },
  
  
@@ -346,7 +352,7 @@
         //console.log(selectedDate)
     if (selectedDate === data.dateFormatted) {
         //console.log(data.dateFormatted)
-        console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
+        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
     } else {
        return 'none'
@@ -542,9 +548,10 @@ function update(value) {
 var date
     d3.selectAll(".events").each(function(d) {
             var options = { weekday: 'long'};
-            var date = new Date(d.startDate)
+            var date = new Date(d.startDate + 'PST')
+            //console.log("d.startDate is: "+ d.startDate+"date is: "+date)
             var dateString = date.toString()
-            //console.log(dateString)
+            //console.log(d.startDate + date + d.name)
             //date.toLocaleDateString()
             var dateSplit = dateString.split(" " ,4)
             var dateClean = dateSplit.toString().replace(/,/g, ' ')
