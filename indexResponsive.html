@@ -372,7 +372,7 @@
 
 }
 
-combineArray(SFEvents);
+combineArray(testScrape);
 //console.log(allSFEvents)
 
     //var SFData = SFCoworking.features
@@ -461,9 +461,9 @@ combineArray(SFEvents);
         var agencyBrokerNamesArray = []
         allSFEvents.forEach(function(d) {
      
-      d.latLong = new L.LatLng(d.location.geo.latitude,
-                  d.location.geo.longitude);
-      //console.log(d.latLong)
+      d.latLong = new L.LatLng(d.Coordinates[1],
+                  d.Coordinates[0]);
+      console.log(d.latLong)
       })
             
  
@@ -585,7 +585,7 @@ var date
                      .duration(200)      
                     .style("opacity", .9);
 
-                  LeafletDiv .html('<br/>' + '<b>'+d.location.name+'</b>' + '<br/>'+d.name
+                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.name
                     + '<br/>'+d.dateFormatted
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
