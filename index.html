@@ -1,193 +1,325 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
     <meta charset="utf-8">
-    <title>Town Sounds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- bulma css-->
-    <link rel="stylesheet"  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.2/css/bulma.min.css">
+    <title>Collapsible sidebar using Bootstrap 4</title>
 
-    <!-- CSS stylesheet -->
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-     <link rel="stylesheet" type="text/css" href="leaflet-sidebar.css">
-     <link 
-        rel="stylesheet" 
-        href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
-    >
+  
+
     <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 
-    <!-- D3.js CDN source -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="stylesheetResponsive.css">
+    <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css"> 
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- d3.JS -->
     <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script type="text/javascript" src = "js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <script src="//d3js.org/d3.geo.projection.v0.min.js"></script>
     <script src="//d3projection.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="data/CaliforniaCountiesOverdoses.json"></script>
-    <script src="data/Chitown.json"></script>
-    <script src="data/statesProj.json"></script>
-    <script src="data/Counties_proj.json"></script>
-      <script src="https://unpkg.com/leaflet-sidebar"></script>
-      <script src="data/allSanFranciscoEvents13.json"></script>
-    <script src="data/SFCounty_proj.json"></script>
-    <script src="data/coworkingTenants_4.json"></script>
-    <script src="data/coworkingTenants_5.json"></script>
-     <script src="data/coworkingTenants_6.json"></script>
-     <script src="data/coworkingTenants_9.json"></script>
-    <script src="data/SanFrancisco_CoWorkingTenants.json"></script>
+    <script src="https://unpkg.com/leaflet-sidebar"></script>
     <script src="js/d3.slider.js"></script>
     <script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-    <script src='data/leaflet-sidebar.js'></script>
-    <script src='data/leaflet-sidebar.min.js'></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  
+    <script src="./js/datepicker.min.js"></script>
+    <script src="./js/datepick.js"></script>
+    <script src="https://unpkg.com/js-datepicker"></script> 
+    <script src="./data/allSanFranciscoEvents14.json"></script>
+    <script src="./data/testScrape.json"></script>
+    <script src="./data/sf_events.json"></script>
 
-  </head>
-  
-  <body style ='background-color:#f8f9fa'>
 
-    
+    <!-- Content Starts here -->
 
-    <div id="map" style="width: 100%; height: 100%; position:absolute;" pointer-events="all">  
- 
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li> 
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Page 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+                <div id="datepicker"></div>
+
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
+                </div>
+            </nav>
+
+            <!-- <div id="map" style="min-width: 100vh; min-height: 100vh; max-width: 100vh; max-height: 100vh" pointer-events="all">  -->
+
+          
+
+            <div class="line">
+                <div id="map" style="min-width: 100vh; min-height: 100vh" pointer-events="all">
+            </div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumd.</p>
+
    
-    
-    		
+
+ 
+        </div>
+
+
+
+    </div>
+
+
+    <script>
+
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        });
+
+    });
+
+
+
+    var value 
   
-    
+    var currentValue = 10
 
+    var sizeValue
 
-
-			
-
-<script>
-
-//first commit!!
-	//.domain(['WeWork', 'Regus', 'Spaces', 'Knotel', 'RocketSpace', 'HQ Global Workplaces'])
-     //		.range(['#e30613', '#17a2b8', '#28a745', '#6610f2', '#ffc107', '#ed700a'])
-     	
-
-
- 	var value 
-  //console.log(SFEvents)
-
-
- 	var currentValue = 10
-
- 	var sizeValue
-
- 	//Set values for time range slider
+    //Set values for time range slider
     var inputValue = null;
-    var years = ["1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009", "2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"];
-
-    //Set values for lease-size range slider
-    var sizeInputValue = 0;
-    var leaseSizes = ["0","10000","20000","30000","40000", "50000","60000","70000","80000","90000","100000","110000","120000","130000","140000","140000","150000",
-    				 "160000","170000","180000","190000","200000","210000","220000","230000","240000","250000","260000","270000","280000","290000","300000"];
+   
 
     var currentMap = d3.map();
 
     d3.queue()
-    .defer(d3.csv, "data/statesProj.json", function(d) { 
-        //console.log('s')
-    })
-    .defer(d3.csv, "data/coworkingTenants_4.json", function(d) { 
-        //console.log('h')
-    })
-
-    .defer(d3.csv, "data/coworkingTenants_9.json", function(d) { 
-        //console.log('h')
-    })
-    .defer(d3.csv, "data/SFCounty_proj.json", function(c) { 
-       // console.log('c')
-    })
-    .defer(d3.csv, "data/SanFrancisco_CoWorkingTenants.json", function(cw) { 
+    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(cw) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/allSanFranciscoEvents13.json", function(cw) { 
+    .defer(d3.csv, "data/testScrape.json", function(cw) {      
+    })
+    .defer(d3.csv, "data/sf_events.json", function(cw) {      
+    })
+    .await(ready);
+
+    function ready(error) {
+    
+    
+
+        //projection
+        var albersProjection = d3.geoAlbers()
+            .scale( 1200)
+            .rotate ( [98.5795,] )
+            .center( [0, 39.8283] )
+
+        //GeoPath
+        var geoPath = d3.geoPath()
+            .projection( albersProjection );
+
+        var geoPath2 = d3.geoPath()
+            .projection( albersProjection );
+
+
+    
+
+        }
+
+
+    d3.queue()
+    
+    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(d) { 
        // console.log('cw')
     })
- 	.await(ready);
-
- 	function ready(error) {
-    
-    //var allSFEvents = SFEvents[0].concat(SFEvents[1]);
-    //console.log(allSFEvents)
-    //var outGeoJson = {}
-    //outGeoJson['properties'] = allSFEvents
-    //outGeoJson['type']= "Feature"
-    //outGeoJson['geometry']= {"type": "Point", "coordinates":
-    //[allSFEvents['latitude'], allSFEvents['longitude']]}
-
-    //console.log(outGeoJson)
-
-   // var coords = outGeoJson.features.geometry.coordinates;
-    //console.log(coords)
-
-    //outGeoJson.forEach(function(d) {
-      //var coords = d.geometry.coordinates
-      //console.log(coords)
-      //d.latLong = new L.LatLng(coords[1],
-                  //coords[0]);
-    
-    //})
-
-//console.log(outGeoJson.properties)
-
-//Object.keys(outGeoJson).forEach(function (key){
-    //console.log(outGeoJson[key]);
-//});
-    var NationalData = coworkingTenantsNational.features
-     		//console.log(NationalData)
-
-
-		// Create SVG
-
-   		 	//.attr("class", 'col-md-8 indexText')
-   		 	// .attr("transform", "translate(-200,-80)")
-
-     	//Create SVG
-	
-	
- 		//projection
- 	 	var albersProjection = d3.geoAlbers()
-    		.scale( 1200)
-    		.rotate ( [98.5795,] )
-    		.center( [0, 39.8283] )
-
-    	//GeoPath
-  		var geoPath = d3.geoPath()
-    		.projection( albersProjection );
-
-    	var geoPath2 = d3.geoPath()
-    		.projection( albersProjection );
-
-
-    
-
-		}
-
-
-	d3.queue()
-    
-    .defer(d3.csv, "data/allSanFranciscoEvents13.json", function(d) { 
+    .defer(d3.csv, "data/testScrape.json", function(d) { 
        // console.log('cw')
     })
- 	.await(readyLeaflet);
+    .defer(d3.csv, "data/sf_events.json", function(d) { 
+       // console.log('cw')
+    })
+    .await(readyLeaflet);
 
 
- 	// Build Leaflet Map
+    // Build Leaflet Map
     function readyLeaflet(error) {
 
-    console.log(SFEvents)
-    console.log(SFEvents.length)
+    var selectedDate
+
+    //set today's date
+    var today = new Date()
+    console.log(today.toLocaleDateString())
+    console.log(today)
+    var todaySplit = today.toString().split(" " ,4)
+    //console.log(instanceSplit);
+    var todayClean = todaySplit.toString().replace(/,/g, ' ')
+    //console.log(todayClean)
+
+    
+
+    
+    var nextweek
+    //d3.selectAll(".events")
+        //.style("display", initialDateMatch);
+    function nextweek(){
+    var today = new Date();
+    var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+    console.log(nextweek)
+    return nextweek;
+}
+    nextweek()
+   
+
+var dat
+console.log(dat)
+const picker = datepicker(document.querySelector('#datepicker'), {
+
+        
+
+
+
+  // Event callbacks.
+  onSelect: function(instance) {
+    console.log(instance)
+    
+    var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+    var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
+    selectedDate = instanceClean
+    console.log(selectedDate)
+    update()
+       
+  },
+  onShow: function(instance) {
+    console.log('Calendar showing.');
+  },
+  onHide: function(instance) {
+    console.log('Calendar hidden.');
+  },
+  onMonthChange: function(instance) {
+    // Show the month of the selected date.
+    //console.log(instance.currentMonthName);
+  },
+ 
+ 
+ 
+  // Customizations.
+  formatter: function(el, date, instance) {
+    // This will display the date as `1/1/2019`.
+    el.value = date.toDateString();
+    console.log(el)
+    dat = new Date()
+    console.log(dat.getMonth())
+  },
+  
+  position: 'tr', // Top right.
+  startDay: 1, // Calendar week starts on a Monday.
+  customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
+  customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  overlayButton: 'Go!',
+  overlayPlaceholder: 'Enter a 4-digit year',
+ 
+  // Settings.
+  alwaysShow: true, // Never hide the calendar.
+  dateSelected: new Date(), // Today is selected.
+  maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+  minDate: new Date(2016, 5, 1), // June 1st, 2016.
+  startDate: new Date(), // This month.
+ 
+
+  
+  // Disabling things.
+
+
+  
+});
+
+
+    
+    function dateMatch(data){
+
+        //console.log(selectedDate)
+    if (selectedDate === data.dateFormatted) {
+        //console.log(selectedDate)
+        console.log(data.dateFormatted)
+        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
+        return 'inline'
+    } else {
+       return 'none'
+    }
+}
+
+
     //var SFData = SFCoworking.features
         //console.log(SFData)
     var allSFEvents
@@ -197,149 +329,85 @@
     for (var i = 0; i < arr.length; i++) {
         allSFEvents = allSFEvents.concat(arr[i]);
     }
-     console.log(allSFEvents)
+     
     return allSFEvents;
 
 }
 
-combineArray(SFEvents);
-console.log(allSFEvents)
-
-    //var SFData = SFCoworking.features
-        
-    //var allSFEvents = SFEvents[0].concat(SFEvents[1]);
-    
-    
-
-    //console.log(outGeoJson)
-
-   // var coords = outGeoJson.features.geometry.coordinates;
-    //console.log(coords)
-
-    //outGeoJson.forEach(function(d) {
-      //var coords = d.geometry.coordinates
-      //console.log(coords)
-      //d.latLong = new L.LatLng(coords[1],
-                  //coords[0]);
-    
-    //})
-
-//console.log(outGeoJson.properties)
+combineArray(sf_events);
 
 
 
- 		var radius = d3.scaleLinear()
-    		.domain([20000, 40000, 60000, 80000, 100000]) //568158 37691912
-      		.range([8, 10, 12, 14, 16]);
+        var radius = d3.scaleLinear()
+            .domain([20000, 40000, 60000, 80000, 100000]) //568158 37691912
+            .range([8, 10, 12, 14, 16]);
 
 
-    	var type = d3.scaleOrdinal()
-      		.domain(['WeWork', 'Regus', 'Spaces', 'Knotel', 'RocketSpace', 'HQ Global Workplaces'])
-     		.range(['#e30613', '#17a2b8', '#28a745', '#6610f2', '#ffc107', '#ed700a'])
-     		 .unknown("white");
+        var type = d3.scaleOrdinal()
+            .domain(['WeWork', 'Regus', 'Spaces', 'Knotel', 'RocketSpace', 'HQ Global Workplaces'])
+            .range(['#e30613', '#17a2b8', '#28a745', '#6610f2', '#ffc107', '#ed700a'])
+             .unknown("white");
 
-
- 		//Read in coworking data
- 		var SFData = nationalCoworkingTenantsLeaflet.features
-     		//console.log(SFData)
-    //var SanFranciscoEvents = outGeoJson.features
-    //console.log(outGeoJson)
- 		//Build Leaflet Map
+        //Build Leaflet Map
         L.mapbox.accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug';
         var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
             //var accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjam13ZHlxbXgwdncwM3FvMnJjeGVubjI5In0.-ridMV6bkkyNhbPfMJhVzw';
         var map = L.map('map').setView([37.7749, -122.4194], 13);
 
-        		mapLink = 
+                mapLink = 
             '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
-   			'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
-       			tileSize: 512,
-        		zoomOffset: -1,
-        		attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    	}).addTo(map);
-     	
+            'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+                tileSize: 512,
+                zoomOffset: -1,
+                attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        
         setTimeout(function(){ map.invalidateSize()}, 400);
-   		var svgLayer = L.svg()
-			svgLayer.addTo(map);
+        var svgLayer = L.svg()
+            svgLayer.addTo(map);
 
      
-			
-		var svgMap = d3.select("#map").select("svg");
-			var mapG = svgMap.select('g');
+            
+        var svgMap = d3.select("#map").select("svg");
+            var mapG = svgMap.select('g');
 
     
 
-		var LeafletDiv = d3.select("body").append("div")   
-    		.attr("class", "county2014Tooltip")               
-    		.style("opacity", 0)
-    	//.style("left", (d3.event.pageX) + "px")     
-    	//.style("top", (d3.event.pageY - 28) + "px");
-			
-      //un-comment this for map to load!
-		//d3.json("data/coworkingTenants_9.json", function(SFData) {
-        	//var SFData = nationalCoworkingTenantsLeaflet.features
-        	//})
-
-		//var coords = SFData.geometry.coordinates;
-		//console.log(coords)
-     //var item = outGeoJson.properties[1].location.geo.latitude
-     //console.log(item)
-
+        var LeafletDiv = d3.select("body").append("div")   
+            .attr("class", "county2014Tooltip")               
+            .style("opacity", 0)
+      
      
-		var tenantNamesArray = []
-		var agencyBrokerNamesArray = []
-		allSFEvents.forEach(function(d) {
+        var tenantNamesArray = []
+        var agencyBrokerNamesArray = []
+        allSFEvents.forEach(function(d) {
      
-      d.latLong = new L.LatLng(d.location.geo.latitude,
-                  d.location.geo.longitude);
+      d.latLong = new L.LatLng(d.Coordinates[1],
+                  d.Coordinates[0]);
       //console.log(d.latLong)
       })
-			
+            
  
-    SFData.forEach(function(d) {
-      var coords = d.geometry.coordinates
-      //console.log(coords)
-      d.latLong = new L.LatLng(coords[1],
-                  coords[0]);
-
-      var tenantNames = d.properties.Tenant
-      
-      tenantNamesArray.push(tenantNames)
-
-      var agencyBrokerNames = d.properties.Agency_Bro
-      
-      agencyBrokerNamesArray.push(agencyBrokerNames)
-      
-      
-      //console.log(tenantNames)
-      return tenantNames;
-
-      
-      
-      
-      //console.log(tenantNames)
-      //console.log(agencyBrokerNames)
-      return agencyBrokerNames
-    
-    })
 
     //console.log(allSFEvents)
 
     var events = mapG.selectAll("circle")
         .data(allSFEvents)
         .enter().append("circle")
-        .style("stroke", "blue")
+        .style("stroke", "black")
         .attr("class", 'events')
         .style("fill", '#ffba00')
-        .style("opacity",.3)
-        .attr("r", 4.5)
-        .style("display", "all")
+        .style("opacity", '.7')
+        .attr("r", 7.5)
+        .style("display", initialDateMatch)
         .style("pointer-events", "all")
 
-        
+    var todaysDate = new Date 
+
+   
  
-        console.log(events)
+    //console.log(events)
       
     function drawAndUpdateEventCircles() {
         events.attr("transform",
@@ -351,22 +419,90 @@ console.log(allSFEvents)
         )
     }
 drawAndUpdateEventCircles();
-      map.on("moveend", drawAndUpdateEventCircles);
+    map.on("moveend", drawAndUpdateEventCircles);
 
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    
+    var today  = new Date();
+    var todayString = today.toString().split(" " ,4)
+    var todayClean = todayString.toString().replace(/,/g, ' ')
+    //console.log(todayClean)
+
+
+
+//console.log(today.toLocaleDateString("en-US")); // 9/17/2016
+//console.log(today.toLocaleDateString("en-US", options)); // Saturday, September 17, 2016
+//console.log(today.toLocaleDateString("hi-IN", options));
+
+
+function update(value) {
+    
+    d3.selectAll(".events")
+        .style("display", dateMatch);
+}
+
+
+
+var date
+var dateClean
+    d3.selectAll(".events").each(function(d) {
+            var options = { weekday: 'long'};
+            var date = new Date(d.EventDate + 'PST')
+            //console.log("d.startDate is: "+ d.startDate+"date is: "+date)
+            var dateString = date.toString()
+            //console.log(d.startDate + date + d.name)
+            //date.toLocaleDateString()
+            var dateSplit = dateString.split(" " ,4)
+            var dateClean = dateSplit.toString().replace(/,/g, ' ')
+            //console.log(date.split(' '))
+            //dateSplit = date.split(/ (.*)/);
+            //console.log(dateSplit)
+            d.dateFormatted = dateClean
+            //dateClean = date
+            return date
+
+        });
+//console.log(dateClean)
+
+    function initialDateMatch(data){
+        d3.selectAll(".events").each(function(d) {
+            var options = { weekday: 'long'};
+            var date = new Date(d.EventDate + 'PST')
+            var dateString = date.toString()
+            var dateClean= dateString.split(" " ,4).toString().replace(/,/g, ' ')
+            d.dateFormatted = dateClean
+ 
+            return date
+
+        });
+        //console.log(data)
+        //console.log(todaysDate)
+        //console.log(todayClean)
+        //console.log(data.dateFormatted)
+        var x = "Friday, June 14th, 2019"
+        //console.log(data.dateFormatted)
+    if (todayClean== data.dateFormatted) {
+        //console.log(selectedDate)
+        
+        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
+        return 'inline'
+    } else {
+       return 'none'
+    }
+}
+
+    //console.log(d.dateFormatted)
 
     d3.selectAll(".events")
           .on("mouseover", function(d) { 
-            console.log(d.location)
-
-  
-            
+         
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
                     .style("opacity", .9);
 
-                  LeafletDiv .html('<br/>' + '<b>'+d.name+'</b>' + '<br/>'+d.location.name
-                    + '<br/>'+d.startDate.toString() 
+                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' + d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -378,45 +514,19 @@ drawAndUpdateEventCircles();
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                d3.select(this).attr("class","features"); 
+                d3.select(this).attr("class","events"); 
               });  
 
-//console.log(tenantNamesArray)
-	//console.log(agencyBrokerNamesArray)	
-		/*
-		function tenantNamesArrayRemove(array){
-
-			return array.filter(function(ele){
-				console.log(ele)
-				return ele !== 'WeWork' || ele !== "Regus"
-			})
-
-		}
-*/
-		//tenantNamesArrayRemove(tenantNamesArray)
-
-
-
-	
-			//this does work
-			//d3.selectAll(".features").style("opacity", .1)
-
-
-
-
-
-//Build 'Select All' Checkbox
-	
-	// Listen for click on toggle checkbox
-
-	
+    
 
 
 }
 
-		
 
 
     </script>
-  </body>
+
+
+</body>
+
 </html>
