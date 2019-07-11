@@ -251,7 +251,7 @@ combineArray(sf_events);
         .style("fill", '#ffba00')
         .style("opacity", '.7')
         .attr("r", 7.5)
-        .style("display", "inline")
+        .style("display", dateMatch)
         .style("pointer-events", "all")
 
     var todaysDate = new Date 
