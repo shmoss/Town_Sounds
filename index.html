@@ -167,12 +167,12 @@
     var currentMap = d3.map();
 
     d3.queue()
-    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(cw) { 
+    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(cw) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/testScrape.json", function(cw) {      
+    .defer(d3.csv, "./data/testScrape.json", function(cw) {      
     })
-    .defer(d3.csv, "data/sf_events.json", function(cw) {      
+    .defer(d3.csv, "./data/sf_events.json", function(cw) {      
     })
     .await(ready);
 
@@ -201,13 +201,13 @@
 
     d3.queue()
     
-    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(d) { 
+    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(d) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/testScrape.json", function(d) { 
+    .defer(d3.csv, "./data/testScrape.json", function(d) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/sf_events.json", function(d) { 
+    .defer(d3.csv, "./data/sf_events.json", function(d) { 
        // console.log('cw')
     })
     .await(readyLeaflet);
