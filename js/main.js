@@ -248,10 +248,10 @@ combineArray(sf_events);
         .enter().append("circle")
         .style("stroke", "black")
         .attr("class", 'events')
-        .style("fill", '%23ffba00')
+        .style("fill", '#ffba00')
         .style("opacity", '.7')
         .attr("r", 7.5)
-        .style("display", initialDateMatch)
+        .style("display", "inline")
         .style("pointer-events", "all")
 
     var todaysDate = new Date 
