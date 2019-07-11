@@ -1,6 +1,5 @@
-function init() {
 
-
+document.addEventListener('DOMContentLoaded', function(e) {
 
     
 
@@ -373,6 +372,6 @@ var dateClean
 
 
 }
-}
+})
 
-init()
+
