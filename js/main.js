@@ -1,7 +1,7 @@
 function init() {
 
 
-    
+
     
 
 
@@ -18,12 +18,12 @@ function init() {
     var currentMap = d3.map();
 
     d3.queue()
-    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(cw) { 
+    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(cw) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/testScrape.json", function(cw) {      
+    .defer(d3.csv, "./data/testScrape.json", function(cw) {      
     })
-    .defer(d3.csv, "data/sf_events.json", function(cw) {      
+    .defer(d3.csv, "./data/sf_events.json", function(cw) {      
     })
     .await(ready);
 
@@ -52,13 +52,13 @@ function init() {
 
     d3.queue()
     
-    .defer(d3.csv, "data/allSanFranciscoEvents14.json", function(d) { 
+    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(d) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/testScrape.json", function(d) { 
+    .defer(d3.csv, "./data/testScrape.json", function(d) { 
        // console.log('cw')
     })
-    .defer(d3.csv, "data/sf_events.json", function(d) { 
+    .defer(d3.csv, "./data/sf_events.json", function(d) { 
        // console.log('cw')
     })
     .await(readyLeaflet);
@@ -207,12 +207,12 @@ combineArray(sf_events);
         var map = L.map('map').setView([37.7749, -122.4194], 13);
 
                 mapLink = 
-            '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+            '<a href="https://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
             'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
                 tileSize: 512,
                 zoomOffset: -1,
-                attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         
         setTimeout(function(){ map.invalidateSize()}, 400);
