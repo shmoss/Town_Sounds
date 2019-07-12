@@ -251,7 +251,7 @@ combineArray(sf_events);
         .style("fill", '#ffba00')
         .style("opacity", '.7')
         .attr("r", 7.5)
-        .style("display", dateMatch)
+        .style("display", initialDateMatch)
         .style("pointer-events", "all")
 
     var todaysDate = new Date 
@@ -326,10 +326,7 @@ var dateClean
             return date
 
         });
-        //console.log(data)
-        //console.log(todaysDate)
-        //console.log(todayClean)
-        //console.log(data.dateFormatted)
+        
         var x = "Friday, June 14th, 2019"
         //console.log(data.dateFormatted)
     if (todayClean== data.dateFormatted) {
