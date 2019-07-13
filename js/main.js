@@ -160,8 +160,8 @@ const picker = datepicker(document.querySelector('#datepicker'), {
     function dateMatch(data){
 
         //console.log(selectedDate)
-    if (selectedDate === data.dateFormatted) {
-        //console.log(selectedDate)
+    if (selectedDate === 'Wed Jun 19 2019') {
+        console.log(selectedDate)
         console.log(data.dateFormatted)
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
@@ -326,8 +326,9 @@ var dateClean
             return date
 
         });
-        
+
         var x = "Friday, June 14th, 2019"
+
         //console.log(data.dateFormatted)
     if (todayClean== data.dateFormatted) {
         //console.log(selectedDate)
