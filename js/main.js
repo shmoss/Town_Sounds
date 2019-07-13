@@ -336,7 +336,7 @@ function update(value) {
     function dateMatch(data){
 
         //console.log(selectedDate)
-    if (selectedDate === data.dateFormatted) {
+    if (selectedDate !== data.dateFormatted) {
         console.log(selectedDate)
         console.log(data.dateFormatted)
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
