@@ -157,18 +157,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
 
 
     
-    function dateMatch(data){
-
-        //console.log(selectedDate)
-    if (selectedDate === 'Wed Jun 19 2019') {
-        console.log(selectedDate)
-        console.log(data.dateFormatted)
-        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
-        return 'inline'
-    } else {
-       return 'none'
-    }
-}
+    
 
 
     //var SFData = SFCoworking.features
@@ -256,6 +245,27 @@ combineArray(sf_events);
 
     var todaysDate = new Date 
 
+
+    var date
+var dateClean
+    d3.selectAll(".events").each(function(d) {
+            var options = { weekday: 'long'};
+            var date = new Date(d.EventDate + 'PST')
+            //console.log("d.startDate is: "+ d.startDate+"date is: "+date)
+            var dateString = date.toString()
+            //console.log(d.startDate + date + d.name)
+            //date.toLocaleDateString()
+            var dateSplit = dateString.split(" " ,4)
+            var dateClean = dateSplit.toString().replace(/,/g, ' ')
+            //console.log(date.split(' '))
+            //dateSplit = date.split(/ (.*)/);
+            //console.log(dateSplit)
+            d.dateFormatted = dateClean
+            //dateClean = date
+            return date
+
+        });
+
    
  
     //console.log(events)
@@ -294,25 +304,7 @@ function update(value) {
 
 
 
-var date
-var dateClean
-    d3.selectAll(".events").each(function(d) {
-            var options = { weekday: 'long'};
-            var date = new Date(d.EventDate + 'PST')
-            //console.log("d.startDate is: "+ d.startDate+"date is: "+date)
-            var dateString = date.toString()
-            //console.log(d.startDate + date + d.name)
-            //date.toLocaleDateString()
-            var dateSplit = dateString.split(" " ,4)
-            var dateClean = dateSplit.toString().replace(/,/g, ' ')
-            //console.log(date.split(' '))
-            //dateSplit = date.split(/ (.*)/);
-            //console.log(dateSplit)
-            d.dateFormatted = dateClean
-            //dateClean = date
-            return date
 
-        });
 //console.log(dateClean)
 
     function initialDateMatch(data){
@@ -333,6 +325,20 @@ var dateClean
     if (todayClean== data.dateFormatted) {
         //console.log(selectedDate)
         
+        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
+        return 'inline'
+    } else {
+       return 'none'
+    }
+}
+
+
+    function dateMatch(data){
+
+        //console.log(selectedDate)
+    if (selectedDate === data.dateFormatted) {
+        console.log(selectedDate)
+        console.log(data.dateFormatted)
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
     } else {
