@@ -262,7 +262,7 @@ var dateClean
             //console.log(dateSplit)
             d.dateFormatted = dateClean
             //dateClean = date
-            //return date
+            return d.dateFormatted
 
         });
 
@@ -315,14 +315,14 @@ function update(value) {
             var dateClean= dateString.split(" " ,4).toString().replace(/,/g, ' ')
             d.dateFormatted = dateClean
  
-            return date
+            return d.dateFormatted
 
         });
 
         var x = "Friday, June 14th, 2019"
 
         //console.log(data.dateFormatted)
-    if ('Tuesday, June 18th, 2019'== data.Date) {
+    if (todayClean== data.dateFormatted) {
         //console.log(selectedDate)
         
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
