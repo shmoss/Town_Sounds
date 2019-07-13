@@ -322,7 +322,7 @@ function update(value) {
         var x = "Friday, June 14th, 2019"
 
         //console.log(data.dateFormatted)
-    if ('Tue Jun 18 2019'== data.dateFormatted) {
+    if ('Tuesday, June 18th, 2019'== data.Date) {
         //console.log(selectedDate)
         
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
