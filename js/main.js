@@ -322,8 +322,10 @@ function update(value) {
         var x = "Friday, June 14th, 2019"
 
         //console.log(data.dateFormatted)
-    if (todayClean== data.dateFormatted) {
-        //console.log(selectedDate)
+    if (todayClean== data.Date) {
+        console.log(todayClean)
+        console.log(data.Date)
+
         
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
@@ -336,7 +338,7 @@ function update(value) {
     function dateMatch(data){
 
         //console.log(selectedDate)
-    if (selectedDate === data.dateFormatted) {
+    if (selectedDate === data.Date) {
         console.log(selectedDate)
         console.log(data.dateFormatted)
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
