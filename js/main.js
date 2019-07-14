@@ -256,7 +256,13 @@ combineArray(sf_events);
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
                    d3.select(this).attr("class","countyHover");   
-              })
+              });
+        .on("mouseout", function(d) {       
+                LeafletDiv.transition()        
+                  .duration(200)      
+                  .style("opacity", 0);  
+                d3.select(this).attr("class","events"); 
+              });  
 
     var todaysDate = new Date 
 
