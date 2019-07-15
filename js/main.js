@@ -288,15 +288,19 @@ combineArray(sf_events);
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
-        $(document).on('click',function(d){
-                if(d.target.onclick==null) {
-                    console.log('unclicked')
-                    LeafletDiv.transition()        
+        d3.select('#map').on("click", function(d) {       
+                LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                d3.select(this).attr("class","events"); 
-                }
-        })
+                d3.select('events').attr("class","events"); 
+                document.getElementById("test").innerHTML = 'no picture'
+              })
+
+        //$(document).on('click',function(d){
+                //if(d.target.onclick==null) {
+                    //console.log('unclicked')
+                //}
+        //})
         
 
     var todaysDate = new Date 
