@@ -242,7 +242,7 @@ combineArray(sf_events);
         .attr("r", 14.5)
         .style("display", initialDateMatch)
         .style("pointer-events", "all")
-        .on("click", function(d) { 
+        .on("touchstart", function(d) { 
          
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
@@ -281,6 +281,13 @@ combineArray(sf_events);
               })
 
         .on("mouseout", function(d) {       
+                LeafletDiv.transition()        
+                  .duration(200)      
+                  .style("opacity", 0);  
+                d3.select(this).attr("class","events"); 
+                document.getElementById("test").innerHTML = 'no picture'
+              })
+        .on("touchend", function(d) {       
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
@@ -396,7 +403,7 @@ function update(value) {
 
     //console.log(d.dateFormatted)
 
-    d3.selectAll(".events")
+    
           
 
 
