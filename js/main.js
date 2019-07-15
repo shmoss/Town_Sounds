@@ -288,13 +288,7 @@ combineArray(sf_events);
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
-        d3.select('#map').on("click", function(d) {       
-                LeafletDiv.transition()        
-                  .duration(200)      
-                  .style("opacity", 0);  
-                d3.select('events').attr("class","events"); 
-                document.getElementById("test").innerHTML = 'no picture'
-              })
+
 
         //$(document).on('click',function(d){
                 //if(d.target.onclick==null) {
@@ -383,8 +377,7 @@ function update(value) {
 
         //console.log(data.dateFormatted)
     if (todayClean== data.Date) {
-        console.log(todayClean)
-        console.log(data.Date)
+        
 
         
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
@@ -399,8 +392,7 @@ function update(value) {
 
         //console.log(selectedDate)
     if (selectedDate === data.Date) {
-        console.log(selectedDate)
-        console.log(data.dateFormatted)
+        
         //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
         return 'inline'
     } else {
