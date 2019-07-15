@@ -28,6 +28,9 @@ a, a:hover, a:focus {
 }
 
 
+#test {
+    color:black;
+}
 
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
