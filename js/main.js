@@ -239,7 +239,7 @@ combineArray(sf_events);
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
-        .attr("r", 7.5)
+        .attr("r", 14.5)
         .style("display", initialDateMatch)
         .style("pointer-events", "all")
         .on("click", function(d) { 
