@@ -243,8 +243,10 @@ combineArray(sf_events);
         .style("display", initialDateMatch)
         .style("pointer-events", "all")
         .on("click", function(d) { 
-         
-            var value2014 = currentMap.get(d.location);     
+            d3.select(this).classed("selected", true)
+            if (d3.select(this).classed("selected", true)){
+                console.log("true!")
+                    var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
                     .style("opacity", .9);
@@ -258,6 +260,16 @@ combineArray(sf_events);
                    d3.select(this).attr("class","countyHover");
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
+                } else {
+                    d3.select(this).classed("selected", false);
+                    LeafletDiv.transition()        
+                  .duration(200)      
+                  .style("opacity", 0);  
+                d3.select(this).attr("class","events"); 
+                document.getElementById("test").innerHTML = 'no picture'
+
+                }
+            
               })
 
         
