@@ -242,6 +242,31 @@ combineArray(sf_events);
         .attr("r", 7.5)
         .style("display", initialDateMatch)
         .style("pointer-events", "all")
+        .on("mouseover", function(d) { 
+         
+            var value2014 = currentMap.get(d.location);     
+                  LeafletDiv.transition()        
+                     .duration(200)      
+                    .style("opacity", .9);
+
+                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   d3.select(this).attr("class","countyHover");
+
+                   document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
+              })
+
+              .on("mouseout", function(d) {       
+                LeafletDiv.transition()        
+                  .duration(200)      
+                  .style("opacity", 0);  
+                d3.select(this).attr("class","events"); 
+                document.getElementById("test").innerHTML = 'no picture'
+              });  
 
     var todaysDate = new Date 
 
@@ -350,32 +375,7 @@ function update(value) {
 
     //console.log(d.dateFormatted)
 
-    d3.selectAll(".events")
-          .on("mouseover", function(d) { 
-         
-            var value2014 = currentMap.get(d.location);     
-                  LeafletDiv.transition()        
-                     .duration(200)      
-                    .style("opacity", .9);
-
-                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
-                    )
-                    .style("left", (d3.event.pageX+ 15) + "px")     
-                    .style("top", (d3.event.pageY - 150) + "px")
-                    .style("text-align", 'left'); 
-                   d3.select(this).attr("class","countyHover");
-
-                   document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
-              })
-
-              .on("mouseout", function(d) {       
-                LeafletDiv.transition()        
-                  .duration(200)      
-                  .style("opacity", 0);  
-                d3.select(this).attr("class","events"); 
-                document.getElementById("test").innerHTML = 'no picture'
-              });  
+    
 
     
 
