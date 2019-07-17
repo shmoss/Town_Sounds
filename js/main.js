@@ -243,6 +243,7 @@ combineArray(sf_events);
         .style("display", initialDateMatch)
         .style("pointer-events", "all")
         .on("click", function(d) { 
+           d3.selectAll("events").classed("selected", false);
             d3.select(this).classed("selected", true)
             if (d3.select(this).classed("selected", true)){
                 console.log("true!")
@@ -261,6 +262,7 @@ combineArray(sf_events);
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
                 } else {
+                    console.log('false!')
                     d3.select(this).classed("selected", false);
                     LeafletDiv.transition()        
                   .duration(200)      
