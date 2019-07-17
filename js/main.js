@@ -387,7 +387,22 @@ function update(value) {
     
           
 
+d3.selectAll(".events")
+          .on("click", function(d) { 
+         
+            var value2014 = currentMap.get(d.location);     
+                  LeafletDiv.transition()        
+                     .duration(200)      
+                    .style("opacity", .9);
 
+                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' + d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   d3.select(this).attr("class","countyHover");   
+              })
 
     
 
