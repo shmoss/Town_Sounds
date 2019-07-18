@@ -388,7 +388,7 @@ function update(value) {
           
 
 d3.selectAll(".events")
-          .on("touchmove", function(d) { 
+          .on("click", function(d) { 
          
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
