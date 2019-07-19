@@ -244,7 +244,7 @@ combineArray(sf_events);
         .style("pointer-events", "all")
         
 
-        .on("mouseover", function(d) { 
+        .on("mouseover click", function(d) { 
          
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
@@ -262,7 +262,7 @@ combineArray(sf_events);
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
               })
 
-        .on("mouseout", function(d) {       
+        .on("mouseout click", function(d) {       
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
