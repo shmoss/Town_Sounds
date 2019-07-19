@@ -246,7 +246,6 @@ combineArray(sf_events);
 
         .on("mouseover click", function(d) { 
          
-            var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
                     .style("opacity", .9);
@@ -257,7 +256,7 @@ combineArray(sf_events);
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
-                   d3.select(this).attr("class","countyHover");
+                   //d3.select(this).attr("class","countyHover");
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
               })
@@ -266,7 +265,7 @@ combineArray(sf_events);
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                d3.select(this).attr("class","events"); 
+                //d3.select(this).attr("class","events"); 
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
