@@ -19,18 +19,18 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-.countyHover {
-    
-    opacity:.9;
-    stroke-width: 3px;
-    stroke:black;  
-}
+
+
+.events{}
 
 .events:hover{
-    stroke-width:3px;
+    stroke-width:10px;
 }
 
 
+.events:focus{
+    stroke-width:10px;
+}
 
 .wrapper {
     display: flex;
