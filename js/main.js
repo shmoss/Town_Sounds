@@ -274,7 +274,7 @@ combineArray(sf_events);
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
-                  // d3.select(this).attr("class","countyHover");
+                  d3.select(this).style("stroke-width", '3px')
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
               })
