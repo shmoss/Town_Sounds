@@ -102,20 +102,20 @@ const picker = datepicker(document.querySelector('#datepicker'), {
 
   // Event callbacks.
   onSelect: function(instance) {
-    console.log(instance)
+    //console.log(instance)
     
     var instanceSplit = instance.dateSelected.toString().split(" " ,4)
     var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
     selectedDate = instanceClean
-    console.log(selectedDate)
+    //console.log(selectedDate)
     update()
        
   },
   onShow: function(instance) {
-    console.log('Calendar showing.');
+    //console.log('Calendar showing.');
   },
   onHide: function(instance) {
-    console.log('Calendar hidden.');
+    //console.log('Calendar hidden.');
   },
   onMonthChange: function(instance) {
     // Show the month of the selected date.
@@ -128,9 +128,9 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   formatter: function(el, date, instance) {
     // This will display the date as `1/1/2019`.
     el.value = date.toDateString();
-    console.log(el)
+    //console.log(el)
     dat = new Date()
-    console.log(dat.getMonth())
+    //console.log(dat.getMonth())
   },
   
   position: 'tr', // Top right.
@@ -350,16 +350,15 @@ drawAndUpdateEventCircles();
 
 
 function update(value) {
-    
+
+
     d3.selectAll(".events")
         .style("display", dateMatch);
 
-    d3.selectAll("#rockPopGenre")
-    display = this.checked ? "inline" : "none"; 
-    console.log(display)
-    genreMatch("Rock")
-    genreMatch("Pop")
-    genreMatch("Indie")
+    
+    genreMatchRock("Rock")
+
+   
  
 }
 
@@ -415,16 +414,19 @@ function update(value) {
 
     d3.selectAll("#allGenre").on("change", function() {
     display = this.checked ? "inline" : "none"; 
-    genreMatch("Rock", "Pop", "Indie Pop")
-    genreMatch("Jazz")
+
     if(this.checked) {
         // Iterate each checkbox
         $(':checkbox').each(function() {
-            this.checked = true;                        
+            this.checked = true;  
+            d3.selectAll(".events")
+            .style("display", display);                      
         });
     } else {
         $(':checkbox').each(function() {
-            this.checked = false;                       
+            this.checked = false;   
+            d3.selectAll(".events")
+            .style("display", display);                    
         });
     }
     //genreMatch("Rock", "Pop", "Indie Pop")
@@ -510,8 +512,8 @@ function update(value) {
 
  function genreMatch (genreType, key1, key2, key3) {
     var genreType
-    console.log(genreType)
-    console.log("genre match function on")
+    //console.log(genreType)
+    //console.log("genre match function on")
 
     //var conditions = [key1, key2, key3];
     //console.log(conditions)
@@ -524,6 +526,34 @@ function update(value) {
     })
     .style("display", display);
  }   
+
+  function genreMatchRock (genreType) {
+    console.log('matcharock')
+    var genreTypeRock
+    d3.selectAll("#rockPopGenre")
+
+    if (this.checked) {
+        console.log('this.checked')
+    }
+    
+
+    display = this.checked ? "inline" : "none"; 
+   console.log(display)
+
+    //console.log(genreType)
+    //console.log("genre match function on")
+
+    //var conditions = [key1, key2, key3];
+    //console.log(conditions)
+
+    d3.selectAll(".events")
+    .filter(function(d) {       
+        return (d.Genre.includes(genreTypeRock) && selectedDate === d.Date)
+        //return d.Genre.includes(key1)
+      
+    })
+    .style("display", display);
+ } 
 
  function display(){
     display = this.checked ? "inline" : "none";
