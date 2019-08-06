@@ -433,44 +433,62 @@ function update(value) {
 });
 
 
+    var currentValue = 0;
     d3.selectAll("#bluesGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    console.log("blue clicked! radio")
+    console.log("current")
+    var bluesRadioValue = document.getElementById("bluesGenre").value 
+    console.log(bluesRadioValue, "blues radio value")
+    console.log(currentValue, "current value")
+    currentValue = bluesRadioValue
+    display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Blues")
 });
 
+
+ 
+
     d3.selectAll("#classicalGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Classical")
 });
 
     d3.selectAll("#electronicGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Electronic")
 });
 
     d3.selectAll("#folkGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Folk")
     genreMatch("Americana")
 });
 
     d3.selectAll("#hipHopGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Hip Hop")
 });
 
     d3.selectAll("#jazzGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00";
     genreMatch("Jazz")
 });
 
     d3.selectAll("#metalGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00";
     genreMatch("Metal")
 });
 
     d3.selectAll("#rbGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
+    display = this.checked ? "red" : "#ffba00";
     genreMatch("R&B")
     genreMatch("Rnb")
     genreMatch("Soul")
@@ -478,14 +496,14 @@ function update(value) {
 
 
     d3.selectAll("#rockPopGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    display = this.checked ? "red" : "#ffba00";
     genreMatch("Rock")
     genreMatch("Pop")
     genreMatch("Indie")
 });
 
     d3.selectAll("#genreUnknownGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    display = this.checked ? "red" : "#ffba00";
     genreMatch("No genre available")
 });
     
@@ -524,7 +542,7 @@ function update(value) {
         //return d.Genre.includes(key1)
       
     })
-    .style("display", display);
+    .style("fill", display);
  }   
 
   function genreMatchRock (genreType) {
@@ -557,6 +575,11 @@ function update(value) {
 
  function display(){
     display = this.checked ? "inline" : "none";
+ }
+
+ function resetDisplay (){
+    d3.selectAll(".events")
+            .style("fill", '#ffba00');
  }
 
 
