@@ -2,7 +2,31 @@
 document.addEventListener('DOMContentLoaded', function(e) {
 
     
-
+    times = ["12:00 AM",
+            "1:00 AM",
+            "2:00 AM",
+            "3:00 AM",
+            "4:00 AM",
+            "5:00 AM",
+            "6:00 AM",
+            "7:00 AM",
+            "8:00 AM",
+            "9:00 AM",
+            "10:00 AM",
+            "11:00 AM",
+            "12:00 PM",
+            "13:00 PM",
+            "14:00 PM",
+            "15:00 PM",
+            "16:00 PM",
+            "17:00 PM",
+            "18:00 PM",
+            "19:00 PM",
+            "20:00 PM",
+            "21:00 PM",
+            "22:00 PM",
+            "23:00 PM"         
+    ]
 
     var value 
   
@@ -269,7 +293,7 @@ combineArray(sf_events);
                     .style("opacity", .9);
 
                   LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -413,22 +437,9 @@ function update(value) {
 
 
     d3.selectAll("#allGenre").on("change", function() {
-    display = this.checked ? "inline" : "none"; 
+    resetDisplay()
 
-    if(this.checked) {
-        // Iterate each checkbox
-        $(':checkbox').each(function() {
-            this.checked = true;  
-            d3.selectAll(".events")
-            .style("display", display);                      
-        });
-    } else {
-        $(':checkbox').each(function() {
-            this.checked = false;   
-            d3.selectAll(".events")
-            .style("display", display);                    
-        });
-    }
+    
     //genreMatch("Rock", "Pop", "Indie Pop")
 });
 
@@ -459,6 +470,12 @@ function update(value) {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Electronic")
+    genreMatch("Electronica")
+    genreMatch("House")
+    genreMatch("DJ")
+    genreMatch("Techno")
+    genreMatch("Dance")
+    genreMatch("Trance")
 });
 
     d3.selectAll("#folkGenre").on("change", function() {
@@ -466,6 +483,8 @@ function update(value) {
     display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Folk")
     genreMatch("Americana")
+    genreMatch("Bluegrass")
+    genreMatch("songwriter")
 });
 
     d3.selectAll("#hipHopGenre").on("change", function() {
@@ -484,6 +503,8 @@ function update(value) {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
     genreMatch("Metal")
+    genreMatch("Black Metal")
+    genreMatch("Hardcore")
 });
 
     d3.selectAll("#rbGenre").on("change", function() {
@@ -492,6 +513,7 @@ function update(value) {
     genreMatch("R&B")
     genreMatch("Rnb")
     genreMatch("Soul")
+    genreMatch("Disco")
 });
 
 
@@ -538,7 +560,7 @@ function update(value) {
 
     d3.selectAll(".events")
     .filter(function(d) {       
-        return (d.Genre.includes(genreType) && selectedDate === d.Date)
+        return (d.Genre.includes(genreType))
         //return d.Genre.includes(key1)
       
     })
@@ -581,6 +603,56 @@ function update(value) {
     d3.selectAll(".events")
             .style("fill", '#ffba00');
  }
+
+ //Time slider
+ d3.select("#timeslide").on("input", function() {       
+            //console.log(value)
+            updateTime(+this.value);   
+            console.log(this.value)
+        });
+
+
+ function updateTime(value) {
+        console.log(value)
+        //document.getElementById("range").innerHTML=times[value];
+        inputValue = times[value];
+        inputValue = inputValue
+        console.log(inputValue)
+    
+        d3.selectAll(".events")
+            .style("display", timeMatch);
+    }
+
+
+function timeMatch(d, value) {
+
+        var time = d.Time
+        
+        var hours = Number(time.match(/^(\d+)/)[1]);
+        var minutes = Number(time.match(/:(\d+)/)[1]);
+        var AMPM = time.match(/\s(.*)$/)[1];
+        if (AMPM == "PM" && hours < 12) hours = hours + 12;
+        if (AMPM == "AM" && hours == 12) hours = hours - 12;
+        var sHours = hours.toString();
+        var sMinutes = minutes.toString();
+        if (hours < 10) sHours = "0" + sHours;
+        if (minutes < 10) sMinutes = "0" + sMinutes;
+        var newTime = (sHours + ":" + sMinutes);
+        console.log(newTime)
+
+        //var time = (d.Time);
+        //time = time.getHours()
+       // console.log(newTime, "is time")
+        console.log(inputValue, "is input value")
+        if (inputValue >= newTime) {
+            console.log("match")
+                    
+         return "inline";
+        } else {
+            return "none";
+        };
+    }
+
 
 
 }
