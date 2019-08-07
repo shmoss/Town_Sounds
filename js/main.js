@@ -100,6 +100,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
     //console.log(instanceSplit);
     var todayClean = todaySplit.toString().replace(/,/g, ' ')
     //console.log(todayClean)
+    var dayNumber = todaySplit[2]
+
+    var dayNumberClean = dayNumber.toString().replace(/01/g, '1')
+    .replace(/02/g, '2')
+    .replace(/03/g, '3')
+    .replace(/04/g, '4')
+    .replace(/05/g, '5')
+    .replace(/06/g, '6')
+    .replace(/07/g, '7')
+    .replace(/08/g, '8')
+    .replace(/09/g, '9')
+
+    var todayClean2 = todaySplit[0] + " " + todaySplit[1] + " " + dayNumberClean + " " + todaySplit[3]
+
 
     
 
@@ -126,12 +140,28 @@ const picker = datepicker(document.querySelector('#datepicker'), {
 
   // Event callbacks.
   onSelect: function(instance) {
-    //console.log(instance)
     
     var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+    var dayofMonth = instanceSplit[2]
+    console.log(dayofMonth)
     var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
-    selectedDate = instanceClean
-    //console.log(selectedDate)
+    var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
+    .replace(/02/g, '2')
+    .replace(/03/g, '3')
+    .replace(/04/g, '4')
+    .replace(/05/g, '5')
+    .replace(/06/g, '6')
+    .replace(/07/g, '7')
+    .replace(/08/g, '8')
+    .replace(/09/g, '9')
+
+    console.log(dayofMonthClean)
+
+    var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
+
+
+    selectedDate = finalDate
+    console.log(selectedDate)
     update()
        
   },
@@ -199,7 +229,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
 }
 
 combineArray(sf_events);
-
+//console.log(allSFEvents)
 
 
         var radius = d3.scaleLinear()
@@ -380,10 +410,15 @@ function update(value) {
         .style("display", dateMatch);
 
     
-    genreMatchRock("Rock")
+    //genreMatchRock("Rock")
 
    
  
+}
+
+function updateTime(value) {
+    d3.selectAll(".events")
+        .style("display", timeInterval("18:00", "24:00"));    
 }
 
 
@@ -406,7 +441,7 @@ function update(value) {
         var x = "Friday, June 14th, 2019"
 
         //console.log(data.dateFormatted)
-    if (todayClean== data.Date) {
+    if (todayClean2 == data.Date) {
         
 
         
@@ -423,12 +458,26 @@ function update(value) {
         //console.log(selectedDate)
     if (selectedDate === data.Date) {
         
-        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.dateFormatted)
+        console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.Date)
         return 'inline'
     } else {
        return 'none'
     }
 }
+
+
+    function timeInterval(data, start, end) {
+        //console.log(start, end)
+    var time = data.Time
+    console.log(time)    
+      
+
+        //var beginning = start
+        //var ending = end
+        
+
+   
+ } 
 
     //console.log(d.dateFormatted)
 
@@ -491,6 +540,7 @@ function update(value) {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
     genreMatch("Hip Hop")
+    genreMatch("Rap")
 });
 
     d3.selectAll("#jazzGenre").on("change", function() {
@@ -514,22 +564,32 @@ function update(value) {
     genreMatch("Rnb")
     genreMatch("Soul")
     genreMatch("Disco")
+    genreMatch("Reggae")
+    genreMatch("rnb")
+    genreMatch("funk")
 });
 
 
     d3.selectAll("#rockPopGenre").on("change", function() {
+    resetDisplay()
     display = this.checked ? "red" : "#ffba00";
     genreMatch("Rock")
+    genreMatch("rock")
     genreMatch("Pop")
     genreMatch("Indie")
 });
 
     d3.selectAll("#genreUnknownGenre").on("change", function() {
+    resetDisplay()
     display = this.checked ? "red" : "#ffba00";
     genreMatch("No genre available")
 });
     
-
+//timeMatch
+d3.selectAll("#test").on("change", function() {
+    console.log("yo!")
+    updateTime()
+});
 
     
 
@@ -566,6 +626,8 @@ function update(value) {
     })
     .style("fill", display);
  }   
+
+ 
 
   function genreMatchRock (genreType) {
     console.log('matcharock')
@@ -607,22 +669,12 @@ function update(value) {
  //Time slider
  d3.select("#timeslide").on("input", function() {       
             //console.log(value)
-            updateTime(+this.value);   
-            console.log(this.value)
+            //updateTime(+this.value);   
+           // console.log(this.value)
         });
 
 
- function updateTime(value) {
-        console.log(value)
-        //document.getElementById("range").innerHTML=times[value];
-        inputValue = times[value];
-        inputValue = inputValue
-        console.log(inputValue)
-    
-        d3.selectAll(".events")
-            .style("display", timeMatch);
-    }
-
+ 
 
 function timeMatch(d, value) {
 
