@@ -278,7 +278,7 @@ combineArray(sf_events);
     var events = mapG.selectAll("circle")
         .data(allSFEvents)
         .enter().append("circle")
-        .style("stroke", "black")
+        .style("stroke", "none")
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
@@ -533,7 +533,8 @@ function updateTime(start, end) {
     console.log(bluesRadioValue, "blues radio value")
     console.log(currentValue, "current value")
     currentValue = bluesRadioValue
-    display = this.checked ? "red" : "#ffba00"; 
+    display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Blues"]
     genreMatch(x)
 });
@@ -543,15 +544,16 @@ function updateTime(start, end) {
 
     d3.selectAll("#classicalGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00"; 
+   display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Classical"]
     genreMatch(x)
 });
 
     d3.selectAll("#electronicGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00"; 
-    display2 = this.checked ? "inline" : "none"; 
+    display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
     genreMatch(x)
     //removePoints(x)
@@ -565,15 +567,17 @@ function updateTime(start, end) {
 
     d3.selectAll("#folkGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00"; 
-     x = ["Folk", "Americana", "Bluegrass", "songwriter"]
+    display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
+     x = ["Acoustic", "Folk", "Americana", "Bluegrass", "songwriter"]
     genreMatch(x)
     
 });
 
     d3.selectAll("#hipHopGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00"; 
+    display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Hip Hop", "Rap"]
     genreMatch(x)
     
@@ -581,14 +585,16 @@ function updateTime(start, end) {
 
     d3.selectAll("#jazzGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00";
+   display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Jazz"]
     genreMatch(x)
 });
 
     d3.selectAll("#metalGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00";
+   display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["Metal", "Black Metal", "Hardcore"]
     genreMatch(x)
     //genreMatch("Metal")
@@ -598,7 +604,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#rbGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00";
+   display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
     genreMatch(x)
     
@@ -607,7 +614,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#rockPopGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00";
+    display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     visibility = this.checked ? "none" : "inline"
     x = ["Rock", "rock", "Pop", "Indie"]
     genreMatch(x)
@@ -618,7 +626,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#genreUnknownGenre").on("change", function() {
     resetDisplay()
-    display = this.checked ? "red" : "#ffba00";
+     display2 = this.checked ? "none" : "black";
+    display = this.checked ? "none" : "#ffba00";
     x = ["No genre available"]
     genreMatch(x)
 });
@@ -705,11 +714,12 @@ d3.selectAll("#late").on("change", function() {
     for (i=0; i<genreType.length; i++){
         d3.selectAll(".events")
     .filter(function(d) {       
-        return (d.Genre.includes(genreType[i]))
+        return (d.Genre.includes(genreType[i])==false)
         //return d.Genre.includes(key1)
     
     })
     .style("fill", display)
+    .style("stroke", display2)
     //.style("opacity", opac)
     }
 
