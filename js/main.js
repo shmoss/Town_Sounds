@@ -41,11 +41,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var currentMap = d3.map();
 
     d3.queue()
-    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(cw) { 
-       // console.log('cw')
-    })
-    .defer(d3.csv, "./data/testScrape.json", function(cw) {      
-    })
     .defer(d3.csv, "./data/sf_events.json", function(cw) {      
     })
     .await(ready);
@@ -74,13 +69,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
     d3.queue()
-    
-    .defer(d3.csv, "./data/allSanFranciscoEvents14.json", function(d) { 
-       // console.log('cw')
-    })
-    .defer(d3.csv, "./data/testScrape.json", function(d) { 
-       // console.log('cw')
-    })
+
     .defer(d3.csv, "./data/sf_events.json", function(d) { 
        // console.log('cw')
     })
@@ -198,7 +187,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   alwaysShow: true, // Never hide the calendar.
   dateSelected: new Date(), // Today is selected.
   maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-  minDate: new Date(2016, 5, 1), // June 1st, 2016.
+  minDate: new Date(new Date().getTime() -1), // June 1st, 2016.
   startDate: new Date(), // This month.
  
 
@@ -473,8 +462,8 @@ function updateTime(start, end) {
 
 
         var today = new Date()
-    console.log(today.toLocaleDateString())
-    console.log(today)
+    //console.log(today.toLocaleDateString())
+    //console.log(today)
     var todaySplit = today.toString().split(" " ,4)
     //console.log(instanceSplit);
     var todayClean = todaySplit.toString().replace(/,/g, ' ')
@@ -545,7 +534,8 @@ function updateTime(start, end) {
     console.log(currentValue, "current value")
     currentValue = bluesRadioValue
     display = this.checked ? "red" : "#ffba00"; 
-    genreMatch("Blues")
+    x = ["Blues"]
+    genreMatch(x)
 });
 
 
@@ -554,61 +544,64 @@ function updateTime(start, end) {
     d3.selectAll("#classicalGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
-    genreMatch("Classical")
+    x = ["Classical"]
+    genreMatch(x)
 });
 
     d3.selectAll("#electronicGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
-    genreMatch("Electronic")
-    genreMatch("Electronica")
-    genreMatch("House")
-    genreMatch("DJ")
-    genreMatch("Techno")
-    genreMatch("Dance")
-    genreMatch("Trance")
+    display2 = this.checked ? "inline" : "none"; 
+    x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
+    genreMatch(x)
+    //removePoints(x)
+    //genreMatch("Electronica")
+    //genreMatch("House")
+    //genreMatch("DJ")
+    //genreMatch("Techno")
+    //genreMatch("Dance")
+    //genreMatch("Trance")
 });
 
     d3.selectAll("#folkGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
-    genreMatch("Folk")
-    genreMatch("Americana")
-    genreMatch("Bluegrass")
-    genreMatch("songwriter")
+     x = ["Folk", "Americana", "Bluegrass", "songwriter"]
+    genreMatch(x)
+    
 });
 
     d3.selectAll("#hipHopGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00"; 
-    genreMatch("Hip Hop")
-    genreMatch("Rap")
+    x = ["Hip Hop", "Rap"]
+    genreMatch(x)
+    
 });
 
     d3.selectAll("#jazzGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
-    genreMatch("Jazz")
+    x = ["Jazz"]
+    genreMatch(x)
 });
 
     d3.selectAll("#metalGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
-    genreMatch("Metal")
-    genreMatch("Black Metal")
-    genreMatch("Hardcore")
+    x = ["Metal", "Black Metal", "Hardcore"]
+    genreMatch(x)
+    //genreMatch("Metal")
+    //genreMatch("Black Metal")
+    //genreMatch("Hardcore")
 });
 
     d3.selectAll("#rbGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
-    genreMatch("R&B")
-    genreMatch("Rnb")
-    genreMatch("Soul")
-    genreMatch("Disco")
-    genreMatch("Reggae")
-    genreMatch("rnb")
-    genreMatch("funk")
+    x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
+    genreMatch(x)
+    
 });
 
 
@@ -616,10 +609,9 @@ function updateTime(start, end) {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
     visibility = this.checked ? "none" : "inline"
-    genreMatch("Rock")
-    genreMatch("rock")
-    genreMatch("Pop")
-    genreMatch("Indie")
+    x = ["Rock", "rock", "Pop", "Indie"]
+    genreMatch(x)
+    
     
     
 });
@@ -627,7 +619,8 @@ function updateTime(start, end) {
     d3.selectAll("#genreUnknownGenre").on("change", function() {
     resetDisplay()
     display = this.checked ? "red" : "#ffba00";
-    genreMatch("No genre available")
+    x = ["No genre available"]
+    genreMatch(x)
 });
     
 //timeMatch
@@ -703,23 +696,47 @@ d3.selectAll("#late").on("change", function() {
 
  function genreMatch (genreType, key1, key2, key3) {
     var genreType
-    //console.log(genreType)
-    //console.log("genre match function on")
 
-    //var conditions = [key1, key2, key3];
-    //console.log(conditions)
+     
+    //.style("opacity", opac)
+    
 
-   
 
-    d3.selectAll(".events")
+    for (i=0; i<genreType.length; i++){
+        d3.selectAll(".events")
     .filter(function(d) {       
-        return (d.Genre.includes(genreType))
+        return (d.Genre.includes(genreType[i]))
         //return d.Genre.includes(key1)
     
     })
     .style("fill", display)
     //.style("opacity", opac)
- }   
+    }
+
+    
+ }  
+
+ function removePoints (genreType, key1, key2, key3) {
+    var genreType
+
+     
+    //.style("opacity", opac)
+    
+
+
+    for (i=0; i<genreType.length; i++){
+        d3.selectAll(".events")
+    .filter(function(d) {       
+        return (!d.Genre.includes(genreType[i]))
+        //return d.Genre.includes(key1)
+    
+    })
+    .style("display", display2)
+    //.style("opacity", opac)
+    }
+
+    
+ }    
 
  function genreExclude (genreType, key1, key2, key3) {
     var genreType
@@ -742,35 +759,7 @@ d3.selectAll("#late").on("change", function() {
  }   
 
  
-
-  function genreMatchRock (genreType) {
-    console.log('matcharock')
-    var genreTypeRock
-    d3.selectAll("#rockPopGenre")
-
-    if (this.checked) {
-        console.log('this.checked')
-    }
-    
-
-    display = this.checked ? "inline" : "none"; 
-   console.log(display)
-
-    //console.log(genreType)
-    //console.log("genre match function on")
-
-    //var conditions = [key1, key2, key3];
-    //console.log(conditions)
-
-    d3.selectAll(".events")
-    .filter(function(d) {       
-        return (d.Genre.includes(genreTypeRock) && selectedDate === d.Date)
-        console.log(selectedDate)
-        //return d.Genre.includes(key1)
-      
-    })
-    .style("display", display);
- } 
+ 
 
  //function display(){
     //display = this.checked ? "inline" : "none";
