@@ -736,7 +736,7 @@ function genreMatch2(genreType){
         return (d.Genre.includes(genreType[i]))
     })
     .style("fill", display)
-    .style("stroke", display2)
+    //.style("stroke", display2)
     //.style("pointer-events",pointerEvents)
     //.style("opacity", opac)
     }  
