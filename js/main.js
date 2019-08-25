@@ -278,7 +278,7 @@ combineArray(sf_events);
     var events = mapG.selectAll("circle")
         .data(allSFEvents)
         .enter().append("circle")
-        .style("stroke", "none")
+        //.style("stroke", "none")
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
@@ -298,6 +298,7 @@ combineArray(sf_events);
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
+                   d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
@@ -317,6 +318,7 @@ combineArray(sf_events);
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
+                  d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
 
                    document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
@@ -326,7 +328,8 @@ combineArray(sf_events);
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                 d3.select(this).style("stroke-width", '1px')
+                 d3.select(this).style("stroke", 'none')
+                 d3.select(this).style("stroke-width", '0px')
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
