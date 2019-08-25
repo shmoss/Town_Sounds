@@ -186,8 +186,8 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   // Settings.
   alwaysShow: true, // Never hide the calendar.
   dateSelected: new Date(), // Today is selected.
-  maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-  minDate: new Date(new Date().getTime() -1), // June 1st, 2016.
+  maxDate: new Date(new Date().getTime() + 127 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+  minDate: new Date(new Date().getTime() -123 * 24 * 60 * 60 * 1000), // June 1st, 2016.
   startDate: new Date(), // This month.
  
 
@@ -278,13 +278,13 @@ combineArray(sf_events);
     var events = mapG.selectAll("circle")
         .data(allSFEvents)
         .enter().append("circle")
-        .style("stroke", "none")
+        .style("stroke", "black")
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
         .attr("r", 14.5)
         .style("display", initialDateMatch)
-        .style("pointer-events", "all")
+        .style("pointer-events", "auto")
         .on("mouseover", function(d) { 
          
             var value2014 = currentMap.get(d.location);     
@@ -518,6 +518,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#allGenre").on("change", function() {
     resetDisplay()
+    resetAll()
+    resetVisibility()
 
     
     //genreMatch("Rock", "Pop", "Indie Pop")
@@ -533,8 +535,8 @@ function updateTime(start, end) {
     console.log(bluesRadioValue, "blues radio value")
     console.log(currentValue, "current value")
     currentValue = bluesRadioValue
-    display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Blues"]
     genreMatch(x)
 });
@@ -544,16 +546,16 @@ function updateTime(start, end) {
 
     d3.selectAll("#classicalGenre").on("change", function() {
     resetDisplay()
-   display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Classical"]
     genreMatch(x)
 });
 
     d3.selectAll("#electronicGenre").on("change", function() {
     resetDisplay()
-    display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
     genreMatch(x)
     //removePoints(x)
@@ -567,17 +569,17 @@ function updateTime(start, end) {
 
     d3.selectAll("#folkGenre").on("change", function() {
     resetDisplay()
-    display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
-     x = ["Acoustic", "Folk", "Americana", "Bluegrass", "songwriter"]
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
+    x = ["Bluegrass","Folk","Singer Songwriter","Americana","Country","Acoustic"]
     genreMatch(x)
     
 });
 
     d3.selectAll("#hipHopGenre").on("change", function() {
     resetDisplay()
-    display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Hip Hop", "Rap"]
     genreMatch(x)
     
@@ -585,16 +587,16 @@ function updateTime(start, end) {
 
     d3.selectAll("#jazzGenre").on("change", function() {
     resetDisplay()
-   display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Jazz"]
     genreMatch(x)
 });
 
     d3.selectAll("#metalGenre").on("change", function() {
     resetDisplay()
-   display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    isplay = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["Metal", "Black Metal", "Hardcore"]
     genreMatch(x)
     //genreMatch("Metal")
@@ -604,8 +606,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#rbGenre").on("change", function() {
     resetDisplay()
-   display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    isplay = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
     genreMatch(x)
     
@@ -614,11 +616,16 @@ function updateTime(start, end) {
 
     d3.selectAll("#rockPopGenre").on("change", function() {
     resetDisplay()
-    display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
-    visibility = this.checked ? "none" : "inline"
-    x = ["Rock", "rock", "Pop", "Indie"]
+    noPointers()
+    //resetVisibility()
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
+    pointerEvents = this.checked ? "all" : "all";
+    //notMatchFill= this.checked ? "initial" : "none";
+    //pointerEvents = this.checked ? "all" : "none";
+    x = ["Rock", "Pop","Indie"]
     genreMatch(x)
+    removePoints(x)
     
     
     
@@ -626,8 +633,8 @@ function updateTime(start, end) {
 
     d3.selectAll("#genreUnknownGenre").on("change", function() {
     resetDisplay()
-     display2 = this.checked ? "none" : "black";
-    display = this.checked ? "none" : "#ffba00";
+    display = this.checked ? "#ffba00" : "none";
+    display2 = this.checked ? "black" : "none";
     x = ["No genre available"]
     genreMatch(x)
 });
@@ -694,17 +701,9 @@ d3.selectAll("#late").on("change", function() {
 
 
     
+function genreMatch2(genreType){
 
-    
-    
-
-    
-
-
-
-
- function genreMatch (genreType, key1, key2, key3) {
-    var genreType
+     var genreType
 
      
     //.style("opacity", opac)
@@ -713,37 +712,63 @@ d3.selectAll("#late").on("change", function() {
 
     for (i=0; i<genreType.length; i++){
         d3.selectAll(".events")
-    .filter(function(d) {       
-        return (d.Genre.includes(genreType[i])==false)
-        //return d.Genre.includes(key1)
+    if (d.Genre.includes(genreType[i])==false) {
+        return 'inline'
+    } else {
+       return 'none'
+    }
+}
     
+}
+
+    
+
+
+
+
+ function genreMatch (genreType) {
+    var genreType
+
+    for (i=0; i<genreType.length; i++){
+        console.log(genreType[i])
+        d3.selectAll(".events")
+    .filter(function(d) {       
+        return (d.Genre.includes(genreType[i]))
     })
     .style("fill", display)
     .style("stroke", display2)
+    //.style("pointer-events",pointerEvents)
     //.style("opacity", opac)
-    }
-
-    
- }  
-
- function removePoints (genreType, key1, key2, key3) {
-    var genreType
-
-     
-    //.style("opacity", opac)
-    
+    }  
 
 
     for (i=0; i<genreType.length; i++){
+        console.log(genreType[i])
+        d3.selectAll(".events")
+    .filter(function(d) {       
+        return (d.Genre.includes(genreType[i])==true)
+    })
+    .style("pointer-events", all)
+    //.style("pointer-events",pointerEvents)
+    //.style("opacity", opac)
+    } 
+
+ }  
+
+ function removePoints (genreType) {
+    var genreType
+
+    for (i=0; i<genreType.length; i++){
+        console.log(genreType[i])
         d3.selectAll(".events")
     .filter(function(d) {       
         return (!d.Genre.includes(genreType[i]))
-        //return d.Genre.includes(key1)
-    
     })
-    .style("display", display2)
+    .style("pointer-events", notMatchFill)
+    .style("stroke", display2)
+    //.style("pointer-events",pointerEvents)
     //.style("opacity", opac)
-    }
+    }  
 
     
  }    
@@ -777,7 +802,22 @@ d3.selectAll("#late").on("change", function() {
 
  function resetDisplay (){
     d3.selectAll(".events")
+            .style("fill", 'none');
+ }
+
+ function resetAll (){
+    d3.selectAll(".events")
             .style("fill", '#ffba00');
+ }
+
+ function resetVisibility (){
+    d3.selectAll(".events")
+            .style("display", 'all');
+ }
+
+ function noPointers (){
+    d3.selectAll(".events")
+            .style("pointer-events", 'auto');
  }
 
  //Time slider
