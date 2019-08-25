@@ -278,7 +278,7 @@ combineArray(sf_events);
     var events = mapG.selectAll("circle")
         .data(allSFEvents)
         .enter().append("circle")
-        .style("stroke", "black")
+        .style("stroke", "none")
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
