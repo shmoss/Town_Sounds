@@ -186,8 +186,8 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   // Settings.
   alwaysShow: true, // Never hide the calendar.
   dateSelected: new Date(), // Today is selected.
-  maxDate: new Date(new Date().getTime() + 127 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-  minDate: new Date(new Date().getTime() -123 * 24 * 60 * 60 * 1000), // June 1st, 2016.
+  maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+  minDate: new Date(new Date().getTime() -3 * 24 * 60 * 60 * 1000), // June 1st, 2016.
   startDate: new Date(), // This month.
  
 
