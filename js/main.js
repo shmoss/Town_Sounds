@@ -300,7 +300,8 @@ var gl = L.mapboxGL({
         .style("display", initialDateMatch)
         .style("pointer-events", "auto")
         .on("mouseover", function(d) { 
-         
+            d3.selectAll(".events").style("stroke", 'none')
+                 d3.selectAll(".events").style("stroke-width", '0px')
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
@@ -320,6 +321,8 @@ var gl = L.mapboxGL({
         
 
         .on("click", function(d) { 
+            d3.selectAll(".events").style("stroke", 'none')
+                 d3.selectAll(".events").style("stroke-width", '0px')
          
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
