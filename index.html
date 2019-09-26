@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Town Sounds</title>
 
   
 
@@ -64,7 +64,7 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebars!</h3>
+                <h3>Genre</h3>
                 <input type="radio" name = 'genre' id="allGenre" checked> All<br>
                 <input type="radio" name = 'genre' id="folkGenre"  > Bluegrass/Americana<br>
                 <input type="radio" name = 'genre' id="bluesGenre" > Blues<br>
@@ -76,21 +76,23 @@
                 <input type="radio" name = 'genre' id="rbGenre" > R&B/Reggae/Soul<br>
                 <input type="radio" name = 'genre' id="rockPopGenre" > Rock/Pop<br>
                 <input type="radio" name = 'genre'id="genreUnknownGenre" > Genre Unknown<br>
-
-                
-
             </div>
 
-            <ul class="list-unstyled components">
-
-                <p>Dummy Heading</p>
-                <input id="timeslide" type="range" class="slider" min="0" max="24" value="0" step="1"   /><br>
+            <div class="sidebar-header">
+                <h3>Time</h3>
                 <input type="radio" name = 'time' id="allTimes" checked> All times<br>
                 <input type="radio" name = 'time' id="morn" > 7AM-12PM<br>
                 <input type="radio" name = 'time' id="lunch" value = "1" > 12PM-4PM<br>
                 <input type="radio" name = 'time' id="afternoon" value = "1" > 4PM-8PM<br>
                 <input type="radio" name = 'time' id="eve" > 8PM-12AM<br>
                 <input type="radio" name = 'time' id="late" > 12AM-7AM<br>
+                
+            </div>
+
+            <ul class="list-unstyled components">
+
+                <p>Dummy Heading</p>
+                
 
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>

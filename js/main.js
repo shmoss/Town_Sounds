@@ -187,7 +187,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   alwaysShow: true, // Never hide the calendar.
   dateSelected: new Date(), // Today is selected.
   maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-  minDate: new Date(new Date().getTime() -3 * 24 * 60 * 60 * 1000), // June 1st, 2016.
+  minDate: new Date(new Date().getTime() -0 * 24 * 60 * 60 * 1000), // June 1st, 2016.
   startDate: new Date(), // This month.
  
 
@@ -240,8 +240,9 @@ combineArray(sf_events);
                 mapLink = 
             '<a href="https://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
-            'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+            'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
                 tileSize: 512,
+                detectRetina: false,
                 zoomOffset: -1,
                 attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
