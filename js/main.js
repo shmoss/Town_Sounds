@@ -232,6 +232,7 @@ combineArray(sf_events);
              .unknown("white");
 
         //Build Leaflet Map
+        /*
         L.mapbox.accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug';
         var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
             //var accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjam13ZHlxbXgwdncwM3FvMnJjeGVubjI5In0.-ridMV6bkkyNhbPfMJhVzw';
@@ -248,6 +249,18 @@ combineArray(sf_events);
         }).addTo(map);
         
         setTimeout(function(){ map.invalidateSize()}, 400);
+
+        */
+
+        var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
+
+var map = L.map('map').setView([37.7749, -122.4194], 13);
+  
+var gl = L.mapboxGL({
+    accessToken: token,
+    style: 'mapbox://styles/mapbox/dark-v8'
+}).addTo(map);
+
         var svgLayer = L.svg()
             svgLayer.addTo(map);
 
