@@ -342,8 +342,8 @@ var gl = L.mapboxGL({
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                 d3.select(this).style("stroke", 'none')
-                 d3.select(this).style("stroke-width", '0px')
+                 d3.selectAll(".events").style("stroke", 'none')
+                 d3.selectAll(".events").style("stroke-width", '0px')
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
