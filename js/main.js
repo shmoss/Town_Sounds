@@ -300,8 +300,7 @@ var gl = L.mapboxGL({
         .style("display", initialDateMatch)
         .style("pointer-events", "auto")
         .on("mouseover", function(d) { 
-            d3.selectAll(".events").style("stroke", 'none')
-                 d3.selectAll(".events").style("stroke-width", '0px')
+         
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
@@ -321,8 +320,6 @@ var gl = L.mapboxGL({
         
 
         .on("click", function(d) { 
-            d3.selectAll(".events").style("stroke", 'none')
-                 d3.selectAll(".events").style("stroke-width", '0px')
          
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
@@ -345,8 +342,8 @@ var gl = L.mapboxGL({
                 LeafletDiv.transition()        
                   .duration(200)      
                   .style("opacity", 0);  
-                 d3.selectAll(".events").style("stroke", 'none')
-                 d3.selectAll(".events").style("stroke-width", '0px')
+                 d3.select(this).style("stroke", 'none')
+                 d3.select(this).style("stroke-width", '0px')
                 document.getElementById("test").innerHTML = 'no picture'
               })
 
