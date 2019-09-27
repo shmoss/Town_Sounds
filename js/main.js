@@ -415,11 +415,61 @@ drawAndUpdateEventCircles();
 function update(value) {
 
 
+    //filter by current date selected
     d3.selectAll(".events")
         .style("display", dateMatch);
 
+
     
-    //genreMatchRock("Rock")
+    //filter by current time filter selected
+
+    if(document.getElementById('allTimes').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "00:00", "24:00")
+        });      
+    }
+
+    if(document.getElementById('morn').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "07:00", "12:00")
+        });      
+    }
+
+    if(document.getElementById('lunch').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "12:00", "16:00")
+        });      
+    }
+
+    if(document.getElementById('afternoon').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "16:00", "20:00")
+        });      
+    }
+
+    if(document.getElementById('eve').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "20:00", "24:00")
+        });      
+    }
+
+    if(document.getElementById('late').checked) {
+         d3.selectAll(".events")
+        .style("display", function(d) {
+            return timeInterval(d, "24:00", "07:00")
+        });      
+    }
+
+    
+
+
+   
+   
 
    
  
@@ -467,10 +517,12 @@ function updateTime(start, end) {
 
     function dateMatch(data){
 
+        
+
         //console.log(selectedDate)
     if (selectedDate === data.Date) {
         
-        console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.Date)
+        //console.log("selectedDate is:" + selectedDate+ "and dateFormatted is:"+data.Date)
         return 'inline'
     } else {
        return 'none'
@@ -518,10 +570,10 @@ function updateTime(start, end) {
 
         //var beginning = start
         //var ending = end
-        
+     
 
         if (start <= showStartTime && showStartTime <= end && selectedDate === data.Date) {
-            console.log(selectedDate)
+            //console.log(selectedDate)
                     
          return "inline";
         } else {
