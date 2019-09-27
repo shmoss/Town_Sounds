@@ -799,6 +799,9 @@ function genreMatch2(genreType){
 
 
  function genreMatch (genreType) {
+
+    d3.selectAll(".events").style("stroke", 'none')
+                 d3.selectAll(".events").style("stroke-width", '0px')
     var genreType
 
     for (i=0; i<genreType.length; i++){
