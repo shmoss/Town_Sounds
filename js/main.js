@@ -878,6 +878,8 @@ function genreMatch2(genreType){
  function resetDisplay (){
     d3.selectAll(".events")
             .style("fill", 'none');
+            .style("stroke", 'none');
+            .style("stroke-width", '0 px');
  }
 
  function resetAll (){
