@@ -715,6 +715,7 @@ function updateTime(start, end) {
 
 
 d3.selectAll("#allTimes").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -723,6 +724,7 @@ d3.selectAll("#allTimes").on("change", function() {
 })
 
 d3.selectAll("#morn").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -731,6 +733,7 @@ d3.selectAll("#morn").on("change", function() {
 })
 
 d3.selectAll("#lunch").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -739,6 +742,7 @@ d3.selectAll("#lunch").on("change", function() {
 })
 
 d3.selectAll("#afternoon").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -749,6 +753,7 @@ d3.selectAll("#afternoon").on("change", function() {
 
 
 d3.selectAll("#eve").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -757,6 +762,7 @@ d3.selectAll("#eve").on("change", function() {
 })
 
 d3.selectAll("#late").on("change", function() {
+    resetStroke ()
     d3.selectAll(".events")
         .style("display", function(d) {
             //your datum is here---^
@@ -877,9 +883,14 @@ function genreMatch2(genreType){
 
  function resetDisplay (){
     d3.selectAll(".events")
-            .style("fill", 'none');
-            .style("stroke", 'none');
-            .style("stroke-width", '0 px');
+            .style("fill", 'none')
+            .style("stroke", 'none')
+            .style("stroke-width", '0 px')
+ }
+
+ function resetStroke (){
+    d3.selectAll(".events")
+            .style("stroke", 'none')        
  }
 
  function resetAll (){
