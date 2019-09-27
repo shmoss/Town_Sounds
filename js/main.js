@@ -414,7 +414,7 @@ drawAndUpdateEventCircles();
 
 function update(value) {
 
-
+    resetStroke ()
     //filter by current date selected
     d3.selectAll(".events")
         .style("display", dateMatch);
