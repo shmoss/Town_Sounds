@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var todayClean2 = todaySplit[0] + " " + todaySplit[1] + " " + dayNumberClean + " " + todaySplit[3]
 
-
+    selectedDate = todayClean2
     
 
     
@@ -150,7 +150,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
 
 
     selectedDate = finalDate
-    console.log(selectedDate)
+    //console.log(selectedDate)
     update()
        
   },
@@ -274,6 +274,12 @@ var gl = L.mapboxGL({
         var LeafletDiv = d3.select("body").append("div")   
             .attr("class", "county2014Tooltip")               
             .style("opacity", 0)
+
+
+        LeafletDiv.append("div")
+           .attr("class", "key_square")
+           .style("background-color","#C8DAF8")
+           .style("stroke-width", "40px")
       
      
         var tenantNamesArray = []
@@ -316,7 +322,6 @@ var gl = L.mapboxGL({
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
 
-                   document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
               })
         
 
@@ -337,19 +342,38 @@ var gl = L.mapboxGL({
                     .style("text-align", 'left'); 
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+                  d3.select(this).on("mouseout", function(d){
+                    var circleUnderMouse = this;
+                    d3.selectAll('.events').filter(function(d,i) {
+                         if (this !== circleUnderMouse) {
+                            d3.selectAll(".events").on("mouseover", null);
+                         }
+                  })
 
-                   document.getElementById("test").innerHTML = "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>"
               })
+            })
 
-        .on("mouseout", function(d) {       
+            .on("mouseout", function(d) {       
+                    LeafletDiv.transition()        
+                      .duration(200)      
+                      .style("opacity", 0);  
+                     d3.selectAll(".events").style("stroke", 'none')
+                     d3.selectAll(".events").style("stroke-width", '0px')
+                    document.getElementById("test").innerHTML = 'no picture'
+                  })
+
+
+            /*
+            d3.select("body").on("click",function(){
                 LeafletDiv.transition()        
-                  .duration(200)      
-                  .style("opacity", 0);  
-                 d3.selectAll(".events").style("stroke", 'none')
-                 d3.selectAll(".events").style("stroke-width", '0px')
-                document.getElementById("test").innerHTML = 'no picture'
-              })
-
+                      .duration(200)      
+                      .style("opacity", 0);  
+                     d3.selectAll(".events").style("stroke", 'none')
+                     d3.selectAll(".events").style("stroke-width", '0px')
+                    document.getElementById("test").innerHTML = 'no picture'
+        });
+      
+*/
 
 
         //$(document).on('click',function(d){
@@ -570,7 +594,9 @@ function updateTime(start, end) {
 
         //var beginning = start
         //var ending = end
-     
+        //console.log(selectedDate)
+        //console.log(todayClean2)
+        //selectedDate = todayClean2
 
         if (start <= showStartTime && showStartTime <= end && selectedDate === data.Date) {
             //console.log(selectedDate)
