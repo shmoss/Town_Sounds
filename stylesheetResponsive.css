@@ -161,6 +161,11 @@ div.county2014Tooltip {
     overflow-y:scroll        
 }
 
+
+.county2014Tooltip:active {
+  
+}
+
 .d3-slider {
     position: relative;
     font-family: Verdana,Arial,sans-serif;
