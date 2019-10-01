@@ -335,15 +335,15 @@ var gl = L.mapboxGL({
         
 
        d3.selectAll(".events").on("click", function(d) { 
-            clicked = true
             console.log("event clicked!")
+            const currentCircle = this
+            //disable event listeners
              d3.selectAll(".events").on("mouseout", null);
-              d3.selectAll(".events").on("mouseover", null);
+            d3.selectAll(".events").on("mouseover", null);
              var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
                     .style("opacity", .9);
-
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
@@ -353,17 +353,8 @@ var gl = L.mapboxGL({
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
 
-
-
-                   
-
-            if (clicked) {
             d3.select("body").on("click", function(d) { 
                 console.log("body")
-
-            
-      
-
                 LeafletDiv.transition()        
                       .duration(200)      
                       .style("opacity", 0);  
@@ -406,7 +397,7 @@ var gl = L.mapboxGL({
               
             })
 
-        }
+
 
            
             //d3.selectAll(".events").on("mouseover", null);
