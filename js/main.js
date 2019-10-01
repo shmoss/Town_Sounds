@@ -327,8 +327,14 @@ var gl = L.mapboxGL({
 
         .on("click", function(d) { 
             d3.selectAll(".events").style("stroke", 'none')
-                 d3.selectAll(".events").style("stroke-width", '0px')
-         
+            d3.selectAll(".events").style("stroke-width", '0px')
+            console.log("event clicked!")
+            const currentCircle = this; 
+            console.log(currentCircle)
+            //disable hover event listeners
+            d3.selectAll(".events").on("mouseout", null);
+            d3.selectAll(".events").on("mouseover", null);
+            //add popup   
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
@@ -342,8 +348,50 @@ var gl = L.mapboxGL({
                     .style("text-align", 'left'); 
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+
+            d3.event.stopPropagation();
+
+            // if user clicks a SECOND time, anywhere, make popup disappear
+            d3.select("body").on("click", function(d) { 
+                d3.selectAll(".events").style("stroke", 'none')
+                d3.selectAll(".events").style("stroke-width", '0px')
+                if(this !== currentCircle){
+                    console.log("body clicked")
+                    //hide popup
+                    LeafletDiv.transition()        
+                        .duration(200)      
+                        .style("opacity", 0);  
+                    //revert back to hover, unless user clicks again!
+                    d3.selectAll(".events").on("mouseout", true);
+                    d3.selectAll(".events").on("mouseover", true);
+                    d3.selectAll(".events").on("mouseout", function(d) { 
+                    console.log("mousing out!")      
+                        LeafletDiv.transition()        
+                        .duration(200)      
+                        .style("opacity", 0);  
+                        d3.selectAll(".events").style("stroke", 'none')
+                        d3.selectAll(".events").style("stroke-width", '0px')            
+                })
+
+                    // mouseover event listers added back in
+                    d3.selectAll(".events").on("mouseover", function(d) { 
+                    LeafletDiv.transition()        
+                        .duration(200)      
+                        .style("opacity", .9);
+                        LeafletDiv.html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                  d3.select(this).style("stroke", 'black')  
+                  d3.select(this).style("stroke-width", '3px')
+
+          })
+       }
                   
             })
+        })
 
             .on("mouseout", function(d) {       
                     LeafletDiv.transition()        
