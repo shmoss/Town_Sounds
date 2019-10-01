@@ -322,10 +322,94 @@ var gl = L.mapboxGL({
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
 
+                d3.selectAll(".events").on("mouseout", function(d) {       
+                    LeafletDiv.transition()        
+                      .duration(200)      
+                      .style("opacity", 0);  
+                     d3.selectAll(".events").style("stroke", 'none')
+                     d3.selectAll(".events").style("stroke-width", '0px')
+                    document.getElementById("test").innerHTML = 'no picture'
+                  })
+
               })
         
 
-        .on("click", function(d) { 
+       d3.selectAll(".events").on("click", function(d) { 
+            clicked = true
+            console.log("event clicked!")
+             d3.selectAll(".events").on("mouseout", null);
+              d3.selectAll(".events").on("mouseover", null);
+             var value2014 = currentMap.get(d.location);     
+                  LeafletDiv.transition()        
+                     .duration(200)      
+                    .style("opacity", .9);
+
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   d3.select(this).style("stroke", 'black')
+                   d3.select(this).style("stroke-width", '3px')
+
+
+
+                   
+
+            if (clicked) {
+            d3.select("body").on("click", function(d) { 
+                console.log("body")
+
+            
+      
+
+                LeafletDiv.transition()        
+                      .duration(200)      
+                      .style("opacity", 0);  
+                     d3.selectAll(".events").style("stroke", 'none')
+                     d3.selectAll(".events").style("stroke-width", '0px')
+                    document.getElementById("test").innerHTML = 'no picture'
+                d3.selectAll(".events").on("mouseout", true);
+                d3.selectAll(".events").on("mouseover", true);
+                d3.selectAll(".events").on("mouseout", function(d) { 
+                console.log("mousing out!")      
+                    LeafletDiv.transition()        
+                      .duration(200)      
+                      .style("opacity", 0);  
+                     d3.selectAll(".events").style("stroke", 'none')
+                     d3.selectAll(".events").style("stroke-width", '0px')
+                    document.getElementById("test").innerHTML = 'no picture'
+                  })
+
+                
+
+                d3.selectAll(".events").on("mouseover", function(d) { 
+                d3.selectAll(".events").style("stroke", 'none')
+                 d3.selectAll(".events").style("stroke-width", '0px')
+                var value2014 = currentMap.get(d.location);     
+                  LeafletDiv.transition()        
+                     .duration(200)      
+                    .style("opacity", .9);
+
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   d3.select(this).style("stroke", 'black')
+                   d3.select(this).style("stroke-width", '3px')
+
+              })
+
+              
+            })
+
+        }
+
+           
+            //d3.selectAll(".events").on("mouseover", null);
             d3.selectAll(".events").style("stroke", 'none')
                  d3.selectAll(".events").style("stroke-width", '0px')
          
@@ -342,25 +426,18 @@ var gl = L.mapboxGL({
                     .style("text-align", 'left'); 
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
-                  d3.select(this).on("mouseout", function(d){
-                    var circleUnderMouse = this;
-                    d3.selectAll('.events').filter(function(d,i) {
-                         if (this !== circleUnderMouse) {
-                            d3.selectAll(".events").on("mouseover", null);
-                         }
-                  })
+                  //d3.select(this).on("mouseout", function(d){
+                    //var circleUnderMouse = this;
+                    //d3.selectAll('.events').filter(function(d,i) {
+                         //if (this !== circleUnderMouse) {
+                            //d3.selectAll(".events").on("mouseover", null);
+                         //}
+                  //})
 
-              })
+              //})
             })
 
-            .on("mouseout", function(d) {       
-                    LeafletDiv.transition()        
-                      .duration(200)      
-                      .style("opacity", 0);  
-                     d3.selectAll(".events").style("stroke", 'none')
-                     d3.selectAll(".events").style("stroke-width", '0px')
-                    document.getElementById("test").innerHTML = 'no picture'
-                  })
+            
 
 
             /*
