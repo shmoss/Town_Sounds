@@ -146,10 +146,10 @@ div.county2014Tooltip {
     word-wrap: normal;
     position: absolute;
     text-align: center;
-    min-height: 20px;
-    min-width: 30px;    
-    max-width: 400px; 
-    max-height:600px;                    
+    min-height: 20vh;
+    min-width: 40vh;    
+    max-width: 50vh; 
+    max-height:60vh;                    
     padding: 2px;               
     font: 14px georgia;   
     color: #fff;

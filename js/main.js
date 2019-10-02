@@ -274,6 +274,10 @@ var gl = L.mapboxGL({
         var LeafletDiv = d3.select("body").append("div")   
             .attr("class", "county2014Tooltip")               
             .style("opacity", 0)
+            .style("scrollTop", 0)
+
+        d3.select(".county2014Tooltip").node().scrollTop=0
+
 
 
         LeafletDiv.append("div")
@@ -306,15 +310,17 @@ var gl = L.mapboxGL({
         .style("display", initialDateMatch)
         .style("pointer-events", "auto")
         .on("mouseover", function(d) { 
+           // moveLabel()
             d3.selectAll(".events").style("stroke", 'none')
                  d3.selectAll(".events").style("stroke-width", '0px')
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
-                    .style("opacity", .9);
+                    .style("opacity", .9)
+                    .style("scrollTop", 0)
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -341,7 +347,7 @@ var gl = L.mapboxGL({
                      .duration(200)      
                     .style("opacity", .9);
 
-                  LeafletDiv .html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
@@ -374,7 +380,8 @@ var gl = L.mapboxGL({
                         .duration(200)      
                         .style("opacity", 0);  
                         d3.selectAll(".events").style("stroke", 'none')
-                        d3.selectAll(".events").style("stroke-width", '0px')            
+                        d3.selectAll(".events").style("stroke-width", '0px')      
+
                 })
 
                     // mouseover event listers added back in
@@ -382,7 +389,7 @@ var gl = L.mapboxGL({
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", .9);
-                        LeafletDiv.html('<br/>' + '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                        LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
@@ -425,6 +432,14 @@ var gl = L.mapboxGL({
                     //console.log('unclicked')
                 //}
         //})
+
+
+     // mouseover event listers added back in
+    d3.select("body").on("mousemove", function(d) { 
+        console.log("body being moved!")
+        moveLabel()
+                    
+        })   
         
 
     var todaysDate = new Date 
@@ -1016,6 +1031,34 @@ function timeMatch(d, value) {
             return "none";
         };
     }
+
+
+//function to move info label with mouse
+function moveLabel(){
+    console.log("moveLabel function!")
+    //get width of label
+    var labelWidth = d3.select(".county2014Tooltip")
+        .node()
+        .getBoundingClientRect()
+        .width;
+
+    //use coordinates of mousemove event to set label coordinates
+    var x1 = d3.event.clientX + 10,
+        y1 = d3.event.clientY - 50,
+        x2 = d3.event.clientX - labelWidth - 10,
+        y2 = d3.event.clientY + 25;
+
+    //horizontal label coordinate, testing for overflow
+    var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+    //vertical label coordinate, testing for overflow
+    var y = d3.event.clientY < 75 ? y2 : y1;
+
+    d3.select(".county2014Tooltip")
+        .style({
+            "left": x + "px",
+            "top": y + "px"
+        });
+};    
 
 
 
