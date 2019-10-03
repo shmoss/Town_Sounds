@@ -446,12 +446,12 @@ map.addControl(new customControl());
                 d3.selectAll(".events").style("stroke-width", '0px')
                 //d3.select("body").style("pointer-events", 'none')
                 if(this !== currentCircle){
-                    console.log("body clicked")
+                    //console.log("body clicked")
                     //hide popup
 
                     var elements = d3.select(LeafletDiv)
                   elements.scrollTop = 0
-                  console.log( elements.scrollTop)
+                 // console.log( elements.scrollTop)
 
                     LeafletDiv.transition()        
                         .duration(200)      
@@ -462,7 +462,7 @@ map.addControl(new customControl());
                     d3.selectAll(".events").on("mouseout", true);
                     d3.selectAll(".events").on("mouseover", true);
                     d3.selectAll(".events").on("mouseout", function(d) { 
-                    console.log("mousing out!")      
+                    //console.log("mousing out!")      
                         LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 0);  
@@ -484,6 +484,26 @@ map.addControl(new customControl());
                     .style("text-align", 'left'); 
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+
+
+                  var popupWidth= this.getBoundingClientRect();
+                    //var mapWidth = map.getBounds();
+                    var mWidth = map.getBounds().getEast() - map.getBounds().getWest();
+                    console.log(mWidth)
+                    size = map.getSize()
+                    var popupSize = popupWidth.x + popupWidth.width
+                    var mapSize = size.x
+
+
+                  if (popupSize > mapSize) {
+                    console.log("popup out of bounds!")
+                    LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX-580) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   }
 
           })
        }
