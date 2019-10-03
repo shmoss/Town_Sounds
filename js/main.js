@@ -300,8 +300,6 @@ map.addControl(new customControl());
             .style("opacity", 0)
             .style("scrollTop", 0)
 
-        d3.select(".county2014Tooltip").node().scrollTop=0
-
 
        
         d3.selectAll('.county2014Tooltip')
@@ -347,7 +345,7 @@ map.addControl(new customControl());
                     .style("scrollTop", 0)
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX- 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -369,13 +367,15 @@ map.addControl(new customControl());
             d3.selectAll(".events").on("mouseout", null);
             d3.selectAll(".events").on("mouseover", null);
             //add popup   
+
+
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
                     .style("opacity", .9);
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -383,6 +383,11 @@ map.addControl(new customControl());
                     .style("pointer-events", 'all')
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+
+
+                  $('.county2014Tooltip').scrollTop(0);
+
+
 
             d3.event.stopPropagation();
 
@@ -394,10 +399,16 @@ map.addControl(new customControl());
                 if(this !== currentCircle){
                     console.log("body clicked")
                     //hide popup
+
+                    var elements = d3.select(LeafletDiv)
+                  elements.scrollTop = 0
+                  console.log( elements.scrollTop)
+
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
+                        .attr("scrollTop", 0) 
                     //revert back to hover, unless user clicks again!
                     d3.selectAll(".events").on("mouseout", true);
                     d3.selectAll(".events").on("mouseover", true);
@@ -417,7 +428,7 @@ map.addControl(new customControl());
                         .duration(200)      
                         .style("opacity", .9);
                         LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
                     .style("left", (d3.event.pageX+ 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
@@ -440,7 +451,7 @@ map.addControl(new customControl());
                     document.getElementById("test").innerHTML = 'no picture'
                   })
 
-
+             
             /*
             d3.select("body").on("click",function(){
                 LeafletDiv.transition()        
