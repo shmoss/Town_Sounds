@@ -254,12 +254,36 @@ combineArray(sf_events);
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
 
-var map = L.map('map').setView([37.7749, -122.4194], 13);
+var map = L.map('map').setView([37.7778532, -122.4222303], 13);
   
 var gl = L.mapboxGL({
     accessToken: token,
     style: 'mapbox://styles/mapbox/dark-v8'
 }).addTo(map);
+
+
+
+// Toggle button to turn layers on and off
+var customControl = L.Control.extend({
+  options: {
+    position: 'topleft'
+  },
+
+  onAdd: function(map) {
+    var container = L.DomUtil.create('div');
+    // Use a child input.
+    var input = L.DomUtil.get('sidebarCollapse');
+    input.type = "button";
+    input.id = "toggle"
+    //input.position = ""
+    // Insert the input as child of container.
+    container.append(input);
+
+
+    return container;
+  }
+});
+map.addControl(new customControl());
 
         var svgLayer = L.svg()
             svgLayer.addTo(map);
@@ -279,11 +303,14 @@ var gl = L.mapboxGL({
         d3.select(".county2014Tooltip").node().scrollTop=0
 
 
-
-        LeafletDiv.append("div")
-           .attr("class", "key_square")
-           .style("background-color","#C8DAF8")
-           .style("stroke-width", "40px")
+       
+        d3.selectAll('.county2014Tooltip')
+        .selectAll('div')
+        .enter()
+        .append('div')
+            .style("background-color", 'red')
+            .style("width", '40px')
+           
       
      
         var tenantNamesArray = []
@@ -322,7 +349,7 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>'+ d.ArtistImage +'<br/>' +d.ArtistBio
                     )
-                    .style("left", (d3.event.pageX+ 15) + "px")     
+                    .style("left", (d3.event.pageX- 15) + "px")     
                     .style("top", (d3.event.pageY - 150) + "px")
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
@@ -436,7 +463,6 @@ var gl = L.mapboxGL({
 
      // mouseover event listers added back in
     d3.select("body").on("mousemove", function(d) { 
-        console.log("body being moved!")
         moveLabel()
                     
         })   
@@ -1035,7 +1061,6 @@ function timeMatch(d, value) {
 
 //function to move info label with mouse
 function moveLabel(){
-    console.log("moveLabel function!")
     //get width of label
     var labelWidth = d3.select(".county2014Tooltip")
         .node()
