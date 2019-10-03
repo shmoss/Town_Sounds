@@ -41,8 +41,6 @@
         display: flex;
         width: 100%;
         align-items: stretch;
-
-
     }
 
 
@@ -208,15 +206,19 @@
     }
 
 #toggle{
+position:relative;
+
 
 
 }
 
 #map{
-
 }
 
+
+
 #content{
+    width:100%
     
 }
 
