@@ -164,7 +164,9 @@
         border: solid thin black;
         padding: 5px 10px 10px 5px;
         pointer-events: none;   
-        overflow-y:scroll    
+        overflow-y:scroll; 
+        display:inline-block ;
+       
 
     }
 
