@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function(e) {
 
     
@@ -237,7 +236,6 @@ combineArray(sf_events);
         var mapboxUrl = 'https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
             //var accessToken = 'pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjam13ZHlxbXgwdncwM3FvMnJjeGVubjI5In0.-ridMV6bkkyNhbPfMJhVzw';
         var map = L.map('map').setView([37.7749, -122.4194], 13);
-
                 mapLink = 
             '<a href="https://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
@@ -249,7 +247,6 @@ combineArray(sf_events);
         }).addTo(map);
         
         setTimeout(function(){ map.invalidateSize()}, 400);
-
         */
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
@@ -265,7 +262,6 @@ var gl = L.mapboxGL({
 
 
 
-
         var svgLayer = L.svg()
             svgLayer.addTo(map);
 
@@ -276,7 +272,7 @@ var gl = L.mapboxGL({
 
     
 
-        var LeafletDiv = d3.select("#map").append("div")   
+        var LeafletDiv = d3.select("#content").append("div")   
             .attr("class", "county2014Tooltip")               
             .style("opacity", 0)
             .style("scrollTop", 0)
@@ -324,14 +320,42 @@ var gl = L.mapboxGL({
                      .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
+                    var popupWidth= this.getBoundingClientRect();
+                    //var mapWidth = map.getBounds();
+                    var mWidth = map.getBounds().getEast() - map.getBounds().getWest();
+                    console.log(mWidth)
+                    size = map.getSize()
+
+
+                    //console.log(h)
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    
+                    .style("left", "32vh")     
+                    .style("top", "0vh")
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
+
+
+                   //console.log("window width", window.innerWidth)
+                   //console.log("popup width", popupWidth)
+                   //console.log("popup x",popupWidth.x)
+                   var popupSize = popupWidth.x + popupWidth.width
+                   var mapSize = size.x
+                   console.log("popup x plus width", popupWidth.x + popupWidth.width)
+                   console.log("map size", size.x)
+                   if (popupSize > mapSize) {
+                    console.log("popup out of bounds!")
+                    LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    )
+                    
+                    .style("text-align", 'left'); 
+                   }
+                   //var tooltip_rect = ('.county2014Tooltip').getBoundingClientRect();
+                   //console.log(tooltip_rect)
 
               })
         
@@ -357,11 +381,32 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    
+                    .style("left", "32vh")     
+                    .style("top", "0vh")
                     .style("text-align", 'left')
                     .style("pointer-events", 'all')
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+
+
+                  var popupWidth= this.getBoundingClientRect();
+                    //var mapWidth = map.getBounds();
+                    var mWidth = map.getBounds().getEast() - map.getBounds().getWest();
+                    console.log(mWidth)
+                    size = map.getSize()
+                    var popupSize = popupWidth.x + popupWidth.width
+                    var mapSize = size.x
+
+
+                  if (popupSize > mapSize) {
+                    console.log("popup out of bounds!")
+                    LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    )
+                    .style("left", (d3.event.pageX-580) + "px")     
+                    .style("top", (d3.event.pageY - 150) + "px")
+                    .style("text-align", 'left'); 
+                   }
 
 
                   $('.county2014Tooltip').scrollTop(0);
@@ -376,12 +421,12 @@ var gl = L.mapboxGL({
                 d3.selectAll(".events").style("stroke-width", '0px')
                 //d3.select("body").style("pointer-events", 'none')
                 if(this !== currentCircle){
-                    console.log("body clicked")
+                    //console.log("body clicked")
                     //hide popup
 
                     var elements = d3.select(LeafletDiv)
                   elements.scrollTop = 0
-                  console.log( elements.scrollTop)
+                 // console.log( elements.scrollTop)
 
                     LeafletDiv.transition()        
                         .duration(200)      
@@ -392,7 +437,7 @@ var gl = L.mapboxGL({
                     d3.selectAll(".events").on("mouseout", true);
                     d3.selectAll(".events").on("mouseover", true);
                     d3.selectAll(".events").on("mouseout", function(d) { 
-                    console.log("mousing out!")      
+                    //console.log("mousing out!")      
                         LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 0);  
@@ -413,6 +458,7 @@ var gl = L.mapboxGL({
                     .style("text-align", 'left'); 
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
+
 
           })
        }
@@ -1078,5 +1124,4 @@ function moveLabel(){
 
 }
 })
-
 
