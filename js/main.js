@@ -327,8 +327,8 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    .style("left", "16%")     
-                    .style("top", "0vh")
+                        
+                    .style("top", "1vh")
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
@@ -362,8 +362,7 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    .style("left", "16%")     
-                    .style("top", "0vh")
+                    .style("top", "1vh")
                     .style("text-align", 'left')
                     .style("pointer-events", 'all')
                   d3.select(this).style("stroke", 'black')  
@@ -418,8 +417,7 @@ var gl = L.mapboxGL({
                         LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    .style("left", "16%")     
-                    .style("top", "0vh")
+                    .style("top", "1vh")
                     .style("text-align", 'left')
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
