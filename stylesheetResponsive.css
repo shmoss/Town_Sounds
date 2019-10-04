@@ -214,7 +214,8 @@ position:relative;
 }
 
 #map{
-    min-width:100vh
+    min-width:100vh;
+    pointer-events:all
 }
 
 
