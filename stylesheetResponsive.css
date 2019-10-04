@@ -3,7 +3,6 @@
     body {
         font-family: 'Poppins', sans-serif;
         background: #fafafa;
-        pointer-events:all;
 
     }
 
@@ -42,6 +41,8 @@
         display: flex;
         width: 100%;
         align-items: stretch;
+
+
     }
 
 
@@ -207,22 +208,16 @@
     }
 
 #toggle{
-position:relative;
-
 
 
 }
 
 #map{
-    min-width:100vh;
-    pointer-events:all
+
 }
 
-
-
 #content{
-    width:100%
-    
+    width:100%;
 }
 
 #object1 {  
