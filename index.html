@@ -67,7 +67,7 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Genre</h3>
+                <h4>Genre</h4>
                 <input type="radio" name = 'genre' id="allGenre" checked> All<br>
                 <input type="radio" name = 'genre' id="folkGenre"  > Bluegrass/Americana<br>
                 <input type="radio" name = 'genre' id="bluesGenre" > Blues<br>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="sidebar-header">
-                <h3>Time</h3>
+                <h4>Time</h4>
                 <input type="radio" name = 'time' id="allTimes" checked> All<br>
                 <input type="radio" name = 'time' id="morn" > 7AM-12PM<br>
                 <input type="radio" name = 'time' id="lunch" value = "1" > 12PM-4PM<br>
@@ -105,34 +105,19 @@
             
         </ul>
 
-                <div id="datepicker"></div>
+                <div id="datepicker" style="margin-top:40px"></div>
 
         </nav>
 
         <!-- Page Content -->
         <div id="content">
             
-
-            <!-- <div id="map" style="min-width: 100vh; min-height: 100vh; max-width: 100vh; max-height: 100vh" pointer-events="all">  -->
-
-          
-
                 <div id="map" style="min-width: 100vh; min-height: 100vh" pointer-events="all">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info" style="position: relative;  z-index:9; margin-left:7vh; margin-top:3vh; >
-                        <i class="fas fa-align-left" ></i>
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" style="position:absolute; z-index:9; margin-left:7vh; margin-top:3vh">
                         <span>Filter Events</span>
                     </button>
-            </div>
 
-           
-
-   
-
- 
-
-
-
+                </div>
 
     </div>
 </div>
