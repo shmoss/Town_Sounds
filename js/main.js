@@ -296,7 +296,7 @@ map.addControl(new customControl());
 
     
 
-        var LeafletDiv = d3.select("#content").append("div")   
+        var LeafletDiv = d3.select("body").append("div")   
             .attr("class", "county2014Tooltip")               
             .style("opacity", 0)
             .style("scrollTop", 0)
