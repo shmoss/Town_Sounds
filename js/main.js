@@ -342,6 +342,9 @@ var gl = L.mapboxGL({
         
 
         .on("click", function(d) { 
+            $('body').css({
+            overflow: 'hidden'
+            });
             //d3.select("body").style("pointer-events", 'all')
             d3.selectAll(".events").style("stroke", 'none')
             d3.selectAll(".events").style("stroke-width", '0px')
