@@ -266,7 +266,7 @@ var gl = L.mapboxGL({
 // Toggle button to turn layers on and off
 var customControl = L.Control.extend({
   options: {
-    position: 'topright'
+    position: 'topleft'
   },
 
   onAdd: function(map) {
