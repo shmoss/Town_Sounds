@@ -148,7 +148,7 @@
     div.county2014Tooltip { 
 
         word-wrap: normal;
-        position: relative;
+        position: absolute;
         text-align: center;
         min-height: 20vh;
         min-width: 40vh;    
@@ -162,7 +162,7 @@
         padding: 5px 10px 10px 5px;
         top: -75px;       
         pointer-events: none;   
-        overflow-y:scroll;
+        overflow-y:scroll    
 
     }
 
