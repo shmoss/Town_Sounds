@@ -263,28 +263,8 @@ var gl = L.mapboxGL({
 
 
 
-// Toggle button to turn layers on and off
-var customControl = L.Control.extend({
-  options: {
-    position: 'topleft'
-  },
-
-  onAdd: function(map) {
-    var container = L.DomUtil.create('div');
-    // Use a child input.
-    var input = L.DomUtil.get('sidebarCollapse');
-    input.type = "button";
-    input.id = "toggle"
-
-    //input.position = ""
-    // Insert the input as child of container.
-    container.append(input);
 
 
-    return container;
-  }
-});
-map.addControl(new customControl());
 
         var svgLayer = L.svg()
             svgLayer.addTo(map);
