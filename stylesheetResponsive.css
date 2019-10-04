@@ -163,8 +163,6 @@
         top: -75px;       
         pointer-events: none;   
         overflow-y:scroll;
-        display:inline-block;
-        margin-left: -10vh
 
     }
 
