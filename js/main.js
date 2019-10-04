@@ -266,7 +266,7 @@ var gl = L.mapboxGL({
 // Toggle button to turn layers on and off
 var customControl = L.Control.extend({
   options: {
-    position: 'topleft'
+    position: 'topright'
   },
 
   onAdd: function(map) {
@@ -275,7 +275,7 @@ var customControl = L.Control.extend({
     var input = L.DomUtil.get('sidebarCollapse');
     input.type = "button";
     input.id = "toggle"
-    
+
     //input.position = ""
     // Insert the input as child of container.
     container.append(input);
@@ -348,8 +348,7 @@ map.addControl(new customControl());
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
                     )
-                    .style("left", (d3.event.pageX- 15) + "px")     
-                    .style("top", (d3.event.pageY - 150) + "px")
+                    
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
