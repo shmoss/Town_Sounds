@@ -3,6 +3,7 @@
     body {
         font-family: 'Poppins', sans-serif;
         background: #fafafa;
+        height:100%;
 
     }
 
@@ -74,8 +75,9 @@
     } 
 
     #sidebar ul.components {
-        padding: 20px 0;
-        border-bottom: 1px solid #47748b;
+        padding: 80px 0;
+        border-bottom: 1px ;
+
     }
 
     #sidebar ul p {
@@ -228,11 +230,10 @@ background-color:red;
     height:100%;
 }
 
-#object1 {  
-    
+.qs-datepicker-container{
+    padding-left:4px;
     background-color: red
-    width:20px;
-           
+    width:1px;
 }
 
     svg {
