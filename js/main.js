@@ -325,7 +325,7 @@ var gl = L.mapboxGL({
                     //console.log(h)
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                         
                     .style("top", "1vh")
@@ -363,7 +363,7 @@ var gl = L.mapboxGL({
                     .style("opacity", .9);
 
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                     .style("top", "1vh")
                     .style("text-align", 'left')
@@ -418,7 +418,7 @@ var gl = L.mapboxGL({
                         .duration(200)      
                         .style("opacity", .9);
                         LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.OtherInfo + '<br/>' +d.Genre +'<br/>' +d.ArtistBio
+                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                     .style("top", "1vh")
                     .style("text-align", 'left')
