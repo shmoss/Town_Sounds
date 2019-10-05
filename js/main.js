@@ -308,7 +308,7 @@ var gl = L.mapboxGL({
         .attr("class", 'events')
         .style("fill", '#ffba00')
         .style("opacity", '.7')
-        .attr("r", 14.5)
+        .attr("r", 17.5)
         .style("display", initialDateMatch)
         .style("pointer-events", "auto")
         .on("mouseover", function(d) { 
@@ -752,6 +752,7 @@ function updateTime(start, end) {
 });
 
     d3.selectAll("#folkGenre").on("change", function() {
+    console.log("folk yeah!")
     resetDisplay()
     display = this.checked ? "#ffba00" : "none";
     display2 = this.checked ? "black" : "none";
