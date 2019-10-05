@@ -264,17 +264,22 @@ background-color:red;
 }
 
 .filterContainer{
-  display: block;
+  display: inline-block;
   position: relative;
-  margin: 40px auto;
+  margin: 15px auto;
   height: auto;
   width: 500px;
-  padding: 5px;
+  padding: 1px;
+
 
 }
 
 h2 {
     color: #AAAAAA;
+}
+
+h4 {
+
 }
 
 .filterContainer ul{
