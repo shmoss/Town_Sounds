@@ -274,8 +274,9 @@ var gl = L.mapboxGL({
 
         var LeafletDiv = d3.select("#content").append("div")   
             .attr("class", "county2014Tooltip")               
-            .style("opacity", 0)
+            .style("opacity", 1)
             .style("scrollTop", 0)
+
 
 
        
@@ -318,7 +319,7 @@ var gl = L.mapboxGL({
             var value2014 = currentMap.get(d.location);     
                   LeafletDiv.transition()        
                      .duration(200)      
-                    .style("opacity", .9)
+                    .style("opacity", 1.7)
                     .style("scrollTop", 0)
                     
 
@@ -327,8 +328,8 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
-                        
-                    .style("top", "1vh")
+                       
+                    .style("top", "1.5vh")
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
@@ -365,7 +366,7 @@ var gl = L.mapboxGL({
                   LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
-                    .style("top", "1vh")
+                    .style("top", "1.5vh")
                     .style("text-align", 'left')
                     .style("pointer-events", 'all')
                   d3.select(this).style("stroke", 'black')  
@@ -420,7 +421,7 @@ var gl = L.mapboxGL({
                         LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
-                    .style("top", "1vh")
+                    .style("top", "1.5vh")
                     .style("text-align", 'left')
                   d3.select(this).style("stroke", 'black')  
                   d3.select(this).style("stroke-width", '3px')
@@ -435,7 +436,8 @@ var gl = L.mapboxGL({
             .on("mouseout", function(d) {       
                     LeafletDiv.transition()        
                       .duration(200)      
-                      .style("opacity", 0);  
+                      .style("opacity", 0)
+                      .style("scrollTop", 0)  
                      d3.selectAll(".events").style("stroke", 'none')
                      d3.selectAll(".events").style("stroke-width", '0px')
                     document.getElementById("test").innerHTML = 'no picture'

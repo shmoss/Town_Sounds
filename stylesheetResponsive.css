@@ -73,6 +73,7 @@
         background: #6d7fcc;
         margin-left:7px;
         font-size: 14px
+
     }
       
     #sidebar.active {
@@ -160,12 +161,15 @@
         word-wrap: normal;
         position: absolute;
         text-align: center;
-        min-height:90vh;
+        min-height:50vh;
         min-width: 45vh;    
         max-width: 40vh; 
-        max-height:60vh;                    
+        max-height:85vh;                    
         padding: 2px;               
-        font: 14px georgia;   
+        font-size: .9em ; 
+        line-height: 1.5em;
+        font-family:'poppins';  
+        font-weight: 150;
         color: #fff;
         margin-top:9vh;
         background-color: rgba(51,51,51,.85);
@@ -175,6 +179,7 @@
         overflow-y:scroll; 
         display:inline-block ;
         margin-left:1vh;
+        opacity:.2;
        
 
     }
@@ -201,7 +206,7 @@
         max-height: 20px;
         max-width: 30px;                      
         padding: 2px;               
-        font: 14px Baskerville;      
+        font-size: .9em ;         
         color: #fff;
         background-color: rgba(51,51,51,.85);
         border: solid thin black;
@@ -248,6 +253,10 @@ background-color:red;
     font-size:14px;
 }
 
+.qs-num{
+    font-family:'Poppins';
+}
+
 .filterContainer{
   display: block;
   position: relative;
@@ -255,6 +264,7 @@ background-color:red;
   height: auto;
   width: 500px;
   padding: 5px;
+
 }
 
 h2 {
@@ -266,6 +276,7 @@ h2 {
   margin: 0;
   margin-top: -12%;
   margin-left: -12%;
+
    
 }
 
@@ -276,6 +287,10 @@ ul li{
   float: left;
   width: 60%;
   max-height: 36px;
+  max-width:51%;
+  padding-right:3%;
+
+
 
   
 }
@@ -290,9 +305,10 @@ ul li label{
   position: relative;
   font-weight: 300;
   font-size: 1.1em;
-  padding: 18px 25px 15px 55px;
+  padding: 18px 25px 15px 40px;
   margin: 10px auto;
   max-height: 20%;
+  max-width: 90%;
   z-index: 9;
   cursor: pointer;
   -webkit-transition: all 0.25s linear;
@@ -306,7 +322,7 @@ ul li .check{
   display: block;
   position: absolute;
   border: 4px solid #AAAAAA;
-  border-radius: 80%;
+  border-radius: 100%;
   height: 20px;
   width: 20px;
   top: 30px;
@@ -324,11 +340,11 @@ ul li .check::before {
   display: block;
   position: absolute;
 content: '';
-  border-radius: 80%;
+  border-radius: 100%;
   height: 5px;
   width: 5px;
-  top: 3.7px;
-    left: 4px;
+  top: 3.5px;
+    left: 3.5px;
   margin: auto;
     transition: background 0.25s linear;
     -webkit-transition: background 0.25s linear;
