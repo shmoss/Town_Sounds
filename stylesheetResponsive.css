@@ -62,7 +62,7 @@
         transition: all 0.3s;
         min-width: 250px;
         max-width: 250px;      
-        overflow-y:scroll; 
+        
     }
 
 
@@ -178,6 +178,7 @@
         display:inline-block ;
         margin-left:1vh;
         opacity:.2;
+        padding-bottom:3%;
        
 
     }
