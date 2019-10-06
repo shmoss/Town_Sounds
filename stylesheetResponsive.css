@@ -65,7 +65,8 @@
         overflow-y:scroll;  
         max-height:100vh;
         display:inline-block;
-        overflow-x: hidden
+        overflow-x: hidden;
+        
 
         
     }
@@ -252,8 +253,9 @@ background-color:red;
 .qs-datepicker-container{
     
     display:inline-block;
-    margin-left:.6vh;
+    margin-left:.7vh;
     max-width:90%;
+    margin-bottom:4%;
     
 
    
@@ -276,6 +278,7 @@ background-color:red;
   min-width: 100%;
   max-width: 100%;
   padding: 1px;
+  margin-bottom:10%;
 
 
 }
@@ -284,8 +287,8 @@ h2 {
     color: #AAAAAA;
 }
 
-h4 {
-
+h5 {
+padding-left:2%;
 }
 
 .filterContainer ul{
@@ -293,6 +296,7 @@ h4 {
   margin: 0;
   margin-top: -12%;
   margin-left: -12%;   
+
 }
 
 
@@ -383,4 +387,8 @@ input[type=radio]:checked ~ label{
 
 #bottom-advertismnet {
     display: none;
+}
+
+.disable-hover {
+  pointer-events: none;
 }
