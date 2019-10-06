@@ -61,17 +61,25 @@
         color: #fff;
         transition: all 0.3s;
         min-width: 250px;
-        max-width: 250px;      
+        max-width: 250px; 
+        overflow-y:scroll;  
+        max-height:100vh;
+        display:inline-block;
+        overflow-x: hidden
+
         
     }
 
 
 
     #sidebar .sidebar-header {
-        padding: 10px;
+        display:inline-block;
+        padding: 0px;
         background: #6d7fcc;
         margin-left:7px;
-        font-size: 14px
+        font-size: 14px;
+        max-width:100%;
+
     }
       
     #sidebar.active {
@@ -179,6 +187,8 @@
         margin-left:1vh;
         opacity:.2;
         padding-bottom:3%;
+        padding-left:1%;
+        padding-right:1%
        
 
     }
@@ -240,10 +250,13 @@ background-color:red;
 }
 
 .qs-datepicker-container{
-    max-height:30vh;
-    max-width:50vh;
-    margin-left:-0vh;
-    margin-top:2vh;
+    
+    display:inline-block;
+    margin-left:.6vh;
+    max-width:90%;
+    
+
+   
   
 }
 
@@ -260,7 +273,8 @@ background-color:red;
   position: relative;
   margin: 15px auto;
   height: auto;
-  width: 500px;
+  min-width: 100%;
+  max-width: 100%;
   padding: 1px;
 
 
@@ -285,13 +299,13 @@ h4 {
 
 ul li{
   color: #AAAAAA;
-  display: block;
+  display: inline-block;
   position: relative;
   float: left;
-  width: 60%;
+  min-width: 200px;
   max-height: 36px;
-  max-width:51%;
-  padding-right:3%;
+  max-width:240px;
+  margin-left:-9%;
 
 
 
@@ -304,17 +318,19 @@ ul li input[type=radio]{
 }
 
 ul li label{
-  display: block;
+  display: inline-block;
   position: relative;
   font-weight: 300;
   font-size: 1.1em;
-  padding: 18px 25px 15px 40px;
+  padding: 18px 25px 15px 50px;
   margin: 10px auto;
-  max-height: 20%;
-  max-width: 90%;
+  max-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
   z-index: 9;
   cursor: pointer;
   -webkit-transition: all 0.15s linear;
+
 }
 
 ul li:hover label{
