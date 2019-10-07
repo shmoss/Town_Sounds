@@ -1108,7 +1108,7 @@ sidebar.onscroll = function() {
 
   timer = setTimeout(function(){
     sidebar.classList.remove('disable-hover')
-  },300);
+  },500);
 }, false;   
 
 
