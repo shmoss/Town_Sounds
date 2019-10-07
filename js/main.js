@@ -1090,6 +1090,12 @@ function moveLabel(){
 }; 
 
 var sidebar = document.getElementById("sidebar")
+var wid = document.getElementById("sidebar").clientWidth;
+console.log(wid)
+
+if ('ontouchstart' in sidebar) {
+    sidebar.classList.remove('hover-active')
+    }
 
 sidebar.onscroll = function () {  
     console.log("window scrolling!")

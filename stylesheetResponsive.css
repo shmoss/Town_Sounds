@@ -392,3 +392,5 @@ input[type=radio]:checked ~ label{
 .disable-hover {
   pointer-events: none;
 }
+
+
