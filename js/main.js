@@ -1089,20 +1089,27 @@ function moveLabel(){
         });
 }; 
 
+var sidebar = document.getElementById("sidebar")
 
-var body = document.getElementById('sidebar')
+sidebar.onscroll = function () {  
+    console.log("window scrolling!")
+// called when the window is scrolled.  
+} 
+
+var body = document.body,
     timer;
 
-window.addEventListener('scroll', function() {
+sidebar.onscroll = function() {
+    console.log("window scrolling!")
   clearTimeout(timer);
-  if(!body.classList.contains('disable-hover')) {
-    body.classList.add('disable-hover')
+  if(!sidebar.classList.contains('disable-hover')) {
+    sidebar.classList.add('disable-hover')
   }
 
   timer = setTimeout(function(){
-    body.classList.remove('disable-hover')
-  },500);
-}, false);   
+    sidebar.classList.remove('disable-hover')
+  },300);
+}, false;   
 
 
 
