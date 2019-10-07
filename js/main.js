@@ -1093,10 +1093,29 @@ var sidebar = document.getElementById("sidebar")
 var wid = document.getElementById("sidebar").clientWidth;
 console.log(wid)
 
+//if ('ontouchstart' in sidebar) {
+  //  sidebar.classList.add('disable-hover')
+    //}
 
+sidebar.onscroll = function () {  
+    console.log("window scrolling!")
+// called when the window is scrolled.  
+} 
 
+var body = document.body,
+    timer;
 
-
+sidebar.addEventListener('scroll', function() {
+    console.log('sidebar listener')
+  clearTimeout(timer);
+  if(!sidebar.classList.contains('disable-hover')) {
+    sidebar.classList.add('disable-hover')
+  }
+  
+  timer = setTimeout(function(){
+    sidebar.classList.remove('disable-hover')
+  },500);
+}, false);
 
 
 }
