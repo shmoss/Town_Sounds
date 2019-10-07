@@ -393,4 +393,9 @@ input[type=radio]:checked ~ label{
   pointer-events: none;
 }
 
-
+@media all and (min-width:320px) and (max-width: 960px) {
+    ul li:hover label {
+    color: black;
+    background: transparent;
+  }
+}
