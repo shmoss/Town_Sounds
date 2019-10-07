@@ -1091,6 +1091,12 @@ function moveLabel(){
 
 var sidebar = document.getElementById("sidebar")
 
+sidebar.onscroll = function () {  
+    console.log("window scrolling!")
+// called when the window is scrolled.  
+} 
+
+var body = document.body,
     timer;
 
 sidebar.addEventListener('scroll', function() {
@@ -1102,7 +1108,7 @@ sidebar.addEventListener('scroll', function() {
   
   timer = setTimeout(function(){
     sidebar.classList.remove('disable-hover')
-  },500);
+  },50);
 }, false);
 
 
