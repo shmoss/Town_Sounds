@@ -39,33 +39,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var currentMap = d3.map();
 
-    d3.queue()
-    .defer(d3.csv, "./data/sf_events.json", function(cw) {      
-    })
-    .await(ready);
-
-    function ready(error) {
-    
-    
-
-        //projection
-        var albersProjection = d3.geoAlbers()
-            .scale( 1200)
-            .rotate ( [98.5795,] )
-            .center( [0, 39.8283] )
-
-        //GeoPath
-        var geoPath = d3.geoPath()
-            .projection( albersProjection );
-
-        var geoPath2 = d3.geoPath()
-            .projection( albersProjection );
-
-
-    
-
-        }
-
 
     d3.queue()
 
@@ -440,7 +413,6 @@ var gl = L.mapboxGL({
                       .style("scrollTop", 0)  
                      d3.selectAll(".events").style("stroke", 'none')
                      d3.selectAll(".events").style("stroke-width", '0px')
-                    document.getElementById("test").innerHTML = 'no picture'
                   })
 
              
