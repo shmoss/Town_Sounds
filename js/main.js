@@ -1101,7 +1101,7 @@ window.addEventListener('scroll', function() {
 
   timer = setTimeout(function(){
     body.classList.remove('disable-hover')
-  },100);
+  },500);
 }, false);   
 
 
