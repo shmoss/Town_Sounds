@@ -243,13 +243,11 @@ background-color:red;
 
 #map{
     height:100%;
-
 }
 
 #content{
     width:100%;
     height:100%;
-  
 }
 
 .qs-datepicker-container{
@@ -395,4 +393,16 @@ input[type=radio]:checked ~ label{
   pointer-events: none;
 }
 
+@media all and (min-width:320px) and (max-width: 960px) {
+    ul li:hover label {
+    color: #AAAAAA;
+    background: transparent;
+  }
+}
 
+@media all and (min-width:320px) and (max-width: 960px) {
+    ul li:hover .check{
+    color: #AAAAAA;
+    background: transparent;
+  }
+}
