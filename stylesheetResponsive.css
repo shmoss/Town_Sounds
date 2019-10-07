@@ -406,3 +406,10 @@ input[type=radio]:checked ~ label{
     background: transparent;
   }
 }
+
+@media all and (min-width:320px) and (max-width: 960px) {
+    ul li:hover {
+    color: #AAAAAA;
+    background: transparent;
+  }
+}
