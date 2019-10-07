@@ -1090,7 +1090,7 @@ function moveLabel(){
 }; 
 
 
-var body = document.body,
+var body = document.getElementById('sidebar')
     timer;
 
 window.addEventListener('scroll', function() {
