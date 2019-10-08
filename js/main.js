@@ -305,7 +305,7 @@ var gl = L.mapboxGL({
 
                     //console.log(h)
 
-                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>' + '<br/>'+d.Address
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                        
@@ -343,7 +343,7 @@ var gl = L.mapboxGL({
                      .duration(200)      
                     .style("opacity", .9);
 
-                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>' + '<br/>'+d.Address
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                     .style("top", "1.5vh")
@@ -398,7 +398,7 @@ var gl = L.mapboxGL({
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", .9);
-                        LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<b>'+d.Address+'</b>' + '<br/>'+d.Artist
+                        LeafletDiv.html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>' + '<br/>'+d.Address
                     + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
                     )
                     .style("top", "1.5vh")

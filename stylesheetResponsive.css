@@ -171,7 +171,7 @@
         position: absolute;
         text-align: center;
         min-height:50vh;
-        min-width: 45vh;    
+        min-width: 40vh;    
         max-width: 55vh; 
         max-height:70vh;                    
         padding: 2px;               
@@ -190,8 +190,8 @@
         margin-left:1vh;
         opacity:.2;
         padding-bottom:3%;
-        padding-left:1%;
-        padding-right:1%
+        padding-left:1.5vh;
+        padding-right:1.5vh
        
 
     }
@@ -405,6 +405,13 @@ input[type=radio]:checked ~ label{
 
 @media all and (min-width:320px) and (max-width: 960px) {
     ul li .check:hover {
+    color: #AAAAAA;
+    background: transparent;
+  }
+}
+
+@media all and (min-width:320px) and (max-width: 960px) {
+    ul li:hover .check {
     color: #AAAAAA;
     background: transparent;
   }
