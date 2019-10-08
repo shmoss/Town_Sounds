@@ -251,7 +251,14 @@ var gl = L.mapboxGL({
             .style("scrollTop", 0)
 
 
+        var scrollBar = d3.select("#sidebar")
+            .style("scrollTop", 0)
 
+
+        var scrollBarActive = d3.select("#sidebar.active")
+            .style("scrollTop", 0)
+
+            
        
         d3.selectAll('.county2014Tooltip')
         .selectAll('div')
