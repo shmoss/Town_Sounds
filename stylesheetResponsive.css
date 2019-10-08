@@ -254,16 +254,20 @@ background-color:red;
     min-width:100%; 
 }
 
-.qs-datepicker-container{
-    
+.qs-datepicker-container{  
     display:inline-block;
     max-width:90%;
     min-width:87%;
-    margin-bottom:4%;
-    
+    margin-bottom:4%;  
+}
 
-   
-  
+
+.qs-datepicker-container{  
+    display:inline-block;
+    margin-left:-8%;
+    max-width:90%;
+    min-width:87%;
+    margin-bottom:4%;  
 }
 
 .qs-squares{
