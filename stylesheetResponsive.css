@@ -86,7 +86,7 @@
       
     #sidebar.active {
         margin-left: -250px;
-        
+
 
     } 
 
@@ -257,8 +257,9 @@ background-color:red;
 .qs-datepicker-container{
     
     display:inline-block;
-    margin-left:-1.85vh;
+    margin-left:-3.85vh;
     max-width:90%;
+    min-width:87%;
     margin-bottom:4%;
     
 
