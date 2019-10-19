@@ -313,6 +313,7 @@ var gl = L.mapboxGL({
                     .style("text-align", 'left'); 
                    d3.select(this).style("stroke", 'black')
                    d3.select(this).style("stroke-width", '3px')
+                   //console.log(d.Coordinates)
 
 
             
@@ -422,7 +423,82 @@ var gl = L.mapboxGL({
                      d3.selectAll(".events").style("stroke-width", '0px')
                   })
 
-             
+
+
+    //remove sidebar if map is clicked
+    // if user clicks a SECOND time, anywhere, make popup disappear
+            d3.select("#map").on("click", function(d) { 
+                //console.log("map clicked!")
+                //d3.select("#sidebar")
+                  //  .style("margin-left",'-250px')
+                //d3.event.stopPropagation();               
+            })
+
+            var sideBar = document.getElementById('sidebar');
+            console.log(sideBar.classList)
+            if (sideBar.classList.contains('active')){
+            console.log('active')
+            }
+            else (console.log('not active'))
+
+            var sideBar = document.getElementById('sidebar')
+            if ( document.querySelector( '#sidebar.active' ) ) {
+            console.log( 'active' );
+            } else {
+            console.log( 'inactive' );
+            }
+
+
+            var sideBar = document.getElementById('sidebar');
+            console.log(sideBar.className)
+            if (sideBar.classList.contains('active')){
+                console.log('active')
+            }
+        else (console.log('not active'))
+
+            //console.log(sb.classed("active"))
+
+           
+            if ($(window).width() < 480 || $(window).height() < 480) {
+            //small screen, load other JS files
+            console.log('mobile!')
+            //console.log(sb.classList)
+                if (sideBar.classList.contains('sidebar.active')){
+                    console.log('active')
+
+                }
+            }
+
+            
+
+          /*Bind an event handler to the "resize"*/
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                //window.event.cancelBubble = true
+                
+                
+                d3.select("#sidebarCollapse").on("click", function(d) { 
+                    console.log("toggle clicked!")
+                    $('#sidebar').addClass('active');   
+                    
+
+
+                    d3.select("#sidebarCollapse").on("click", function(d) { 
+                    console.log("toggle clicked!")
+                    $('#sidebar').removeClass('active');   
+                    
+                })
+                    
+            })
+              
+
+
+                
+
+                
+                }
+                
+
+
             /*
             d3.select("body").on("click",function(){
                 LeafletDiv.transition()        
@@ -442,12 +518,7 @@ var gl = L.mapboxGL({
                 //}
         //})
 
-
-     // mouseover event listers added back in
-    d3.select("body").on("mousemove", function(d) { 
-        moveLabel()
-                    
-        })   
+      
         
 
     var todaysDate = new Date 
