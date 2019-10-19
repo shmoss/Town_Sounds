@@ -425,50 +425,7 @@ var gl = L.mapboxGL({
 
 
 
-    //remove sidebar if map is clicked
-    // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("#map").on("click", function(d) { 
-                //console.log("map clicked!")
-                //d3.select("#sidebar")
-                  //  .style("margin-left",'-250px')
-                //d3.event.stopPropagation();               
-            })
-
-            var sideBar = document.getElementById('sidebar');
-            console.log(sideBar.classList)
-            if (sideBar.classList.contains('active')){
-            console.log('active')
-            }
-            else (console.log('not active'))
-
-            var sideBar = document.getElementById('sidebar')
-            if ( document.querySelector( '#sidebar.active' ) ) {
-            console.log( 'active' );
-            } else {
-            console.log( 'inactive' );
-            }
-
-
-            var sideBar = document.getElementById('sidebar');
-            console.log(sideBar.className)
-            if (sideBar.classList.contains('active')){
-                console.log('active')
-            }
-        else (console.log('not active'))
-
-            //console.log(sb.classed("active"))
-
-           
-            if ($(window).width() < 480 || $(window).height() < 480) {
-            //small screen, load other JS files
-            console.log('mobile!')
-            //console.log(sb.classList)
-                if (sideBar.classList.contains('sidebar.active')){
-                    console.log('active')
-
-                }
-            }
-
+    
             
 
           /*Bind an event handler to the "resize"*/
