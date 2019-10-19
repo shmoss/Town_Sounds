@@ -472,30 +472,26 @@ var gl = L.mapboxGL({
             
 
           /*Bind an event handler to the "resize"*/
-            if ($(window).width() < 480 || $(window).height() < 480) {
+
+            //if ($(window).width() < 480 || $(window).height() < 480) {
                 //window.event.cancelBubble = true
                 
                 
-                d3.select("#sidebarCollapse").on("click", function(d) { 
-                    console.log("toggle clicked!")
-                    $('#sidebar').addClass('active');   
+                //d3.select("#sidebarCollapse").on("click", function(d) { 
+                    //console.log("toggle clicked!")
+                    //$('#sidebar').addClass('active');   
                     
 
 
-                    d3.select("#sidebarCollapse").on("click", function(d) { 
-                    console.log("toggle clicked!")
-                    $('#sidebar').removeClass('active');   
+                    //d3.select("#sidebarCollapse").on("click", function(d) { 
+                    //console.log("toggle clicked!")
+                    //$('#sidebar').removeClass('active');   
                     
-                })
+                //})
                     
-            })
-              
-
-
+            //})
                 
-
-                
-                }
+                //}
                 
 
 
