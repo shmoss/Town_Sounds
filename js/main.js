@@ -159,7 +159,7 @@ const picker = datepicker(document.querySelector('#datepicker'), {
   alwaysShow: true, // Never hide the calendar.
   dateSelected: new Date(), // Today is selected.
   maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-  minDate: new Date(new Date().getTime() -0 * 24 * 60 * 60 * 1000), // June 1st, 2016.
+  minDate: new Date(new Date().getTime()), // June 1st, 2016.
   startDate: new Date(), // This month.
  
 
@@ -425,7 +425,7 @@ var gl = L.mapboxGL({
 
 
 
-    
+
             
 
           /*Bind an event handler to the "resize"*/
