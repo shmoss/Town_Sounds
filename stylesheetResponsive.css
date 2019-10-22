@@ -399,21 +399,21 @@ input[type=radio]:checked ~ label{
 
 @media all and (min-width:320px) and (max-width: 960px) {
     ul li .check:hover {
-    color: #AAAAAA;
+    border: 4px solid #AAAAAA;
     background: transparent;
   }
 }
 
 @media all and (min-width:320px) and (max-width: 960px) {
     ul li:hover .check {
-    color: #AAAAAA;
+    border: 4px solid #AAAAAA;
     background: transparent;
   }
 }
 
 @media all and (min-width:320px) and (max-width: 960px) {
     .check:hover {
-    color: #AAAAAA;
+    border: 4px solid #AAAAAA;
     background: transparent;
   }
 }
