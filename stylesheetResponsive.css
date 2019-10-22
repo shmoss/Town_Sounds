@@ -267,6 +267,22 @@ background-color:red;
     font-family:'Poppins';
 }
 
+.qs-month{
+    font-family:'Poppins';
+}
+
+.qs-year{
+    font-family:'Poppins';
+}
+
+.qs-day{
+    font-family:'Poppins';
+}
+
+.qs-controls{
+    min-height:20px;
+}
+
 .filterContainer{
   display: inline-block;
   position: relative;
