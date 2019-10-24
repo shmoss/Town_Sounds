@@ -344,8 +344,8 @@ var gl = L.mapboxGL({
                      .duration(200)      
                     .style("opacity", .9);
 
-                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>' + '<br/>'+d.Address
-                    + '<br/>'+d.Date + '<br/>' + d.Time + '<br/>' +d.Venue +'<br/>' + d.otherInfo + '<br/>' +d.Genre +'<br/>' +d.moreBioInfo
+                  LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
                     )
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
@@ -365,6 +365,7 @@ var gl = L.mapboxGL({
 
             // if user clicks a SECOND time, anywhere, make popup disappear
             d3.select("body").on("click", function(d) { 
+                $('.county2014Tooltip').scrollTop(0);
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
                 //d3.select("body").style("pointer-events", 'none')
@@ -392,10 +393,11 @@ var gl = L.mapboxGL({
                         d3.selectAll(".events").style("stroke", 'none')
                         d3.selectAll(".events").style("stroke-width", '0px')      
 
-                })
+            })
 
                     // mouseover event listers added back in
                     d3.selectAll(".events").on("mouseover", function(d) { 
+                    elements.scrollTop = 0
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", .9);
@@ -414,7 +416,8 @@ var gl = L.mapboxGL({
             })
         })
 
-            .on("mouseout", function(d) {       
+            .on("mouseout", function(d) { 
+                elements.scrollTop = 0      
                     LeafletDiv.transition()        
                       .duration(200)      
                       .style("opacity", 0)
