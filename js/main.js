@@ -1093,6 +1093,38 @@ function moveLabel(){
 }; 
 
 
+function removeSidebar(){
+     $('#sidebar').removeClass('active');
+     console.log('map is clicked')
+     //$('#sidebar').css("margin-left","-250px")
+}
+
+function isSidebarOpen() {
+
+  var sideBar = document.getElementById('sidebar');
+
+  //console.log(sideBar.classList)
+  if (sideBar.classList.contains('active')) {
+    console.log('active')
+    document.getElementById("map").onclick = removeSidebar
+
+  } else(console.log('not active'))
+
+}
+
+document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+
+
+
+window.onload = function () {
+   document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+};
+
+
+if ($(window).width() < 480 || $(window).height() < 480) {
+    document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+}
+
 
 
 }
