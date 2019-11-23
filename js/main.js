@@ -1121,9 +1121,7 @@ window.onload = function () {
 };
 
 
-if ($(window).width() < 480 || $(window).height() < 480) {
-    document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
-}
+
 
 
 
