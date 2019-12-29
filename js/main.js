@@ -1112,13 +1112,21 @@ function isSidebarOpen() {
 
 }
 
-document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
 
-
-
-window.onload = function () {
+if ($(window).width() < 960) {
+   alert('Less than 960');
+   window.onload = function () {
    document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
 };
+    document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+
+}
+else {
+   alert('More than 960');
+}
+
+
+
 
 
 
