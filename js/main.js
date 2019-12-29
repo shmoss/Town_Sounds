@@ -1114,7 +1114,7 @@ function isSidebarOpen() {
 
 
 if ($(window).width() < 960) {
-   alert('Less than 960');
+   //alert('Less than 960');
    window.onload = function () {
    document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
 };
@@ -1122,7 +1122,7 @@ if ($(window).width() < 960) {
 
 }
 else {
-   alert('More than 960');
+   //alert('More than 960');
 }
 
 
