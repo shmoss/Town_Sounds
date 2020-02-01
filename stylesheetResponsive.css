@@ -164,10 +164,7 @@
         word-wrap: normal;
         position: absolute;
         text-align: center;
-        min-height:50vh;
-        min-width: 40vh;    
-        max-width: 45vh; 
-        max-height:70vh;                    
+                        
         padding: 2px;               
         font-size: .9em ; 
         line-height: 1.5em;
@@ -189,6 +186,24 @@
        
 
     }
+
+    @media all and (min-width:400px) and (max-width: 1500px) {
+     div.county2014Tooltip  {
+        min-height:50vh;
+        min-width: 70vh;    
+        max-width: 70vh; 
+        max-height:70vh;  
+  }
+}
+
+@media all and (min-width:0px) and (max-width: 400px) {
+     div.county2014Tooltip  {
+        min-height:50vh;
+        min-width: 35vh;    
+        max-width: 35vh; 
+        max-height:70vh;  
+  }
+}
 
 
     .county2014Tooltip:active {
