@@ -187,7 +187,7 @@
 
     }
 
-    @media all and (min-width:400px) and (max-width: 1500px) {
+    @media all and (min-width:400px) and (max-width: 99500px) {
      div.county2014Tooltip  {
         min-height:50vh;
         min-width: 70vh;    
