@@ -190,8 +190,8 @@
     @media all and (min-width:400px) and (max-width: 99500px) {
      div.county2014Tooltip  {
         min-height:50vh;
-        min-width: 70vh;    
-        max-width: 70vh; 
+        min-width: 60vh;    
+        max-width: 60vh; 
         max-height:70vh;  
   }
 }
