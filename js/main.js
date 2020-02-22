@@ -35,16 +35,34 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var inputValue = null;
     var currentMap = d3.map();
 
-    
 
-    d3.queue()
-        .defer(d3.csv, "./data/sf_events.json", function(d) { 
-    })
-    .await(readyLeaflet);
+    var sfData = "./data/sf_events.json" 
+    var nycData = "./data/nyc_events.json" 
+
+    function destroyDatePicker(){
+    console.log("destroy")
+    $('#datepicker').datepicker();
+    $('#datepicker').removeClass('calendarclass');
+    $('#datepicker').removeClass('hasDatepicker');
+    $('#datepicker').unbind();
+    $("#datepicker").datepicker("destroy");
+    $("#datepicker").removeClass("hasDatepicker");
+}
+
+    
+    function changeData(eventsArray){
+  
+    readyLeaflet(eventsArray)
+
+    }
+
+    readyLeaflet(nyc_events)
+    //$("#datepicker").datepicker("destroy");
 
     // Build Leaflet Map
-    function readyLeaflet(error) {
-
+    function readyLeaflet(eventArray) {
+        console.log("readyLeaflet")
+        console.log(nycData)
         var selectedDate
 
         //set today's date
@@ -138,16 +156,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         var allSFEvents
 
-        function combineArray(arr) {
-        allSFEvents = [];
-        for (var i = 0; i < arr.length; i++) {
-            allSFEvents = allSFEvents.concat(arr[i]);
-        }   
-        return allSFEvents;
-        }
-
-        combineArray(sf_events);
-
+        
 
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
@@ -183,14 +192,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("background-color", 'red')
                 .style("width", '40px')
            
-        allSFEvents.forEach(function(d) {
+       eventArray.forEach(function(d) {
      
         d.latLong = new L.LatLng(d.Coordinates[1],
                   d.Coordinates[0]);
         })
             
         var events = mapG.selectAll("circle")
-            .data(allSFEvents)
+            .data(eventArray)
             .enter().append("circle")
             .attr("class", 'events')
             .style("fill", '#ffba00')
@@ -569,6 +578,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
             x = ["No genre available"]
             genreMatch(x)
         });
+
+        d3.selectAll("#changeDataNY").on("change", function() {
+            console.log("NY!")
+            resetDisplay()
+            changeData(sf_events)
+       
+            //combineArray(nyc_events)
+            
+        });
+
+        
     
 
         d3.selectAll("#allTimes").on("change", function() {
