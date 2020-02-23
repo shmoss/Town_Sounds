@@ -327,6 +327,14 @@ padding-left:2%;
 
 }
 
+.dropdown-toggle::after {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
 
 
 ul li{

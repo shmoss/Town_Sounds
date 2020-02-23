@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(e) {
 
     
+
+    
     times = ["12:00 AM",
             "1:00 AM",
             "2:00 AM",
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             "23:00 PM"         
     ]
 
+
     var value  
     var currentValue = 10
     var sizeValue
@@ -39,30 +42,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
 
-    function destroyDatePicker(){
-    console.log("destroy")
-    $('#datepicker').datepicker();
-    $('#datepicker').removeClass('calendarclass');
-    $('#datepicker').removeClass('hasDatepicker');
-    $('#datepicker').unbind();
-    $("#datepicker").datepicker("destroy");
-    $("#datepicker").removeClass("hasDatepicker");
-}
-
-    
-    function changeData(eventsArray){
-  
-    readyLeaflet(eventsArray)
-
-    }
-
-    readyLeaflet(nyc_events)
-    //$("#datepicker").datepicker("destroy");
-
-    // Build Leaflet Map
-    function readyLeaflet(eventArray) {
-        console.log("readyLeaflet")
-        console.log(nycData)
+   
         var selectedDate
 
         //set today's date
@@ -96,7 +76,313 @@ document.addEventListener('DOMContentLoaded', function(e) {
         nextweek()
    
         var dat
+
+        function initialDateMatch(data) {
+            console.log(todayClean2)
+            console.log(selectedDate)
+            d3.selectAll(".events").each(function(d) {
+                var options = { weekday: 'long'};
+                var date = new Date(d.EventDate + 'PST')
+                var dateString = date.toString()
+                var dateClean= dateString.split(" " ,4).toString().replace(/,/g, ' ')
+                d.dateFormatted = dateClean
+ 
+                return d.dateFormatted
+
+            });
+
+            if (todayClean2 == data.Date) {
+                return 'inline'
+            } else {
+                return 'none'
+            }
+        }
+
+        
+
+        function dateMatch(data) {  
+        console.log(selectedDate)         
+            if (selectedDate === data.Date) {
+                console.log(selectedDate)
+                return 'inline'
+            } else {
+                return 'none'
+            }
+        }
+
+        function timeInterval(data, start, end) {
+
+            var today = new Date()
+            var todaySplit = today.toString().split(" " ,4)
+            var todayClean = todaySplit.toString().replace(/,/g, ' ')
+            var dayNumber = todaySplit[2]
+
+            var dayNumberClean = dayNumber.toString().replace(/01/g, '1')
+                .replace(/02/g, '2')
+                .replace(/03/g, '3')
+                .replace(/04/g, '4')
+                .replace(/05/g, '5')
+                .replace(/06/g, '6')
+                .replace(/07/g, '7')
+                .replace(/08/g, '8')
+                .replace(/09/g, '9')
+
+            var todayClean2 = todaySplit[0] + " " + todaySplit[1] + " " + dayNumberClean + " " + todaySplit[3]
+            var time = data.Time
+        
+            var hours = Number(time.match(/^(\d+)/)[1]);
+            var minutes = Number(time.match(/:(\d+)/)[1]);
+            var AMPM = time.match(/\s(.*)$/)[1];
+            if (AMPM == "PM" && hours < 12) hours = hours + 12;
+            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            var sHours = hours.toString();
+            var sMinutes = minutes.toString();
+            if (hours < 10) sHours = "0" + sHours;
+            if (minutes < 10) sMinutes = "0" + sMinutes;
+            var showStartTime = (sHours + ":" + sMinutes);
+
+            if (start <= showStartTime && showStartTime <= end && selectedDate === data.Date) {         
+                return "inline";
+            } else {
+                return "none";
+            };
+   
+        } 
+
+        function update(value) {
+
+            //resetStroke ()
+            //filter by current date selected
+            d3.selectAll(".events")
+                .style("display", dateMatch);
+
+            //filter by current time filter selected
+
+            if(document.getElementById('allTimes').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "00:00", "24:00")
+                });      
+            }
+
+            if(document.getElementById('morn').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "07:00", "12:00")
+            });      
+            }
+
+            if(document.getElementById('lunch').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "12:00", "16:00")
+                });      
+            }
+
+            if(document.getElementById('afternoon').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "16:00", "20:00")
+                });      
+            }
+
+            if(document.getElementById('eve').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "20:00", "24:00")
+                });      
+            }
+
+            if(document.getElementById('late').checked) {
+                d3.selectAll(".events")
+                    .style("display", function(d) {
+                    return timeInterval(d, "24:00", "07:00")
+                    });      
+            }
+        }
+
+        function genreMatch (genreType) {
+
+            d3.selectAll(".events").style("stroke", 'none')
+            d3.selectAll(".events").style("stroke-width", '0px')
+            var genreType
+
+            for (i=0; i<genreType.length; i++){
+       
+                d3.selectAll(".events")
+                    .filter(function(d) {       
+                        return (d.Genre.includes(genreType[i]))
+                    })
+                    .style("fill", display)
+
+            }  
+
+            for (i=0; i<genreType.length; i++){
+       
+                d3.selectAll(".events")
+                    .filter(function(d) {       
+                        return (d.Genre.includes(genreType[i])==true)
+                    })
+                    .style("pointer-events", all)
+            } 
+
+        }  
+
+        function resetDisplay (){
+            d3.selectAll(".events")
+                .style("fill", 'none')
+                .style("stroke", 'none')
+                .style("stroke-width", '0 px')
+        }
+
+        function resetStroke (){
+            d3.selectAll(".events")
+                .style("stroke", 'none')        
+        }
+
+        function resetAll (){
+            d3.selectAll(".events")
+                .style("fill", '#ffba00');
+        }
+
+        function resetVisibility (){
+            d3.selectAll(".events")
+                .style("display", 'all');
+        }
+
+        function noPointers (){
+            d3.selectAll(".events")
+                .style("pointer-events", 'auto');
+        }
+
+        //Time slider
+        d3.select("#timeslide").on("input", function() {       
+
+        });
+
+         //Apply checkbox filters for genre
+        d3.selectAll("#allGenre").on("change", function() {
+            resetDisplay()
+            resetAll()
+            resetVisibility()
+        });
+
+        var currentValue = 0;
+
+        d3.selectAll("#bluesGenre").on("change", function() {
+            resetDisplay()
+            var bluesRadioValue = document.getElementById("bluesGenre").value 
+            currentValue = bluesRadioValue
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Blues"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#classicalGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Classical"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#electronicGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#folkGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Bluegrass","Folk","Singer Songwriter","Americana","Country","Acoustic"]
+            genreMatch(x)   
+        });
+
+
+        d3.selectAll("#hipHopGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Hip Hop", "Rap"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#jazzGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Jazz", "Swing", "Big Band"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#metalGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["Metal", "Black Metal", "Hardcore"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#rbGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
+            genreMatch(x)
+        });
+
+
+        d3.selectAll("#rockPopGenre").on("change", function() {
+            resetDisplay()
+            noPointers()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            pointerEvents = this.checked ? "all" : "all";
+            x = ["Rock", "Pop","Indie", "Ska", "Punk"]
+            genreMatch(x)
+            removePoints(x)  
+        });
+
+
+        d3.selectAll("#genreUnknownGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["No genre available"]
+            genreMatch(x)
+        });
+
+        d3.selectAll("#changeDataNY").on("change", function() {
+            console.log("NY!")
+            resetDisplay()
+        
+            loadData(nyc_events)
+            //combineArray(nyc_events)
+            
+        });
+
+        d3.selectAll("#changeDataSF").on("change", function() {
+            console.log("SF!")
+            //resetDisplay()
+          
+            loadData(sf_events)
+            //combineArray(nyc_events)
+            
+        });
+        
     
+      
         const picker = datepicker(document.querySelector('#datepicker'), {
 
             // Event callbacks.
@@ -119,6 +405,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
 
                     selectedDate = finalDate
+                    console.log(selectedDate)
  
                 update()
        
@@ -151,7 +438,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
             minDate: new Date(new Date().getTime()), // June 1st, 2016.
             startDate: new Date(), // This month.
    
+
         });
+     
 
 
         var allSFEvents
@@ -173,6 +462,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
           
         var svgMap = d3.select("#map").select("svg");
             var mapG = svgMap.select('g');
+
+  
+    loadData(sf_events)
+    
+    function loadData(eventArray) {
+        console.log(selectedDate)
+
+      
+        d3.selectAll(".events").remove()
+
+        
 
         var LeafletDiv = d3.select("#content").append("div")   
             .attr("class", "county2014Tooltip")               
@@ -205,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("fill", '#ffba00')
             .style("opacity", '.7')
             .attr("r", 17.5)
-            .style("display", initialDateMatch)
+            .style("display", dateMatch)
             .style("pointer-events", "auto")
 
             .on("mouseover", function(d) { 
@@ -346,58 +646,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var today  = new Date();
         var todayString = today.toString().split(" " ,4)
         var todayClean = todayString.toString().replace(/,/g, ' ')
-
-        function update(value) {
-
-            resetStroke ()
-            //filter by current date selected
-            d3.selectAll(".events")
-                .style("display", dateMatch);
-
-            //filter by current time filter selected
-
-            if(document.getElementById('allTimes').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "00:00", "24:00")
-                });      
-            }
-
-            if(document.getElementById('morn').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "07:00", "12:00")
-            });      
-            }
-
-            if(document.getElementById('lunch').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "12:00", "16:00")
-                });      
-            }
-
-            if(document.getElementById('afternoon').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "16:00", "20:00")
-                });      
-            }
-
-            if(document.getElementById('eve').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "20:00", "24:00")
-                });      
-            }
-
-            if(document.getElementById('late').checked) {
-                d3.selectAll(".events")
-                    .style("display", function(d) {
-                    return timeInterval(d, "24:00", "07:00")
-                    });      
-            }
-        }
+        console.log(todayClean)
+        
 
         function updateTime(start, end) {
             d3.selectAll(".events")
@@ -407,33 +657,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
         };
 
 
-        function initialDateMatch(data) {
-            d3.selectAll(".events").each(function(d) {
-                var options = { weekday: 'long'};
-                var date = new Date(d.EventDate + 'PST')
-                var dateString = date.toString()
-                var dateClean= dateString.split(" " ,4).toString().replace(/,/g, ' ')
-                d.dateFormatted = dateClean
- 
-                return d.dateFormatted
+        
 
-            });
-
-            if (todayClean2 == data.Date) {
-                return 'inline'
-            } else {
-                return 'none'
-            }
-        }
-
-
-        function dateMatch(data) {           
-            if (selectedDate === data.Date) {
-                return 'inline'
-            } else {
-                return 'none'
-            }
-        }
+        
 
 
         function timeInterval(data, start, end) {
@@ -475,118 +701,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
    
         } 
 
-
-        //Apply checkbox filters for genre
-        d3.selectAll("#allGenre").on("change", function() {
-            resetDisplay()
-            resetAll()
-            resetVisibility()
-        });
-
-        var currentValue = 0;
-
-        d3.selectAll("#bluesGenre").on("change", function() {
-            resetDisplay()
-            var bluesRadioValue = document.getElementById("bluesGenre").value 
-            currentValue = bluesRadioValue
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Blues"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#classicalGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Classical"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#electronicGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#folkGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Bluegrass","Folk","Singer Songwriter","Americana","Country","Acoustic"]
-            genreMatch(x)   
-        });
-
-
-        d3.selectAll("#hipHopGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Hip Hop", "Rap"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#jazzGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Jazz", "Swing", "Big Band"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#metalGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["Metal", "Black Metal", "Hardcore"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#rbGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
-            genreMatch(x)
-        });
-
-
-        d3.selectAll("#rockPopGenre").on("change", function() {
-            resetDisplay()
-            noPointers()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            pointerEvents = this.checked ? "all" : "all";
-            x = ["Rock", "Pop","Indie", "Ska", "Punk"]
-            genreMatch(x)
-            removePoints(x)  
-        });
-
-
-        d3.selectAll("#genreUnknownGenre").on("change", function() {
-            resetDisplay()
-            display = this.checked ? "#ffba00" : "none";
-            display2 = this.checked ? "black" : "none";
-            x = ["No genre available"]
-            genreMatch(x)
-        });
-
-        d3.selectAll("#changeDataNY").on("change", function() {
-            console.log("NY!")
-            resetDisplay()
-            changeData(sf_events)
-       
-            //combineArray(nyc_events)
-            
-        });
 
         
     
@@ -640,32 +754,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         })
     
 
-        function genreMatch (genreType) {
-
-            d3.selectAll(".events").style("stroke", 'none')
-            d3.selectAll(".events").style("stroke-width", '0px')
-            var genreType
-
-            for (i=0; i<genreType.length; i++){
-       
-                d3.selectAll(".events")
-                    .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i]))
-                    })
-                    .style("fill", display)
-
-            }  
-
-            for (i=0; i<genreType.length; i++){
-       
-                d3.selectAll(".events")
-                    .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i])==true)
-                    })
-                    .style("pointer-events", all)
-            } 
-
-        }  
+        
 
 
         function removePoints (genreType) {
@@ -686,37 +775,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         }    
 
 
-        function resetDisplay (){
-            d3.selectAll(".events")
-                .style("fill", 'none')
-                .style("stroke", 'none')
-                .style("stroke-width", '0 px')
-        }
-
-        function resetStroke (){
-            d3.selectAll(".events")
-                .style("stroke", 'none')        
-        }
-
-        function resetAll (){
-            d3.selectAll(".events")
-                .style("fill", '#ffba00');
-        }
-
-        function resetVisibility (){
-            d3.selectAll(".events")
-                .style("display", 'all');
-        }
-
-        function noPointers (){
-            d3.selectAll(".events")
-                .style("pointer-events", 'auto');
-        }
-
-        //Time slider
-        d3.select("#timeslide").on("input", function() {       
-
-        });
+        
 
 
         function timeMatch(d, value) {
