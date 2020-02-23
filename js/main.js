@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(e) {
 
-    
+
 
     
     times = ["12:00 AM",
@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
+
+    40.7128
+    74.0060
 
    
         var selectedDate
@@ -363,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             genreMatch(x)
         });
 
-        d3.selectAll("#changeDataNY").on("change", function() {
+        d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
             resetDisplay()
         
@@ -372,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             
         });
 
-        d3.selectAll("#changeDataSF").on("change", function() {
+        d3.selectAll("#SanFrancisco_CA_data").on("click", function() {
             console.log("SF!")
             //resetDisplay()
           
@@ -440,6 +443,30 @@ document.addEventListener('DOMContentLoaded', function(e) {
    
 
         });
+
+        function removeSidebar(){
+            $('#sidebar').removeClass('active');
+        }
+
+        function isSidebarOpen() {
+
+            var sideBar = document.getElementById('sidebar');
+            if (sideBar.classList.contains('active')) {
+                document.getElementById("map").onclick = removeSidebar
+            } else(console.log('not active'))
+
+        }
+
+
+        if ($(window).width() < 960) {
+            //alert('Less than 960');
+            window.onload = function () {
+            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+            };
+            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+        } else {
+        //alert('More than 960');
+        }
      
 
 
@@ -450,6 +477,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
 
+        
         var map = L.map('map').setView([37.7778532, -122.4222303], 13);
   
         var gl = L.mapboxGL({
@@ -469,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     function loadData(eventArray) {
         console.log(selectedDate)
 
-      
+        
         d3.selectAll(".events").remove()
 
         
@@ -828,29 +856,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             }; 
 
 
-        function removeSidebar(){
-            $('#sidebar').removeClass('active');
-        }
-
-        function isSidebarOpen() {
-
-            var sideBar = document.getElementById('sidebar');
-            if (sideBar.classList.contains('active')) {
-                document.getElementById("map").onclick = removeSidebar
-            } else(console.log('not active'))
-
-        }
-
-
-        if ($(window).width() < 960) {
-            //alert('Less than 960');
-            window.onload = function () {
-            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
-            };
-            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
-        } else {
-        //alert('More than 960');
-        }
+        
 
     }
 })
