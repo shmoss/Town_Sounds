@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             "23:00 PM"         
     ]
 
-
+    var map
     var value  
     var currentValue = 10
     var sizeValue
@@ -42,9 +42,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
 
-    40.7128
-    74.0060
-
+   
    
         var selectedDate
 
@@ -104,9 +102,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-        console.log(selectedDate)         
+             
             if (selectedDate === data.Date) {
-                console.log(selectedDate)
+               
                 return 'inline'
             } else {
                 return 'none'
@@ -368,8 +366,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
+            map.setView([40.7128, -74.0060], 11);
             resetDisplay()
-        
             loadData(nyc_events)
             //combineArray(nyc_events)
             
@@ -377,6 +375,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#SanFrancisco_CA_data").on("click", function() {
             console.log("SF!")
+            map.setView([37.7778532, -122.4222303], 13);
             //resetDisplay()
           
             loadData(sf_events)
@@ -477,7 +476,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
 
-        
+
+
         var map = L.map('map').setView([37.7778532, -122.4222303], 13);
   
         var gl = L.mapboxGL({
