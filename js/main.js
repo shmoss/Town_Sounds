@@ -256,6 +256,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("pointer-events", 'auto');
         }
 
+       
+
         //Time slider
         d3.select("#timeslide").on("input", function() {       
 
@@ -366,9 +368,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
-            map.setView([40.7128, -74.0060], 11);
+            map.setView([40.7428, -73.9060], 12);
             resetDisplay()
+            //resetGenreAndTime()
             loadData(nyc_events)
+          
+            $("#allGenre").click()
+            $("#allTimes").click()
+           
             //combineArray(nyc_events)
             
         });
@@ -377,12 +384,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
             console.log("SF!")
             map.setView([37.7778532, -122.4222303], 13);
             //resetDisplay()
-          
+            $("#allGenre").click()
+            $("#allTimes").click()
+            
             loadData(sf_events)
             //combineArray(nyc_events)
             
         });
         
+        function resetGenreAndTime(){
+            document.getElementById("#allGenre").checked = true;
+            document.getElementById("#allTimes").checked = true;
+        }
     
       
         const picker = datepicker(document.querySelector('#datepicker'), {
@@ -531,8 +544,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .enter().append("circle")
             .attr("class", 'events')
             .style("fill", '#ffba00')
-            .style("opacity", '.7')
-            .attr("r", 17.5)
+            .style("opacity", '.8')
+            .attr("r", 10.5)
             .style("display", dateMatch)
             .style("pointer-events", "auto")
 
