@@ -327,12 +327,30 @@ padding-left:2%;
 
 }
 
-.dropdown-toggle::after {
+.dropdown-toggle.btn.btn-secondary.dropdown-toggle::after {
     display: none;
     position: absolute;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+}
+
+.dropdown-toggle.btn:hover {
+    color:#191919
+}
+
+#sidebarCollapse.btn:hover {
+    color:#191919;
+    background-color:#5bc0de
+}
+
+#dropdown-toggle.btn::after{
+  display: none;
+   margin-left: -132%; 
+}
+
+.dropdown-menu{
+  background-color: black
 }
 
 
