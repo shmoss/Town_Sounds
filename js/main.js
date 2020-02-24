@@ -383,11 +383,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
         d3.selectAll("#SanFrancisco_CA_data").on("click", function() {
             console.log("SF!")
             map.setView([37.7778532, -122.4222303], 13);
-            //resetDisplay()
-            $("#allGenre").click()
-            $("#allTimes").click()
+            resetDisplay()
             
             loadData(sf_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
             //combineArray(nyc_events)
             
         });
