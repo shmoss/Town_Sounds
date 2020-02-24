@@ -397,6 +397,32 @@ document.addEventListener('DOMContentLoaded', function(e) {
             document.getElementById("#allGenre").checked = true;
             document.getElementById("#allTimes").checked = true;
         }
+
+        //function to move info label with mouse
+        function moveLabel(){
+        //get width of label
+            var labelWidth = d3.select(".county2014Tooltip")
+                .node()
+                .getBoundingClientRect()
+                .width;
+
+            //use coordinates of mousemove event to set label coordinates
+            var x1 = d3.event.clientX + 10,
+            y1 = d3.event.clientY - 50,
+            x2 = d3.event.clientX - labelWidth - 10,
+            y2 = d3.event.clientY + 25;
+
+            //horizontal label coordinate, testing for overflow
+            var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+            //vertical label coordinate, testing for overflow
+            var y = d3.event.clientY < 75 ? y2 : y1;
+
+            d3.select(".county2014Tooltip")
+                .style({
+                "left": x + "px",
+                "top": y + "px"
+                });
+            }; 
     
       
         const picker = datepicker(document.querySelector('#datepicker'), {
@@ -507,19 +533,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
   
     loadData(sf_events)
+
+    var LeafletDiv = d3.select("#content").append("div")   
+            .attr("class", "county2014Tooltip")               
+            .style("opacity", 1)
+            .style("scrollTop", 0)
     
     function loadData(eventArray) {
         console.log(selectedDate)
 
         
         d3.selectAll(".events").remove()
-
+          
+        
+            
         
 
-        var LeafletDiv = d3.select("#content").append("div")   
-            .attr("class", "county2014Tooltip")               
-            .style("opacity", 1)
-            .style("scrollTop", 0)
+        
 
         var scrollBar = d3.select("#sidebar")
             .style("scrollTop", 0)
@@ -551,6 +581,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("pointer-events", "auto")
 
             .on("mouseover", function(d) { 
+                console.log("mousing over")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
                 var value2014 = currentMap.get(d.location);     
@@ -603,10 +634,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             // if user clicks a SECOND time, anywhere, make popup disappear
             d3.select("body").on("click", function(d) { 
+                console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
                 if (this !== currentCircle) {
+                    console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
@@ -843,31 +876,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         }
 
 
-        //function to move info label with mouse
-        function moveLabel(){
-        //get width of label
-            var labelWidth = d3.select(".county2014Tooltip")
-                .node()
-                .getBoundingClientRect()
-                .width;
-
-            //use coordinates of mousemove event to set label coordinates
-            var x1 = d3.event.clientX + 10,
-            y1 = d3.event.clientY - 50,
-            x2 = d3.event.clientX - labelWidth - 10,
-            y2 = d3.event.clientY + 25;
-
-            //horizontal label coordinate, testing for overflow
-            var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
-            //vertical label coordinate, testing for overflow
-            var y = d3.event.clientY < 75 ? y2 : y1;
-
-            d3.select(".county2014Tooltip")
-                .style({
-                "left": x + "px",
-                "top": y + "px"
-                });
-            }; 
+        
 
 
         
