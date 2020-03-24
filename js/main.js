@@ -890,6 +890,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         if ($(window).width() < 960) {
+            var sideBar = document.getElementById('sidebar');
+            if (sideBar.classList.contains('active')) {
+                document.getElementById("map").onclick = removeSidebar
+            } else(console.log('not active'))
             //alert('Less than 960');
             window.onload = function () {
             document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
