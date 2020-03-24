@@ -875,6 +875,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
             };
         }
 
+        function removeSidebar(){
+            $('#sidebar').removeClass('active');
+        }
+
+        function isSidebarOpen() {
+
+            var sideBar = document.getElementById('sidebar');
+            if (sideBar.classList.contains('active')) {
+                document.getElementById("map").onclick = removeSidebar
+            } else(console.log('not active'))
+
+        }
+
+
+        if ($(window).width() < 960) {
+            //alert('Less than 960');
+            window.onload = function () {
+            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+            };
+            document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
+        } else {
+        //alert('More than 960');
+        }
+     
+
 
         
 
