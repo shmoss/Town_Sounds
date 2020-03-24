@@ -26,6 +26,9 @@
     }
 
 
+img{
+  border-radius:15%;
+}
 
 
     /* HOVER functionality for points!
@@ -164,7 +167,7 @@
         word-wrap: normal;
         position: absolute;
         text-align: center;
-                        
+        border-radius: 15px;           
         padding: 2px;               
         font-size: .9em ; 
         line-height: 1.5em;
@@ -186,6 +189,20 @@
        
 
     }
+
+    ::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+  }
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 3px white
+}
 
     @media all and (min-width:400px) and (max-width: 99500px) {
      div.county2014Tooltip  {
