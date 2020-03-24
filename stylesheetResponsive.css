@@ -288,7 +288,12 @@ background-color:red;
     margin-left:-8.95%;
     max-width:90%;
     min-width:87%;
+
     
+}
+
+#datepicker{
+  margin-top:-500px;
 }
 
 .qs-squares{
