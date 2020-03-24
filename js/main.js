@@ -884,16 +884,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var sideBar = document.getElementById('sidebar');
             if (sideBar.classList.contains('active')) {
                 document.getElementById("map").onclick = removeSidebar
-            } else(console.log('not active'))
+            } else {
+                console.log('not active')
+                document.getElementById("map").onclick = removeSidebar
+            }
+                
+            
 
         }
 
 
-        if ($(window).width() < 960) {
-            var sideBar = document.getElementById('sidebar');
-            if (sideBar.classList.contains('active')) {
-                document.getElementById("map").onclick = removeSidebar
-            } else(console.log('not active'))
+        if ($(window).width() < 960) {  
             //alert('Less than 960');
             window.onload = function () {
             document.getElementById("sidebarCollapse").onclick=isSidebarOpen;
