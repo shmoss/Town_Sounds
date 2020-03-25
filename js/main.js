@@ -392,6 +392,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //combineArray(nyc_events)
             
         });
+
+
+        //LA
+        //Chicago
+        //Austin
+        //Denver
+        //Nashville
+        //Boston
+        //Madison
+        //Milwaukee
+        //Minneapolis
+        //Atlanta
+        //New Orleans
+        //Seattle
         
         function resetGenreAndTime(){
             document.getElementById("#allGenre").checked = true;
@@ -476,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             // Settings.
             alwaysShow: true, // Never hide the calendar.
             dateSelected: new Date(), // Today is selected.
-            maxDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+            maxDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
             minDate: new Date(new Date().getTime()), // June 1st, 2016.
             startDate: new Date(), // This month.
    
