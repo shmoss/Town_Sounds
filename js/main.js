@@ -598,19 +598,62 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 console.log("mousing over")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
+
+                //deal with point overlap
+                d3.select(this)
+                   this_venue = d.Venue
+                   this_date = d.Date
+                   this_artist = d.Artist
+                   console.log(this_venue)
+                   console.log(this_date)
+
+         
+                
+                makePopup()
+                //console.log(selections.nodes()[1])
+                //var event1 = selections.nodes()[1].data
+
+                //make popup function
+
+                function makePopup (selections) {
+
+                    selections = d3.selectAll(".events").filter(function(d){
+                    return d.Venue == this_venue && d.Date == this_date 
+
+                    })
+
+                    selections.each(function(d){
+                    console.log(d.Artist)
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
+                    
+                    console.log(popInfo)
+
+                    LeafletDiv .html(popInfo)
+                    
+
+                    .style("top", "1.5vh")
+                    .style("text-align", 'left')
+                  
+                    })
+
+                    
+                }
+
+
                 var value2014 = currentMap.get(d.location);     
                 LeafletDiv.transition()        
                     .duration(200)      
                     .style("opacity", 1.7)
                     .style("scrollTop", 0)
                     
-                LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
-                    )    
-                    .style("top", "1.5vh")
-                    .style("text-align", 'left'); 
+                
+
                    d3.select(this).style("stroke", 'black')
-                   d3.select(this).style("stroke-width", '3px')        
+                   d3.select(this).style("stroke-width", '3px')    
+
+                   //deal with point overlap
+     
               })
         
 
