@@ -263,6 +263,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         });
 
+        
+
          //Apply checkbox filters for genre
         d3.selectAll("#allGenre").on("change", function() {
             resetDisplay()
@@ -530,10 +532,55 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
 
+        var current_latitude
+        var current_longitude
+        function showLocation(position) {
+            var current_latitude = position.coords.latitude;
+            var current_longitude = position.coords.longitude;
+            var current_latLong = [37.77, -122.41]
+            //alert("Latitude : " + current_latitude + " Longitude: " + current_longitude);
+            console.log(current_latitude, current_longitude)
+            var my_current_location = L.circleMarker(current_latLong, {
+                color: "white",
+                fillColor: "#59c1de",
+                fillOpacity: .95,
+                radius:9,
+                className: 'myCurrentLocation'
+      }).addTo(map);    
+         }
 
+         function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            } else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
+            
+         function getLocation() {
+
+            if(navigator.geolocation) {
+               
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:60000};
+               navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+            } else {
+               alert("Sorry, browser does not support geolocation!");
+            }
+         }
+
+         
+         getLocation()
 
         var map = L.map('map').setView([37.7778532, -122.4222303], 13);
-  
+
+        function mapLocation(){
+            var my_location = map.latLngToLayerPoint([43.0830543, -89.3628494])
+            return "translate("+ my_location.x +","+ my_location.y +")";
+        }
+        
+        mapLocation()
+
         var gl = L.mapboxGL({
             accessToken: token,
             style: 'mapbox://styles/mapbox/dark-v8'
@@ -544,6 +591,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
           
         var svgMap = d3.select("#map").select("svg");
             var mapG = svgMap.select('g');
+
+
+
 
   
     loadData(sf_events)
@@ -558,11 +608,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         
         d3.selectAll(".events").remove()
-          
-        
-            
-        
 
+        var projection = d3.geoMercator()
+        var path = d3.geoPath().projection(projection);
+
+        
+          
+        var myLocation = mapG.selectAll("circle")
+            .data([43.0830543, -89.3628494])
+            .attr("r", "10")
+            .attr("fill", 'red')
+            .attr("transform", function(d) {
+    return "translate(" + projection([
+      -89.3628494,
+      43.0830543
+    ]) + ")";
+  });
+    
         
 
         var scrollBar = d3.select("#sidebar")
@@ -579,7 +641,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("width", '40px')
            
        eventArray.forEach(function(d) {
-     
+        //console.log(d.Coordinates)
+
         d.latLong = new L.LatLng(d.Coordinates[1],
                   d.Coordinates[0]);
         })
@@ -629,9 +692,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     
                     console.log(popInfo)
 
-                    LeafletDiv .html(popInfo)
                     
 
+                    LeafletDiv
+                    .html(popInfo)
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
                   
@@ -886,7 +950,35 @@ document.addEventListener('DOMContentLoaded', function(e) {
         })
     
 
-        
+        d3.select("#about").on("click", function() {
+            d3.selectAll(".events")
+                .style("pointer-events","none")    
+            console.log('hello') 
+            LeafletDiv.transition()        
+                        .duration(200) 
+                        .style("opacity",1) 
+
+            LeafletDiv
+                    .html('<br/>'+'<b>'+ '<font size="3em">'+"What is TownSounds?"+ '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! ")  
+                    .style("top", "1.5vh")
+
+                    .style("text-align", 'left')
+
+                d3.event.stopPropagation();
+
+               d3.select("body").on("click", function(d) { 
+                console.log("clicking off popup")
+                
+                    LeafletDiv.transition()        
+                        .duration(200) 
+                        .style("opacity",0)
+
+                d3.selectAll(".events")
+                .style("pointer-events","all")  
+               
+                })
+
+        });
 
 
         function removePoints (genreType) {
