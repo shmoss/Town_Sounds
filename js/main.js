@@ -551,9 +551,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
          function errorHandler(err) {
             if(err.code == 1) {
-               alert("Error: Access is denied!");
+               console.log("Error: Access is denied!");
             } else if( err.code == 2) {
-               alert("Error: Position is unavailable!");
+               console.log("Error: Position is unavailable!");
             }
          }
             
@@ -565,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                var options = {timeout:60000};
                navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
             } else {
-               alert("Sorry, browser does not support geolocation!");
+               console.log("Sorry, browser does not support geolocation!");
             }
          }
 
@@ -684,24 +684,29 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     return d.Venue == this_venue && d.Date == this_date 
 
                     })
-
+                    var appendText = []
                     selections.each(function(d){
                     console.log(d.Artist)
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
                     
+                    appendText.push(popInfo + "<br>")
+                    appendText.join("")
+
                     console.log(popInfo)
 
                     
 
-                    LeafletDiv
-                    .html(popInfo)
-                    .style("top", "1.5vh")
-                    .style("text-align", 'left')
+                    
                   
                     })
 
-                    
+                    console.log(appendText)
+                    appendText.join("")
+                    LeafletDiv
+                    .html(appendText)
+                    .style("top", "1.5vh")
+                    .style("text-align", 'left')
                 }
 
 
@@ -732,17 +737,50 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //disable hover event listeners
             d3.selectAll(".events").on("mouseout", null);
             d3.selectAll(".events").on("mouseover", null);
+
+               //deal with point overlap
+                d3.select(this)
+                   this_venue = d.Venue
+                   this_date = d.Date
+                   this_artist = d.Artist
+                   console.log(this_venue)
+                   console.log(this_date)
+
+         
+                
+                makePopup()
+                //console.log(selections.nodes()[1])
+                //var event1 = selections.nodes()[1].data
+
+                //make popup function
+
+                function makePopup (selections) {
+
+
+                    selections = d3.selectAll(".events").filter(function(d){
+                    return d.Venue == this_venue && d.Date == this_date 
+
+                    })
+                    var appendText = []
+                    selections.each(function(d){
+                    console.log(d.Artist)
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
+                    
+                    appendText.push(popInfo+ "<br>")
+               
+                    console.log(popInfo)
+               
+                    })
+                
+                    console.log(appendText)
+                    LeafletDiv
+                    .html( appendText.join(""))
+                    .style("top", "1.5vh")
+                    .style("text-align", 'left')
+                }
             
-            //add popup   
-            var value2014 = currentMap.get(d.location);  
-
-            LeafletDiv.transition()        
-                .duration(200)      
-                .style("opacity", .9);
-
-            LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
-            )
+                LeafletDiv
                 .style("top", "1.5vh")
                 .style("text-align", 'left')
                 .style("pointer-events", 'all')
@@ -859,6 +897,45 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         function timeInterval(data, start, end) {
+
+            var today = new Date()
+            var todaySplit = today.toString().split(" " ,4)
+            var todayClean = todaySplit.toString().replace(/,/g, ' ')
+            var dayNumber = todaySplit[2]
+
+            var dayNumberClean = dayNumber.toString().replace(/01/g, '1')
+                .replace(/02/g, '2')
+                .replace(/03/g, '3')
+                .replace(/04/g, '4')
+                .replace(/05/g, '5')
+                .replace(/06/g, '6')
+                .replace(/07/g, '7')
+                .replace(/08/g, '8')
+                .replace(/09/g, '9')
+
+            var todayClean2 = todaySplit[0] + " " + todaySplit[1] + " " + dayNumberClean + " " + todaySplit[3]
+            var time = data.Time
+        
+            var hours = Number(time.match(/^(\d+)/)[1]);
+            var minutes = Number(time.match(/:(\d+)/)[1]);
+            var AMPM = time.match(/\s(.*)$/)[1];
+            if (AMPM == "PM" && hours < 12) hours = hours + 12;
+            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            var sHours = hours.toString();
+            var sMinutes = minutes.toString();
+            if (hours < 10) sHours = "0" + sHours;
+            if (minutes < 10) sMinutes = "0" + sMinutes;
+            var showStartTime = (sHours + ":" + sMinutes);
+
+            if (start <= showStartTime && showStartTime <= end && selectedDate === data.Date) {         
+                return "inline";
+            } else {
+                return "none";
+            };
+   
+        } 
+
+        function timeIntervalReclass(data, start, end) {
 
             var today = new Date()
             var todaySplit = today.toString().split(" " ,4)
