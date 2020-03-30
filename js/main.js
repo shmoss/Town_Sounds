@@ -674,24 +674,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    //this_time = d.Time
                
 
-                
-
-         
-                //console.log(d3.select(this).attr("class"))
-                makePopup(time_window)
-                //console.log(selections.nodes()[1])
-                //var event1 = selections.nodes()[1].data
-
-                //make popup function
-
-
-                function makePopup (time_window) {
-               
-                //console.log(showStartTime)
-
-                
-
-                    selections = d3.selectAll(".events").filter(function(d){
+                selections = d3.selectAll(".events").filter(function(d){
                         var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
@@ -724,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
-                }
+                
 
 
                 var value2014 = currentMap.get(d.location);     
@@ -765,20 +748,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    //this_time = d.Time
             
 
-                
 
-         
-                //console.log(d3.select(this).attr("class"))
-                makePopup(time_window)
-                //console.log(selections.nodes()[1])
-                //var event1 = selections.nodes()[1].data
-
-                //make popup function
-
-
-                function makePopup (time_window) {
-             
-                //console.log(showStartTime)
 
                   
 
@@ -818,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
-                }
+                
             
                 LeafletDiv
                 .style("top", "1.5vh")
