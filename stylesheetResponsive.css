@@ -180,12 +180,14 @@ img{
         padding: 5px 10px 10px 5px;
         pointer-events: none;   
         overflow-y:scroll; 
+        overflow-wrap: break-word;
         display:inline-block ;
         margin-left:1vh;
         opacity:.2;
         padding-bottom:3%;
         padding-left:1.5vh;
         padding-right:1.5vh
+
        
 
     }
