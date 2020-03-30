@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var currentMap = d3.map();
 
 
+
+
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
 
@@ -605,7 +607,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
     
     function loadData(eventArray) {
         console.log(selectedDate)
-
+        var time_window = ["00:00", "24:00"]
         
         d3.selectAll(".events").remove()
 
@@ -656,6 +658,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .attr("r", 10.5)
             .style("display", dateMatch)
             .style("pointer-events", "auto")
+            .attr("classed", "visible")
 
             .on("mouseover", function(d) { 
                 console.log("mousing over")
@@ -738,27 +741,67 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.selectAll(".events").on("mouseout", null);
             d3.selectAll(".events").on("mouseover", null);
 
+
+
                //deal with point overlap
                 d3.select(this)
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
+                   //this_time = d.Time
                    console.log(this_venue)
                    console.log(this_date)
 
-         
                 
-                makePopup()
+
+         
+                console.log(d3.select(this).attr("class"))
+                makePopup(time_window)
                 //console.log(selections.nodes()[1])
                 //var event1 = selections.nodes()[1].data
 
                 //make popup function
 
-                function makePopup (selections) {
+
+                function makePopup (time_window) {
+                console.log(time_window)
+                //console.log(showStartTime)
+
+                     d3.selectAll(".events").each(function(d,i) {
+                        var selected_time = d.Time
+        
+                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
+                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
+                    var AMPM = selected_time.match(/\s(.*)$/)[1];
+                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+                    var sHours = hours.toString();
+                    var sMinutes = minutes.toString();
+                    if (hours < 10) sHours = "0" + sHours;
+                    if (minutes < 10) sMinutes = "0" + sMinutes;
+                    var showStartTime = (sHours + ":" + sMinutes);
+                    console.log(showStartTime)
+                        
+                //console.log(d3.select(this).attr("classed"))
+            })
 
 
                     selections = d3.selectAll(".events").filter(function(d){
-                    return d.Venue == this_venue && d.Date == this_date 
+                        var selected_time = d.Time
+        
+                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
+                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
+                    var AMPM = selected_time.match(/\s(.*)$/)[1];
+                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+                    var sHours = hours.toString();
+                    var sMinutes = minutes.toString();
+                    if (hours < 10) sHours = "0" + sHours;
+                    if (minutes < 10) sMinutes = "0" + sMinutes;
+                    var showStartTime = (sHours + ":" + sMinutes);
+                    console.log(showStartTime)
+
+                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
 
                     })
                     var appendText = []
@@ -967,63 +1010,92 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var showStartTime = (sHours + ":" + sMinutes);
 
             if (start <= showStartTime && showStartTime <= end && selectedDate === data.Date) {         
-                return "inline";
+                return "visible";
             } else {
-                return "none";
+                return "invisible";
             };
    
         } 
 
 
         
+        
     
 
         d3.selectAll("#allTimes").on("change", function() {
+            time_window = ["00:00", "24:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) {
                 return timeInterval(d, "00:00", "24:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "00:00", "24:00")
+            })
+
         })
 
+        
+
         d3.selectAll("#morn").on("change", function() {
+            time_window = ["07:00", "12:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) {
                 return timeInterval(d, "07:00", "12:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "07:00", "12:00")
+            })
+               
         })
 
         d3.selectAll("#lunch").on("change", function() {
+            time_window = ["12:00", "16:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) {
                 return timeInterval(d, "12:00", "16:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "12:00", "16:00")
+            })
         })
 
         d3.selectAll("#afternoon").on("change", function() {
+            time_window = ["16:00", "20:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) {
                 return timeInterval(d, "16:00", "20:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "16:00", "20:00")
+            })
         })
 
         d3.selectAll("#eve").on("change", function() {
+            time_window = ["20:00", "24:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) { 
                 return timeInterval(d, "20:00", "24:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "20:00", "24:00")
+            })
         })
 
         d3.selectAll("#late").on("change", function() {
+            time_window = ["24:00", "07:00"]
             resetStroke ()
             d3.selectAll(".events")
                 .style("display", function(d) {
                 return timeInterval(d, "24:00", "07:00")
-            });
+            })
+                .attr("classed", function(d) {
+                return timeIntervalReclass(d, "24:00", "07:00")
+            })
         })
     
 
