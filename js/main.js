@@ -665,26 +665,66 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
 
+                
                 //deal with point overlap
                 d3.select(this)
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
+                   //this_time = d.Time
                    console.log(this_venue)
                    console.log(this_date)
 
-         
                 
-                makePopup()
+
+         
+                console.log(d3.select(this).attr("class"))
+                makePopup(time_window)
                 //console.log(selections.nodes()[1])
                 //var event1 = selections.nodes()[1].data
 
                 //make popup function
 
-                function makePopup (selections) {
+
+                function makePopup (time_window) {
+                console.log(time_window)
+                //console.log(showStartTime)
+
+                     d3.selectAll(".events").each(function(d,i) {
+                        var selected_time = d.Time
+        
+                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
+                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
+                    var AMPM = selected_time.match(/\s(.*)$/)[1];
+                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+                    var sHours = hours.toString();
+                    var sMinutes = minutes.toString();
+                    if (hours < 10) sHours = "0" + sHours;
+                    if (minutes < 10) sMinutes = "0" + sMinutes;
+                    var showStartTime = (sHours + ":" + sMinutes);
+                    console.log(showStartTime)
+                        
+                //console.log(d3.select(this).attr("classed"))
+            })
+
 
                     selections = d3.selectAll(".events").filter(function(d){
-                    return d.Venue == this_venue && d.Date == this_date 
+                        var selected_time = d.Time
+        
+                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
+                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
+                    var AMPM = selected_time.match(/\s(.*)$/)[1];
+                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+                    var sHours = hours.toString();
+                    var sMinutes = minutes.toString();
+                    if (hours < 10) sHours = "0" + sHours;
+                    if (minutes < 10) sMinutes = "0" + sMinutes;
+                    var showStartTime = (sHours + ":" + sMinutes);
+                    console.log(showStartTime)
+
+                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
 
                     })
                     var appendText = []
@@ -693,21 +733,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
                     + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
                     
-                    appendText.push(popInfo + "<br>")
-                    appendText.join("")
-
+                    appendText.push(popInfo+ "<br>")
+               
                     console.log(popInfo)
-
-                    
-
-                    
-                  
+               
                     })
-
+                
                     console.log(appendText)
-                    appendText.join("")
                     LeafletDiv
-                    .html(appendText)
+                    .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
                 }
