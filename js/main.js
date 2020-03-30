@@ -664,6 +664,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
+                var value2014 = currentMap.get(d.location);     
+                LeafletDiv.transition()        
+                    .duration(200)      
+                    .style("opacity", 1.7)
+                    .style("scrollTop", 0)
 
                 
                 //deal with point overlap
@@ -675,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                
 
                 selections = d3.selectAll(".events").filter(function(d){
-                        var selected_time = d.Time
+                    var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
                     var minutes = Number(selected_time.match(/:(\d+)/)[1]);
@@ -707,19 +712,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
+                    d3.select(this).style("stroke", 'black')
+                    d3.select(this).style("stroke-width", '3px')    
+
+
                 
-
-
-                var value2014 = currentMap.get(d.location);     
-                LeafletDiv.transition()        
-                    .duration(200)      
-                    .style("opacity", 1.7)
-                    .style("scrollTop", 0)
                     
                 
 
-                   d3.select(this).style("stroke", 'black')
-                   d3.select(this).style("stroke-width", '3px')    
+                  
 
                    //deal with point overlap
      
@@ -738,6 +739,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.selectAll(".events").on("mouseout", null);
             d3.selectAll(".events").on("mouseover", null);
 
+            //add popup   
+            var value2014 = currentMap.get(d.location);  
+
+            LeafletDiv.transition()        
+                .duration(200)      
+                .style("opacity", .9);
+
 
 
                //deal with point overlap
@@ -748,13 +756,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    //this_time = d.Time
             
 
-
-
-                  
-
-
                     selections = d3.selectAll(".events").filter(function(d){
-                        var selected_time = d.Time
+                    var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
                     var minutes = Number(selected_time.match(/:(\d+)/)[1]);
@@ -784,19 +787,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 
                  
-                    LeafletDiv
+                LeafletDiv
                     .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
+                    .style("pointer-events", 'all')
+                    d3.select(this).style("stroke", 'black')  
+                    d3.select(this).style("stroke-width", '3px')
                 
-            
-                LeafletDiv
-                .style("top", "1.5vh")
-                .style("text-align", 'left')
-                .style("pointer-events", 'all')
-                d3.select(this).style("stroke", 'black')  
-                d3.select(this).style("stroke-width", '3px')
-
+ 
             $('.county2014Tooltip').scrollTop(0);
 
             d3.event.stopPropagation();
