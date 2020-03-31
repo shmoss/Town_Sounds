@@ -266,6 +266,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         });
 
         
+        var x = null
 
          //Apply checkbox filters for genre
         d3.selectAll("#allGenre").on("change", function() {
@@ -661,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .attr("classed", "visible")
 
             .on("mouseover", function(d) { 
-                
+                console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
                 var value2014 = currentMap.get(d.location);     
@@ -676,11 +677,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
+                   this_genre = d.Genre
                    //this_time = d.Time
-               
+                   //console.log(this_genre)
+                   //console.log(x.includes(this_genre))
 
+
+            
+               
+                   //var genreCheck = null
                 selections = d3.selectAll(".events").filter(function(d){
                     var selected_time = d.Time
+                    var selected_genre = d.Genre
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
                     var minutes = Number(selected_time.match(/:(\d+)/)[1]);
@@ -692,9 +700,26 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     if (hours < 10) sHours = "0" + sHours;
                     if (minutes < 10) sMinutes = "0" + sMinutes;
                     var showStartTime = (sHours + ":" + sMinutes);
+
+                    //console.log(x, this_genre)
+                    //console.log(x.includes(this_genre))
+                    var test = 'true'
+                    for (i=0; i<x.length; i++){
+       
+                    if (selected_genre.includes(x[i])) {
+
+                    test == "true"
+                    }
+                   else {
+                  
+                   test == "false"
+                   console.log(test)
+                   }
+
+                    } 
                     
 
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
+                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date && test == 'true'
 
                     })
                     var appendText = []
@@ -769,7 +794,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     if (hours < 10) sHours = "0" + sHours;
                     if (minutes < 10) sMinutes = "0" + sMinutes;
                     var showStartTime = (sHours + ":" + sMinutes);
-                   
+                    
 
                     return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
 
