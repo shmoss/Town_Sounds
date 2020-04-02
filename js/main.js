@@ -662,94 +662,36 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .attr("classed", "visible")
 
             .on("mouseover", function(d) { 
-                console.log(x)
+                
+                //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
-                var value2014 = currentMap.get(d.location);     
+                var value2014 = currentMap.get(d.location);   
+
                 LeafletDiv.transition()        
                     .duration(200)      
                     .style("opacity", 1.7)
                     .style("scrollTop", 0)
 
-                
-                //deal with point overlap
-                d3.select(this)
-                   this_venue = d.Venue
-                   this_date = d.Date
-                   this_artist = d.Artist
-                   this_genre = d.Genre
-                   //this_time = d.Time
-                   //console.log(this_genre)
-                   //console.log(x.includes(this_genre))
 
-
-            
-               
-                   //var genreCheck = null
-                selections = d3.selectAll(".events").filter(function(d){
-                    var selected_time = d.Time
-                    var selected_genre = d.Genre
-        
-                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
-                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
-                    var AMPM = selected_time.match(/\s(.*)$/)[1];
-                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
-                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
-                    var sHours = hours.toString();
-                    var sMinutes = minutes.toString();
-                    if (hours < 10) sHours = "0" + sHours;
-                    if (minutes < 10) sMinutes = "0" + sMinutes;
-                    var showStartTime = (sHours + ":" + sMinutes);
-
-                    //console.log(x, this_genre)
-                    //console.log(x.includes(this_genre))
-                    var test = 'true'
-                    for (i=0; i<x.length; i++){
-       
-                    if (selected_genre.includes(x[i])) {
-
-                    test == "true"
-                    }
-                   else {
-                  
-                   test == "false"
-                   console.log(test)
-                   }
-
-                    } 
-                    
-
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date && test == 'true'
-
-                    })
-                    var appendText = []
-                    selections.each(function(d){
-                   
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
                     + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo + '<br/>'
                     
-                    appendText.push(popInfo+ '<br/>' + '<br/>')
-            
-               
-                    })
-    
+
                     LeafletDiv
-                    .html( appendText.join(""))
+                    .html(popInfo)
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
                     d3.select(this).style("stroke", 'black')
                     d3.select(this).style("stroke-width", '3px')    
 
-
-                
                     
-                
-
-                  
-
+                   
                    //deal with point overlap
      
               })
+
+
         
 
         .on("click", function(d) { 
