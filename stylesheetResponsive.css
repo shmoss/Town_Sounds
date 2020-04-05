@@ -181,6 +181,7 @@ img{
         pointer-events: none;   
         overflow-y:scroll; 
         overflow-wrap: break-word;
+        word-wrap: break-word;
         display:inline-block ;
         margin-left:1vh;
         opacity:.2;
@@ -213,6 +214,7 @@ img{
         max-width: 60vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
+        word-wrap: break-word;
   }
 }
 
@@ -223,6 +225,7 @@ img{
         max-width: 40vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
+        word-wrap: break-word;
   }
 }
 
