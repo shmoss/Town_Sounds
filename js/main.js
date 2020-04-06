@@ -535,15 +535,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         var token ="pk.eyJ1Ijoic3RhcnJtb3NzMSIsImEiOiJjaXFheXZ6ejkwMzdyZmxtNmUzcWFlbnNjIn0.IoKwNIJXoLuMHPuUXsXeug"; // replace with your Mapbox API Access token. Create a Mapbox account and find it on https://account.mapbox.com/
 
-        var current_latitude
-        var current_longitude
+        //var current_latitude
+        //var current_longitude
         function showLocation(position) {
             var current_latitude = position.coords.latitude;
             var current_longitude = position.coords.longitude;
-            var current_latLong = [37.77, -122.41]
-            //alert("Latitude : " + current_latitude + " Longitude: " + current_longitude);
-            console.log(current_latitude, current_longitude)
-            var my_current_location = L.circleMarker(current_latLong, {
+            var current_latLong = [current_latitude, current_longitude]
+            alert("Latitude : " + current_latitude + " Longitude: " + current_longitude);
+            console.log(current_latLong)
+            var my_current_location = L.circleMarker(current_latLong[0], current_latLong[1], {
                 color: "white",
                 fillColor: "#59c1de",
                 fillOpacity: .95,
