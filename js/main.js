@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
          }
 
          
-         getLocation()
+         //getLocation()
 
         var map = L.map('map').setView([37.7778532, -122.4222303], 13);
 
