@@ -582,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             return "translate("+ my_location.x +","+ my_location.y +")";
         }
         
-        mapLocation()
+        //mapLocation()
 
         var gl = L.mapboxGL({
             accessToken: token,
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
 
-  
+
     loadData(sf_events)
 
     var LeafletDiv = d3.select("#content").append("div")   
@@ -607,6 +607,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("scrollTop", 0)
     
     function loadData(eventArray) {
+        //remove instances where coordinates are blank
+        eventArray = eventArray.filter(function(d){ return d.Coordinates != "" })
+        console.log(eventArray.length)
         console.log(selectedDate)
         var time_window = ["00:00", "24:00"]
         
@@ -645,9 +648,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
            
        eventArray.forEach(function(d) {
         //console.log(d.Coordinates)
-
-        d.latLong = new L.LatLng(d.Coordinates[1],
+      
+            d.latLong = new L.LatLng(d.Coordinates[1],
                   d.Coordinates[0]);
+
+        
         })
             
         var events = mapG.selectAll("circle")
