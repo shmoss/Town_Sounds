@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var nycData = "./data/nyc_events.json" 
 
    
-   
         var selectedDate
 
         //set today's date
@@ -67,6 +66,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var todayClean2 = todaySplit[0] + " " + todaySplit[1] + " " + dayNumberClean + " " + todaySplit[3]
 
         selectedDate = todayClean2
+
+        function formatDate(date) {
+        var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+        if (month.length < 2) 
+        month = '0' + month;
+        if (day.length < 2) 
+        day = '0' + day;
+
+        return [year, month, day].join('-');
+        }
+ 
+        selectedDate = formatDate(selectedDate)
+        console.log(selectedDate)
       
         var nextweek
 
@@ -104,9 +120,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-             
+             //console.log(selectedDate, data.Date)
             if (selectedDate === data.Date) {
-               
+               //console.log('datematch')
                 return 'inline'
             } else {
                 return 'none'
@@ -466,6 +482,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
 
                     selectedDate = finalDate
+                    selectedDate = formatDate(selectedDate)
                     console.log(selectedDate)
  
                 update()
@@ -610,6 +627,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //remove instances where coordinates are blank
         eventArray = eventArray.filter(function(d){ return d.Coordinates != "" })
         console.log(eventArray.length)
+        console.log(eventArray)
         console.log(selectedDate)
         var time_window = ["00:00", "24:00"]
         
@@ -647,12 +665,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("width", '40px')
            
        eventArray.forEach(function(d) {
-        //console.log(d.Coordinates)
-      
-            d.latLong = new L.LatLng(d.Coordinates[1],
-                  d.Coordinates[0]);
-
+        //console.log(d.Coordinates[1])
+        //console.log(d.Coordinates[0])
         
+            d.latLong = new L.LatLng(d.Coordinates[0],
+                  d.Coordinates[1]);
+
+            console.log(d.latLong,d.Date)
         })
             
         var events = mapG.selectAll("circle")
@@ -665,9 +684,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-
             .on("mouseover", function(d) { 
-                
+           
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
