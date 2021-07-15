@@ -210,7 +210,7 @@ img{
     @media all and (min-width:400px) and (max-width: 99500px) {
      div.county2014Tooltip  {
         min-height:50vh;
-        min-width: 60vh;    
+        min-width: 40vh;    
         max-width: 60vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
@@ -221,8 +221,8 @@ img{
 @media all and (min-width:0px) and (max-width: 400px) {
      div.county2014Tooltip  {
         min-height:50vh;
-        min-width: 35vh;    
-        max-width: 40vh; 
+        min-width: 25vh;    
+        max-width: 50vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
         word-wrap: break-word;
