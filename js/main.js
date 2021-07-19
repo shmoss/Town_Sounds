@@ -1,6 +1,72 @@
 document.addEventListener('DOMContentLoaded', function(e) {
 
 
+const url = `https://s3.us-east-2.amazonaws.com/sfbucket.starr/sf_events.json`;
+
+
+const successCb = (resp) => {
+    console.log(resp);
+};
+
+const errorCb = (err) => {
+    console.error('Error - ', err);
+};
+
+function downloadObject(url, successCb, errorCb) {
+    fetch(url)
+      .then(response => response.json())
+      .then(successCb)
+      .catch(errorCb);
+}
+
+downloadObject(url, successCb, errorCb);
+
+// // Example POST method implementation:
+// async function postData(url = '', data = {}) {
+//   // Default options are marked with *
+//   const response = await fetch(url, {
+//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+//     mode: 'no-cors', // no-cors, *cors, same-origin
+//     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+//     credentials: 'same-origin', // include, *same-origin, omit
+//     redirect: 'follow', // manual, *follow, error
+//     header: 'Access-Control-Allow-Origin: *',
+//     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+//     body: JSON.stringify(data) // body data type must match "Content-Type" header
+//   });
+//   return response.json(); // parses JSON response into native JavaScript objects
+// }
+
+// postData('https://s3.us-east-2.amazonaws.com/sfbucket.starr/sf_events.json')
+
+
+// async function downloadObject(url) {
+//   try {
+//     const fetchResponse = await fetch(url, {
+//   credentials: 'same-origin'
+// });
+//     return await fetchResponse.json();
+//   } catch (err) {
+//     console.error('Error - ', err);
+//   }
+// }
+
+// downloadObject(url);
+
+
+// fetch('https://reqres.in/api/users')
+//     .then(res => res.json())
+//     .then(res => {
+//         res.data.map(user => {
+//             console.log(`${user.id}: ${user.first_name} ${user.last_name}`);
+//         });
+//     });
+
+
+//     fetch('https://s3.us-east-2.amazonaws.com/sfbucket.starr/sf_events.json')
+//         .then(response => response.json())
+//         .then(data => console.log(data));
+
 
     
     times = ["12:00 AM",
@@ -120,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-             //console.log(selectedDate, data.Date)
+             console.log(selectedDate, data.Date)
             if (selectedDate === data.Date) {
                //console.log('datematch')
                 return 'inline'
@@ -671,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d.latLong = new L.LatLng(d.Coordinates[0],
                   d.Coordinates[1]);
 
-            console.log(d.latLong,d.Date)
+            //console.log(d.latLong,d.Date)
         })
             
         var events = mapG.selectAll("circle")
