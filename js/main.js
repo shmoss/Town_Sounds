@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', function(e) {
 
 
-const url = `https://s3.us-east-2.amazonaws.com/sfbucket.starr/sf_events.json`;
+// const url = `https://s3.us-east-2.amazonaws.com/sfbucket.starr/sf_events.json`;
 
 
-const successCb = (resp) => {
-    console.log(resp);
-};
+// const successCb = (resp) => {
+//     console.log(resp);
+// };
 
-const errorCb = (err) => {
-    console.error('Error - ', err);
-};
+// const errorCb = (err) => {
+//     console.error('Error - ', err);
+// };
 
-function downloadObject(url, successCb, errorCb) {
-    fetch(url)
-      .then(response => response.json())
-      .then(successCb)
-      .catch(errorCb);
-}
+// function downloadObject(url, successCb, errorCb) {
+//     fetch(url)
+//       .then(response => response.json())
+//       .then(successCb)
+//       .catch(errorCb);
+// }
 
-downloadObject(url, successCb, errorCb);
+// downloadObject(url, successCb, errorCb);
 
 // // Example POST method implementation:
 // async function postData(url = '', data = {}) {
