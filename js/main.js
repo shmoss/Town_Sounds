@@ -1253,6 +1253,10 @@ function touchHandler(event){
         event.preventDefault()
     }
 }
+
+document.addEventListener("touchstart", function(e){
+e.preventDefault();
+},{passive: false});
         
 
     }
