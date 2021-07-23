@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-             console.log(selectedDate, data.Date)
+             //console.log(selectedDate, data.Date)
             if (selectedDate === data.Date) {
                //console.log('datematch')
                 return 'inline'
@@ -692,9 +692,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
     function loadData(eventArray) {
         //remove instances where coordinates are blank
         eventArray = eventArray.filter(function(d){ return d.Coordinates != "" })
-        console.log(eventArray.length)
-        console.log(eventArray)
-        console.log(selectedDate)
+        //console.log(eventArray.length)
+        //console.log(eventArray)
+        //console.log(selectedDate)
         var time_window = ["00:00", "24:00"]
         
         d3.selectAll(".events").remove()
@@ -945,7 +945,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var today  = new Date();
         var todayString = today.toString().split(" " ,4)
         var todayClean = todayString.toString().replace(/,/g, ' ')
-        console.log(todayClean)
+        //console.log(todayClean)
         
 
         function updateTime(start, end) {
