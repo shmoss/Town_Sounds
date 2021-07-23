@@ -1259,7 +1259,13 @@ e.preventDefault();
 },{passive: false});
 
 document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementsByClassName('events').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
+eventsElement = document.getElementsByClassName('events')
+
+for (var i = 0 ; i < eventsElement.length; i++) {
+   eventsElement[i].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+}
+
         
 
     }
