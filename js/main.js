@@ -1247,18 +1247,19 @@ document.addEventListener('DOMContentLoaded', function(e) {
 // });
 
 
+//this works -------------------------------
+// document.addEventListener("touchstart", function(e){
+// e.preventDefault();
+// },{passive: false});
 
-document.addEventListener("touchstart", function(e){
-e.preventDefault();
-},{passive: false});
+// document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+//this works -------------------------------
 
-// for (var i = 0 ; i < eventsElement.length; i++) {
-//    eventsElement[i].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-// }
+
+
 
         
 
