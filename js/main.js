@@ -1262,3 +1262,6 @@ e.preventDefault();
     }
 })
 
+
+document.getElementById('#map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
