@@ -1257,11 +1257,11 @@ function touchHandler(event){
 document.addEventListener("touchstart", function(e){
 e.preventDefault();
 },{passive: false});
+
+document.getElementById('#map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
         
 
     }
 })
-
-
-document.getElementById('#map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
