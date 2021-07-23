@@ -8,7 +8,7 @@
         min-width:100%;
         overflow: hidden;
         position:fixed;
-       
+
 
     }
 
@@ -407,6 +407,13 @@ padding-left:2%;
     color:#ffba00
 }
 
+.btn-info.btn {
+    border:solid thin #AAAAAA;
+}
+
+button:focus{
+ outline:none !important;
+ }
 
 ul li{
   color: #AAAAAA;
