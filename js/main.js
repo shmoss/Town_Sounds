@@ -1246,13 +1246,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 //     }
 // });
 
-function touchHandler(event){
-    if(event.touches.length > 1){
-        //the event is multi-touch
-        //you can then prevent the behavior
-        event.preventDefault()
-    }
-}
+
 
 document.addEventListener("touchstart", function(e){
 e.preventDefault();
