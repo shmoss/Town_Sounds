@@ -1259,7 +1259,7 @@ e.preventDefault();
 },{passive: false});
 
 document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-
+document.getElementsByClassName('events').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
         
 
     }
