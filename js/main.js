@@ -1226,27 +1226,33 @@ document.addEventListener('DOMContentLoaded', function(e) {
      
 
 
-        window.blockMenuHeaderScroll = false;
-$(window).on('touchstart', function(e)
-{
-    if ($(e.target).closest('#map').length == 1)
-    {
-        blockMenuHeaderScroll = true;
-    }
-});
-$(window).on('touchend', function()
-{
-    blockMenuHeaderScroll = false;
-});
-$(window).on('touchmove', function(e)
-{
-    if (blockMenuHeaderScroll)
-    {
-        e.preventDefault();
-    }
-});
+//         window.blockMenuHeaderScroll = false;
+// $(window).on('touchstart', function(e)
+// {
+//     if ($(e.target).closest('#map').length == 1)
+//     {
+//         blockMenuHeaderScroll = true;
+//     }
+// });
+// $(window).on('touchend', function()
+// {
+//     blockMenuHeaderScroll = false;
+// });
+// $(window).on('touchmove', function(e)
+// {
+//     if (blockMenuHeaderScroll)
+//     {
+//         e.preventDefault();
+//     }
+// });
 
-
+function touchHandler(event){
+    if(event.touches.length > 1){
+        //the event is multi-touch
+        //you can then prevent the behavior
+        event.preventDefault()
+    }
+}
         
 
     }
