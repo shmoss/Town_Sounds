@@ -1254,11 +1254,11 @@ e.preventDefault();
 
 document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-eventsElement = document.getElementsByClassName('events')
+eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-for (var i = 0 ; i < eventsElement.length; i++) {
-   eventsElement[i].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-}
+// for (var i = 0 ; i < eventsElement.length; i++) {
+//    eventsElement[i].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// }
 
         
 
