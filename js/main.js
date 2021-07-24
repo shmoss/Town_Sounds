@@ -1155,14 +1155,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                         .duration(200) 
                         .style("opacity",1) 
+                        .style("pointer-events","all") 
+                        .style("scrollTop", 0)
 
             LeafletDiv
                     .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?"+ 
                         '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! " +
                         '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app pulls data from bandsintown. Due to limited time and resources, I'm only able to pull data for specific cities. Expanding the geographic reach of this app is challenging.. but if you want to see Townsounds for your city, drop me a line! "+
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Who built this?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021.")  
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app displays music events from bandsintown.com. Due to limited resources, I'm only able to pull events for specific cities. My goal is to expand the geographic reach of Townsounds. If you want to see Townsounds for your city, drop me a line! "+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?"+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown!"+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Who am I?"+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as live music came to a standstill during the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music! Reach out to starrmoss1@gmail.com for any questions.")  
                     .style("top", "1.5vh")
 
                     .style("text-align", 'left')
@@ -1175,6 +1179,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     LeafletDiv.transition()        
                         .duration(200) 
                         .style("opacity",0)
+                        .style("pointer-events","none")
 
                 d3.selectAll(".events")
                 .style("pointer-events","all")  
