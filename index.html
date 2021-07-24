@@ -56,6 +56,8 @@
     <script src="https://unpkg.com/js-datepicker"></script> 
     <script src="./data/sf_events.json"></script>
     <script src="./data/nyc_events.json"></script>
+    <script src="./data/chicago_events.json"></script>
+    <script src="./data/madison_events.json"></script>
     <script src="./js/pageReady.js"></script>
     <script src="./js/main.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.js'></script>
@@ -152,19 +154,7 @@
                         <div class="check"><div class="inside"></div></div>
                     </li>
 
-                    <li>
-                        <input type="radio" id="changeDataNY" name="genre">
-                        <label for="changeDataNY">Change Data NY</label>
-    
-                        <div class="check"><div class="inside"></div></div>
-                    </li>
-
-                    <li>
-                        <input type="radio" id="changeDataSF" name="genre">
-                        <label for="changeDataSF">Change Data SF</label>
-    
-                        <div class="check"><div class="inside"></div></div>
-                    </li>
+                    
   
                     </ul>
                 </div>
@@ -222,7 +212,7 @@
 
                     
                     
-                    <div id="datepicker" style="margin-top:83%; padding-bottom:25%"></div>
+                    <div id="datepicker" style="margin-top:83%; padding-bottom:35%"></div>
                     
                 </div>
 
@@ -238,12 +228,16 @@
         <!-- Page Content -->
         <div id="content">
 
+
+
+         
+
                 <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color: #545B62; border-color:#AAAAAA;font-family:'Poppins'; position:absolute; z-index:9; margin-left:10vh; margin-top:2.5vh;font-size: 1.2em">
                         <span class="glyphicon glyphicon-menu-hamburger"></span> Menu
                 </button>
 
                 <div class="dropdown show">
-                    <button class="btn btn-info" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #545B62; border-color:#AAAAAA;font-family:'Poppins'; position:absolute; z-index:9; margin-left:30vh; margin-top:2.5vh;font-size: 1.2em">
+                    <button class="btn btn-info" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #545B62; border-color:#AAAAAA;font-family:'Poppins'; position:absolute; z-index:9; margin-left:26vh; margin-top:2.5vh;font-size: 1.2em">
                    <span class="glyphicon glyphicon-map-marker"></span> City
                     </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -266,12 +260,17 @@
                 </div>
                 </div>
 
-                <button type="button" id="about" class="btn btn-info" style="background-color: #545B62; border-color:#AAAAAA;font-family:'Poppins'; position:absolute; z-index:9; margin-left:48vh; margin-top:2.5vh;font-size: 1.2em">
+                <button type="button" id="about" class="btn btn-info" style="background-color: #545B62; border-color:#AAAAAA;font-family:'Poppins'; position:absolute; z-index:9; margin-left:39.7vh; margin-top:2.5vh;font-size: 1.2em">
                         <span class="glyphicon glyphicon-info-sign"></span> About
                 </button>
+
+
+
+           
             
                 <div id="map" class="tiles" style="min-width: 100vh; min-height: 100vh" pointer-events="all">
                     
+
 
                 </div>
 

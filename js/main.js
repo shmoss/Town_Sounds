@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
+    var madisonData = "./data/madison_events.json" 
+    var chicagoData = "./data/chicago_events.json"
 
    
         var selectedDate
@@ -483,11 +485,36 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         //LA
         //Chicago
+        d3.selectAll("#Chicago_IL_data").on("click", function() {
+            console.log("SF!")
+            map.setView([41.8781, -87.6298], 13);
+            resetDisplay()
+            
+            loadData(chicago_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
         //Austin
         //Denver
         //Nashville
         //Boston
         //Madison
+
+        d3.selectAll("#Madison_WI_data").on("click", function() {
+            console.log("SF!")
+            map.setView([43.0731, -89.4012], 13);
+            resetDisplay()
+            
+            loadData(madison_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
         //Milwaukee
         //Minneapolis
         //Atlanta
@@ -1130,7 +1157,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("opacity",1) 
 
             LeafletDiv
-                    .html('<br/>'+'<b>'+ '<font size="3em">'+"What is TownSounds?"+ '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! ")  
+                    .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?"+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! " +
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?"+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app pulls data from bandsintown. Due to limited time and resources, I'm only able to pull data for specific cities. Expanding the geographic reach of this app is challenging.. but if you want to see Townsounds for your city, drop me a line! "+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Who built this?"+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021.")  
                     .style("top", "1.5vh")
 
                     .style("text-align", 'left')
