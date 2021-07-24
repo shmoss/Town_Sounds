@@ -484,6 +484,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         //LA
+         d3.selectAll("#LosAngeles_CA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([34.0522, -118.2437], 13);
+            resetDisplay()
+            
+            loadData(LA_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
         //Chicago
         d3.selectAll("#Chicago_IL_data").on("click", function() {
             console.log("SF!")
@@ -497,12 +509,51 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //combineArray(nyc_events)
             
         });
-        //Austin
-        //Denver
-        //Nashville
-        //Boston
-        //Madison
 
+        //Austin
+        d3.selectAll("#Austin_TX_data").on("click", function() {
+            console.log("SF!")
+            map.setView([30.2672, -97.7431], 13);
+            resetDisplay()
+            
+            loadData(austin_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+        });
+
+        //Denver
+        d3.selectAll("#Denver_CO_data").on("click", function() {
+            console.log("SF!")
+            map.setView([39.7392, -104.9903], 13);
+            resetDisplay()
+            
+            loadData(denver_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
+
+        //Nashville
+        d3.selectAll("#Nashville_TN_data").on("click", function() {
+            console.log("SF!")
+            map.setView([36.1627, -86.7816], 13);
+            resetDisplay()
+            
+            loadData(nashville_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
+        //Boston
+        
+        //Madison
         d3.selectAll("#Madison_WI_data").on("click", function() {
             console.log("SF!")
             map.setView([43.0731, -89.4012], 13);
@@ -515,11 +566,63 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //combineArray(nyc_events)
             
         });
+
         //Milwaukee
+        d3.selectAll("#Milwaukee_WI_data").on("click", function() {
+            console.log("SF!")
+            map.setView([43.0389, -87.9065], 13);
+            resetDisplay()
+            
+            loadData(milwaukee_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Minneapolis
+        d3.selectAll("#Minneapolis_MN_data").on("click", function() {
+            console.log("SF!")
+            map.setView([44.9778, -93.2650], 13);
+            resetDisplay()
+            
+            loadData(minneapolis_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Atlanta
         //New Orleans
+        d3.selectAll("#NewOrleans_LA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([29.9511, -90.0715], 13);
+            resetDisplay()
+            
+            loadData(neworleans_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+        });
+
         //Seattle
+        d3.selectAll("#Seattle_WA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([47.6062, -122.3321], 13);
+            resetDisplay()
+            
+            loadData(seattle_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+            });
         
         function resetGenreAndTime(){
             document.getElementById("#allGenre").checked = true;
@@ -1160,13 +1263,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             LeafletDiv
                     .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! " +
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music!" +
                         '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app displays music events from bandsintown.com. Due to limited resources, I'm only able to pull events for specific cities. My goal is to expand the geographic reach of Townsounds. If you want to see Townsounds for your city, drop me a line! "+
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app displays music events from bandsintown.com. Due to limited resources, I'm only able to pull events for specific cities. My goal is to expand the geographic reach of Townsounds. If you want to see your city on here, drop me a line! "+
                         '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?"+ 
                         '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown!"+
                         '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Who am I?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as live music came to a standstill during the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music! Reach out to starrmoss1@gmail.com for any questions.")  
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as live music came to a standstill during the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to starrmoss1@gmail.com for any questions.")  
                     .style("top", "1.5vh")
 
                     .style("text-align", 'left')
