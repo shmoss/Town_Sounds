@@ -412,6 +412,14 @@ padding-left:2%;
     
 }
 
+#sidebarCollapse.btn:focus,.btn:active {
+   color:#ffba00;
+   outline-color: #AAAAAA;
+   border:solid thin #AAAAAA;
+   box-shadow: none !important;
+   -webkit-box-shadow: none !important
+}
+
 
 
 
@@ -423,6 +431,14 @@ padding-left:2%;
 #about.btn:hover {
     color:#ffba00;
     border:solid thin #AAAAAA
+}
+
+#about.btn:focus,.btn:active {
+   color:#ffba00;
+   outline-color: #AAAAAA;
+   border:solid thin #AAAAAA;
+   box-shadow: none !important;
+   -webkit-box-shadow: none !important
 }
 
 #dropdownMenuButton.btn {
@@ -439,7 +455,9 @@ padding-left:2%;
 
 
 #dropdownMenuButton.btn:focus,.btn:active {
-   outline: 0 !important;
+   color:#ffba00;
+   outline-color: #AAAAAA;
+   border:solid thin #AAAAAA;
    box-shadow: none !important;
    -webkit-box-shadow: none !important
 }
