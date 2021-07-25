@@ -412,6 +412,9 @@ padding-left:2%;
     
 }
 
+
+
+
 #about.btn {
     background-color:#5A6268
     
@@ -423,13 +426,22 @@ padding-left:2%;
 }
 
 #dropdownMenuButton.btn {
-     background-color:#5A6268
+     background-color:#5A6268;
+     box-shadow: none !important;
+   -webkit-box-shadow: none !important
     
 }
 
 #dropdownMenuButton.btn:hover {
     color:#ffba00;
     border:solid thin #AAAAAA
+}
+
+
+#dropdownMenuButton.btn:focus,.btn:active {
+   outline: 0 !important;
+   box-shadow: none !important;
+   -webkit-box-shadow: none !important
 }
 
 #dropdown-toggle.btn::after{
