@@ -939,7 +939,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
-                   //this_time = d.Time
+                   this_lat = d.latitude
+                   this_long = d.longitude
+                   this_coordinates = d.coordinates
+                   this_address = d.Address
             
 
                     selections = d3.selectAll(".events").filter(function(d){
@@ -957,7 +960,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var showStartTime = (sHours + ":" + sMinutes);
                     
 
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
+                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date 
 
                     })
                     var appendText = []
