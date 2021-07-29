@@ -821,10 +821,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
     
     function loadData(eventArray) {
         //remove instances where coordinates are blank
-        eventArray = eventArray.filter(function(d){ return d.Coordinates != "" })
+        eventArray = eventArray.filter(function(d){ return d.Coordinates[0] != "" })
         //console.log(eventArray.length)
         //console.log(eventArray)
-        //console.log(selectedDate)
+        //console.log(d.Coordinates)
         var time_window = ["00:00", "24:00"]
         
         d3.selectAll(".events").remove()
@@ -893,8 +893,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("scrollTop", 0)
 
 
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo + '<br/>'
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
                     
 
                     LeafletDiv
@@ -966,8 +966,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var appendText = []
                     selections.each(function(d){
                  
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
                
@@ -1024,8 +1024,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(200)      
                             .style("opacity", .9);
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
+                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
                         )
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
@@ -1264,15 +1264,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("pointer-events","all") 
                         .style("scrollTop", 0)
 
+            str_linkedin = 'LinkedIn'.fontcolor( "#ffba00")
+            str_website = 'starrmoss.com'.fontcolor( "#ffba00")
+
             LeafletDiv
-                    .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music!" +
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "This app displays music events from bandsintown.com. Due to limited resources, I'm only able to pull events for specific cities. My goal is to expand the geographic reach of Townsounds. If you want to see your city on here, drop me a line! "+
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown!"+
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Who am I?"+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "I'm Starr Moss. I built this app over the course of 2019-2021. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as live music came to a standstill during the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to starrmoss1@gmail.com for any questions.")  
+                    .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds is an app for finding live music!" +
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds displays music events listed on bandsintown.com. Currently, I'm only able to pull events for specific cities, but I hope to expand TownSounds to include more metro areas. If you want to see your city on here, drop me a line! "+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown! You can also feel free to contribute financially to help keep this app up and running (@Starr-Moss on venmo). Your contribution will help cover overhead costs of this app such as data storage, geocoding services, and cloud computing."+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"About".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Hello! I'm Starr Moss. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as the format of live music (live-streams, etc.) has been altered by the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to " +  "starrmoss1@gmail.com".fontcolor( "#ffba00")+  " for any questions." + '</br>' + '<br/>' + "Find me on " + str_linkedin.link("https://www.linkedin.com/in/starrmoss/") + " or " +  str_website.link("https://www.starrmoss.com") )  
                     .style("top", "1.5vh")
 
                     .style("text-align", 'left')
