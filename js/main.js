@@ -298,20 +298,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
        
                 d3.selectAll(".events")
                     .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i]))
+                        return (d.Genre.toLowerCase().includes(genreType[i]))
                     })
                     .style("fill", display)
 
             }  
 
-            for (i=0; i<genreType.length; i++){
+            // for (i=0; i<genreType.length; i++){
        
-                d3.selectAll(".events")
-                    .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i])==true)
-                    })
-                    .style("pointer-events", all)
-            } 
+            //     d3.selectAll(".events")
+            //         .filter(function(d) {       
+            //             return (d.Genre.includes(genreType[i])==true)
+            //         })
+            //         .style("pointer-events", all)
+            // } 
 
         }  
 
@@ -357,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             resetAll()
             resetVisibility()
+            x = "all"
+
         });
 
         var currentValue = 0;
@@ -367,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             currentValue = bluesRadioValue
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Blues"]
+            x = ["blues"]
             genreMatch(x)
         });
 
@@ -376,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Classical"]
+            x = ["classical"]
             genreMatch(x)
         });
 
@@ -385,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
+            x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance"]
             genreMatch(x)
         });
 
@@ -394,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Bluegrass","Folk","Singer Songwriter","Americana","Country","Acoustic"]
+            x = ["bluegrass","folk","singer songwriter","americana","country","acoustic","singer-songwriter"]
             genreMatch(x)   
         });
 
@@ -403,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Hip Hop", "Rap"]
+            x = ["hip hop", "rap", "hip-hop"]
             genreMatch(x)
         });
 
@@ -412,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Jazz", "Swing", "Big Band"]
+            x = ["jazz", "wwing", "big band"]
             genreMatch(x)
         });
 
@@ -421,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Metal", "Black Metal", "Hardcore"]
+            x = ["metal", "black Metal", "hardcore"]
             genreMatch(x)
         });
 
@@ -430,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
+            x = ["r&b", "rnb", "soul", "disco", "reggae", "rnb", "funk"]
             genreMatch(x)
         });
 
@@ -441,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
             pointerEvents = this.checked ? "all" : "all";
-            x = ["Rock", "Pop","Indie", "Ska", "Punk"]
+            x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock"]
             genreMatch(x)
             removePoints(x)  
         });
@@ -451,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["No genre available"]
+            x = ["no genre available"]
             genreMatch(x)
         });
 
@@ -943,9 +945,24 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    this_long = d.longitude
                    this_coordinates = d.coordinates
                    this_address = d.Address
+                   this_genre = d.Genre
+                   //console.log('this_genre is ', this_genre, "and x is ", x)
+
+
+                   // display = "#ffba00"
+                   // all = "all"
+                   // genreMatch(this_genre)
+
+                    //let array1 = d.Genre, array2 = x;
+
+                    //console.log(array2.some(ele => array1.includes(ele)));
             
 
                     selections = d3.selectAll(".events").filter(function(d){
+
+                     
+
+
                     var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
@@ -959,12 +976,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     if (minutes < 10) sMinutes = "0" + sMinutes;
                     var showStartTime = (sHours + ":" + sMinutes);
                     
+                    //if 'all' genres not selected, then popup should only reflect genres that ARE selected
+                    if (x == null) {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else if (x == 'all') {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date && (d.Genre.toLowerCase().includes(x[0]) || d.Genre.toLowerCase().includes(x[1]) || d.Genre.toLowerCase().includes(x[2]) || d.Genre.toLowerCase().includes(x[3]) || d.Genre.toLowerCase().includes(x[4]) || d.Genre.toLowerCase().includes(x[5]) || d.Genre.toLowerCase().includes(x[6]) || d.Genre.toLowerCase().includes(x[7]) || d.Genre.toLowerCase().includes(x[8]) || d.Genre.toLowerCase().includes(x[9]) || d.Genre.toLowerCase().includes(x[10]))
 
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date 
+                    }                 
 
+
+                    
                     })
                     var appendText = []
                     selections.each(function(d){
+
+                     
                  
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                     + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
@@ -991,12 +1019,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             // if user clicks a SECOND time, anywhere, make popup disappear
             d3.select("body").on("click", function(d) { 
-                console.log("clicking off popup")
+                //console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
                 if (this !== currentCircle) {
-                    console.log("not on current circle")
+                    //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
