@@ -992,7 +992,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                         appendText.push(popInfo+ '<br/>' + '<br/>')
-                                    
+               
+          
+               
                     })
                 
                  
@@ -1022,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     elements.scrollTop = 0
            
                     LeafletDiv.transition()        
-                        .duration(200)      
+                        .duration(0)      
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
@@ -1032,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseout", function(d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
-                            .duration(200)      
+                            .duration(0)      
                             .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
@@ -1052,8 +1054,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                } 
-                 d3.event.stopPropagation();         
+                }          
             })
         })
 
