@@ -1018,50 +1018,50 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.event.stopPropagation();
 
             // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("#map").on("click", function(d) { 
-                //console.log("clicking off popup")
-                d3.selectAll(".events").style("stroke", 'none')
-                d3.selectAll(".events").style("stroke-width", '0px')
+            // d3.select("body").on("click", function(d) { 
+            //     //console.log("clicking off popup")
+            //     d3.selectAll(".events").style("stroke", 'none')
+            //     d3.selectAll(".events").style("stroke-width", '0px')
  
-                if (this !== currentCircle) {
-                    //console.log("not on current circle")
-                    //hide popup
-                    var elements = d3.select(LeafletDiv)
-                    elements.scrollTop = 0
+            //     if (this !== currentCircle) {
+            //         //console.log("not on current circle")
+            //         //hide popup
+            //         var elements = d3.select(LeafletDiv)
+            //         elements.scrollTop = 0
            
-                    LeafletDiv.transition()        
-                        .duration(200)      
-                        .style("opacity", 0)
-                        .style("pointer-events", 'none') 
-                        .attr("scrollTop", 0) 
-                        //revert back to hover, unless user clicks again!
-                        d3.selectAll(".events").on("mouseout", true);
-                        d3.selectAll(".events").on("mouseover", true);
-                        d3.selectAll(".events").on("mouseout", function(d) { 
-                        //mousing out!     
-                        LeafletDiv.transition()        
-                            .duration(200)      
-                            .style("opacity", 0);  
-                            d3.selectAll(".events").style("stroke", 'none')
-                            d3.selectAll(".events").style("stroke-width", '0px')        
-                        })
+            //         LeafletDiv.transition()        
+            //             .duration(200)      
+            //             .style("opacity", 0)
+            //             .style("pointer-events", 'none') 
+            //             .attr("scrollTop", 0) 
+            //             //revert back to hover, unless user clicks again!
+            //             d3.selectAll(".events").on("mouseout", true);
+            //             d3.selectAll(".events").on("mouseover", true);
+            //             d3.selectAll(".events").on("mouseout", function(d) { 
+            //             //mousing out!     
+            //             LeafletDiv.transition()        
+            //                 .duration(200)      
+            //                 .style("opacity", 0);  
+            //                 d3.selectAll(".events").style("stroke", 'none')
+            //                 d3.selectAll(".events").style("stroke-width", '0px')        
+            //             })
 
-                        // mouseover event listers added back in
-                        d3.selectAll(".events").on("mouseover", function(d) { 
-                        LeafletDiv.transition()        
-                            .duration(200)      
-                            .style("opacity", .9);
+            //             // mouseover event listers added back in
+            //             d3.selectAll(".events").on("mouseover", function(d) { 
+            //             LeafletDiv.transition()        
+            //                 .duration(200)      
+            //                 .style("opacity", .9);
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
-                        )
-                            .style("top", "1.5vh")
-                            .style("text-align", 'left')
-                            d3.select(this).style("stroke", 'black')  
-                            d3.select(this).style("stroke-width", '3px')
-                    })
-                }          
-            })
+            //             LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+            //             + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
+            //             )
+            //                 .style("top", "1.5vh")
+            //                 .style("text-align", 'left')
+            //                 d3.select(this).style("stroke", 'black')  
+            //                 d3.select(this).style("stroke-width", '3px')
+            //         })
+            //     }          
+            // })
         })
 
         .on("mouseout", function(d) {       
