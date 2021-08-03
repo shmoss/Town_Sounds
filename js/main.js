@@ -1398,8 +1398,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //alert('More than 960');
         }
      
-function toggleZoomScreen() {document.body.style.zoom = "100%";}
-toggleZoomScreen()
+// function toggleZoomScreen() {document.body.style.zoom = "100%";}
+// toggleZoomScreen()
 //         window.blockMenuHeaderScroll = false;
 // $(window).on('touchstart', function(e)
 // {
@@ -1422,13 +1422,16 @@ toggleZoomScreen()
 
 
 //this works -------------------------------
-// document.addEventListener("touchstart", function(e){
-// e.preventDefault();
-// },{passive: false});
+document.addEventListener("touchstart", function(e){
+e.preventDefault();
+},{passive: false});
 
-// document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+document.getElementById('dropdownMenuButton').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+document.getElementById('sidebarCollapse').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+document.getElementById('about').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-// eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
 //this works -------------------------------
 
