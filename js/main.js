@@ -1035,7 +1035,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(0)      
-                            .style("opacity", 0);  
+                            .style("opacity", 0) 
                             .style("pointer-events", 'none') 
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
