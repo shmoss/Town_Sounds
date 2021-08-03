@@ -1422,20 +1422,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
 //this works -------------------------------
-document.addEventListener("touchstart", function(e){
-e.preventDefault();
-},{passive: false});
+// document.addEventListener("touchstart", function(e){
+// e.preventDefault();
+// },{passive: false});
 
-document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementById('sidebar').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementById('folkGenre').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('sidebar').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('folkGenre').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-document.getElementById('dropdownMenuButton').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementById('sidebarCollapse').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementById('NewYorkCity_NY_data').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
-document.getElementById('about').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('dropdownMenuButton').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('sidebarCollapse').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('NewYorkCity_NY_data').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('about').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
-eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
 
 //this works -------------------------------
 
