@@ -960,38 +960,44 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     selections = d3.selectAll(".events").filter(function(d){
 
-                        var selected_time = d.Time
+                     
+
+
+                    var selected_time = d.Time
         
-                        var hours = Number(selected_time.match(/^(\d+)/)[1]);
-                        var minutes = Number(selected_time.match(/:(\d+)/)[1]);
-                        var AMPM = selected_time.match(/\s(.*)$/)[1];
-                        if (AMPM == "PM" && hours < 12) hours = hours + 12;
-                        if (AMPM == "AM" && hours == 12) hours = hours - 12;
-                        var sHours = hours.toString();
-                        var sMinutes = minutes.toString();
-                        if (hours < 10) sHours = "0" + sHours;
-                        if (minutes < 10) sMinutes = "0" + sMinutes;
-                        var showStartTime = (sHours + ":" + sMinutes);
+                    var hours = Number(selected_time.match(/^(\d+)/)[1]);
+                    var minutes = Number(selected_time.match(/:(\d+)/)[1]);
+                    var AMPM = selected_time.match(/\s(.*)$/)[1];
+                    if (AMPM == "PM" && hours < 12) hours = hours + 12;
+                    if (AMPM == "AM" && hours == 12) hours = hours - 12;
+                    var sHours = hours.toString();
+                    var sMinutes = minutes.toString();
+                    if (hours < 10) sHours = "0" + sHours;
+                    if (minutes < 10) sMinutes = "0" + sMinutes;
+                    var showStartTime = (sHours + ":" + sMinutes);
                     
-                        //if 'all' genres not selected, then popup should only reflect genres that ARE selected
-                        if (x == null) {
-                            return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
-                        } else if (x == 'all') {
-                            return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
-                        } else {
-                            return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date && (d.Genre.toLowerCase().includes(x[0]) || d.Genre.toLowerCase().includes(x[1]) || d.Genre.toLowerCase().includes(x[2]) || d.Genre.toLowerCase().includes(x[3]) || d.Genre.toLowerCase().includes(x[4]) || d.Genre.toLowerCase().includes(x[5]) || d.Genre.toLowerCase().includes(x[6]) || d.Genre.toLowerCase().includes(x[7]) || d.Genre.toLowerCase().includes(x[8]) || d.Genre.toLowerCase().includes(x[9]) || d.Genre.toLowerCase().includes(x[10]))
-                        }                 
+                    //if 'all' genres not selected, then popup should only reflect genres that ARE selected
+                    if (x == null) {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else if (x == 'all') {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date && (d.Genre.toLowerCase().includes(x[0]) || d.Genre.toLowerCase().includes(x[1]) || d.Genre.toLowerCase().includes(x[2]) || d.Genre.toLowerCase().includes(x[3]) || d.Genre.toLowerCase().includes(x[4]) || d.Genre.toLowerCase().includes(x[5]) || d.Genre.toLowerCase().includes(x[6]) || d.Genre.toLowerCase().includes(x[7]) || d.Genre.toLowerCase().includes(x[8]) || d.Genre.toLowerCase().includes(x[9]) || d.Genre.toLowerCase().includes(x[10]))
+
+                    }                 
+
+
                     
                     })
                     var appendText = []
-
                     selections.each(function(d){
 
-
-                        var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                     
+                 
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
-                        appendText.push(popInfo+ '<br/>' + '<br/>')
+                    appendText.push(popInfo+ '<br/>' + '<br/>')
                
           
                
@@ -1035,8 +1041,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(0)      
-                            .style("opacity", 0) 
-                            .style("pointer-events", 'none') 
+                            .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
                         })
@@ -1064,7 +1069,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(0)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)  
-                .style("pointer-events", 'none') 
+                .style("pointer-events", 'none')
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
