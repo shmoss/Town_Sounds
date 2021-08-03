@@ -987,6 +987,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     selections.each(function(d){
 
+
                         var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                         + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
@@ -1051,7 +1052,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                }          
+                } 
+                 d3.event.stopPropagation();         
             })
         })
 
@@ -1063,15 +1065,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
-
-         d3.selectAll(".events").on("mouseout", function(d) { 
-                        //mousing out!     
-                        LeafletDiv.transition()        
-                            .duration(200)      
-                            .style("opacity", 0);  
-                            d3.selectAll(".events").style("stroke", 'none')
-                            d3.selectAll(".events").style("stroke-width", '0px')        
-                        })
 
         var todaysDate = new Date 
         var date
