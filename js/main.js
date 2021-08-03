@@ -1018,7 +1018,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.event.stopPropagation();
 
             // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("body").on("click", function(d) { 
+            d3.select("#map").on("click", function(d) { 
                 //console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
@@ -1041,9 +1041,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", 0)
-                            .style("width", '0 px')    
-                            .style("height", '0 px') ;  
+                            .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
                         })
@@ -1068,11 +1066,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
-                .duration(0)      
+                .duration(200)      
                 .style("opacity", 0)
-                .style("scrollTop", 0)
-                .style("width", '0 px')    
-                .style("height", '0 px')  
+                .style("scrollTop", 0)  
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
