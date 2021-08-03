@@ -1061,9 +1061,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(0)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)  
+                .style("pointer-events", 'none') 
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
