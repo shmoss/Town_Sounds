@@ -1398,8 +1398,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //alert('More than 960');
         }
      
-
-
+function toggleZoomScreen() {document.body.style.zoom = "100%";}
+toggleZoomScreen()
 //         window.blockMenuHeaderScroll = false;
 // $(window).on('touchstart', function(e)
 // {
