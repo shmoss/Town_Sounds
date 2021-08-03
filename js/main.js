@@ -1030,7 +1030,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     elements.scrollTop = 0
            
                     LeafletDiv.transition()        
-                        .duration(0)      
+                        .duration(200)      
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
@@ -1040,8 +1040,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseout", function(d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
-                            .duration(0)      
-                            .style("opacity", 0);  
+                            .duration(200)      
+                            .style("opacity", 0)
+                            .style("width", '0 px')    
+                            .style("height", '0 px') ;  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
                         })
@@ -1068,8 +1070,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                 .duration(0)      
                 .style("opacity", 0)
-                .style("scrollTop", 0)  
-                .style("pointer-events", 'none')
+                .style("scrollTop", 0)
+                .style("width", '0 px')    
+                .style("height", '0 px')  
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
