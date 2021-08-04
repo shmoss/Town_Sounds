@@ -1104,7 +1104,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                }          
+                } 
+                d3.event.stopPropagation();         
             })
         })
 
