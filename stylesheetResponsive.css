@@ -143,9 +143,22 @@ img{
     }
 
 
-.testspan{
-  font: 14px Baskerville;      
-        color: #fff;
+#closeCountyPopup{
+  
+  padding: 10px;
+  position: relative;
+
+  cursor:pointer;
+  pointer-events:all;
+  color: #fff;
+  font: 30px Baskerville;  
+  float:right;    
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#closeCountyPopup:hover{
+   transition: all 200ms;
+  color:#ffba00
 }
 
 

@@ -817,9 +817,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
     loadData(sf_events)
 
     var LeafletDiv = d3.select("#content").append("div")   
-            .attr("class", "county2014Tooltip")               
+            .attr("class", "county2014Tooltip")  
+            .attr("id", "Tooltip")             
             .style("opacity", 1)
             .style("scrollTop", 0)
+
+  //   var data = ["Hello World!"];
+
+
+  //   var countydiv = d3.selectAll(".county2014Tooltip")
+
+  // var update = function (txt) {
+
+  //       var spn = countydiv.selectAll('span').data([txt]);
+  //     spn.enter()
+  //       .append("span")
+  //       .text(function(d){return d})
+  //       console.log(data[0])
+  //   }
+
+  //       update(data[0])
+
+
+
+
+
     
     function loadData(eventArray) {
         //remove instances where coordinates are blank
@@ -994,14 +1016,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                      
                  
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    var popInfo = "<span id='closeCountyPopup'>X</span>" + '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                     + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
-               
-          
+                              
                
                     })
+
+
                 
                  
                 LeafletDiv
@@ -1015,15 +1038,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
  
             $('.county2014Tooltip').scrollTop(0);
 
+        d3.select("#closeCountyPopup").style("pointer-events", 'all')
+
+       //                d3.selectAll("#spanDiv").on("click", function() { 
+       //                  console.log("mouseing")
+       //                    LeafletDiv.transition()        
+       //                  .duration(200)      
+       //                  .style("opacity", 0)
+       //                  .style("pointer-events", 'none') 
+       //                  .attr("scrollTop", 0) 
+       // })
+
+  d3.selectAll("spanDiv").on("mouseover", function() { 
+        console.log("mouseing")
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;
+       })
+
             d3.event.stopPropagation();
 
             // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.selectAll("#closePopup").on("click", function(d) {
+            d3.selectAll("#closeCountyPopup").on("click", function(d) {
                 console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
-                if (this !== currentCircle) {
+              
                     //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
@@ -1060,7 +1099,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                }          
+                          
             })
         })
 
