@@ -954,7 +954,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             LeafletDiv.transition()        
                 .duration(200)      
-                .style("opacity", .9);
+                .style("opacity", .9)
+             
 
 
 
