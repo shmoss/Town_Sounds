@@ -1110,6 +1110,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
+                        d3.event.stopPropagation();
+
         })
 
         .on("mouseout", function(d) {       
