@@ -1059,23 +1059,22 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             d3.event.stopPropagation();
 
-             // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("#map").on("click", function(d) { 
+            // if user clicks a SECOND time, anywhere, make popup disappear
+            d3.selectAll("#map").on("click", function(d) {
                 console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
-                if (this !== currentCircle) {
-                    console.log("not on current circle")
+              
+                    //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
            
                     LeafletDiv.transition()        
-                        .duration(0)      
+                        .duration(200)      
                         .style("opacity", 0)
-                        .style("width", '0 px')
-                        .style("height", '0 px')
+                        .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
@@ -1095,16 +1094,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(200)      
                             .style("opacity", .9);
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
+                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
                         )
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                } 
-
+                          
             })
         })
 
