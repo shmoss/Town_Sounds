@@ -818,7 +818,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var LeafletDiv = d3.select("#content").append("div")   
             .attr("class", "county2014Tooltip")  
-            .attr("id", "Tooltip")             
             .style("opacity", 1)
             .style("scrollTop", 0)
 
@@ -877,12 +876,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var scrollBarActive = d3.select("#sidebar.active")
             .style("scrollTop", 0)
   
-        d3.selectAll('.county2014Tooltip')
-            .selectAll('div')
-            .enter()
-            .append('div')
-                .style("background-color", 'red')
-                .style("width", '40px')
+ 
            
        eventArray.forEach(function(d) {
         //console.log(d.Coordinates[1])
@@ -956,6 +950,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
+                .attr("class", "county2014Tooltip visible");
              
 
 
@@ -1075,6 +1070,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     console.log(appendText)
                     LeafletDiv
                         .html( appendText.join(""))
+
+
                                    
            
                     LeafletDiv.transition()        
@@ -1082,6 +1079,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
+                        .attr("class", "county2014Tooltip invisible");
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);

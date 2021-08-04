@@ -219,6 +219,19 @@ img{
         padding-right:4.5vh
     }
 
+
+        div.county2014Tooltip.visible { 
+        
+        pointer-events: all
+        
+    }
+
+        div.county2014Tooltip.invisible { 
+        
+        pointer-events: none
+        
+    }
+
     ::-webkit-scrollbar {
     width: 13px;
     height: 13px;
