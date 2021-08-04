@@ -163,6 +163,21 @@ img{
 }
 
 
+#closeCountyPopupBottom{
+  
+  
+  margin-left:100%;
+  position: sticky; 
+  bottom:400;
+  cursor:pointer;
+  pointer-events:all;
+  color: #fff;
+  font: 30px Baskerville;  
+  padding-left:1vh;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
 
     div.countyTooltip {  
         word-wrap: normal;
