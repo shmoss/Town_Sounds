@@ -1012,9 +1012,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     
                     })
                     var appendText = []
-                    var popClose = "<span id='closeCountyPopup' class='sticky-top'>X</span>" 
-                     //var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
-                    appendText.push(popClose)
+                    // var popClose = "<span id='closeCountyPopup' class='sticky-top'>X</span>" 
+                    //  //var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
+                    // appendText.push(popClose)
                     selections.each(function(d){
 
                     
@@ -1052,10 +1052,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
        //                  .attr("scrollTop", 0) 
        // })
 
-  d3.selectAll("spanDiv").on("mouseover", function() { 
-        console.log("mouseing")
-        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;
-       })
 
             d3.event.stopPropagation();
 
@@ -1071,6 +1067,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
 
+                    //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
+                    //create empty array and append to popup
                     appendText = []
                     console.log(appendText)
                     LeafletDiv
@@ -1078,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(200)      
+                        .duration(50)      
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
