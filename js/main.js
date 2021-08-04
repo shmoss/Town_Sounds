@@ -1070,6 +1070,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
+
+                    appendText = []
+                    console.log(appendText)
+                    LeafletDiv
+                        .html( appendText.join(""))
+                                   
            
                     LeafletDiv.transition()        
                         .duration(200)      
