@@ -938,6 +938,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         .on("click", function(d) { 
+            console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
             });
@@ -1042,7 +1043,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
  
             $('.county2014Tooltip').scrollTop(0);
 
-        d3.select("#closeCountyPopup").style("pointer-events", 'all')
+        //d3.select("#closeCountyPopup").style("pointer-events", 'all')
 
        //                d3.selectAll("#spanDiv").on("click", function() { 
        //                  console.log("mouseing")
@@ -1058,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
               // if user clicks a SECOND time, anywhere, make popup disappear
             d3.select("body").on("click", function(d) { 
-                //console.log("clicking off popup")
+                console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
@@ -1077,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(50)      
+                        .duration(200)      
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
