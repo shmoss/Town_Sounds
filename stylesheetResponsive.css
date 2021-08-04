@@ -9,7 +9,6 @@
         overflow: hidden;
         position:fixed;
 
-
     }
 
     p {
@@ -194,7 +193,6 @@ img{
     }
 
     div.county2014Tooltip { 
-
         word-wrap: normal;
         position: absolute;
         text-align: center;
@@ -209,7 +207,7 @@ img{
         background-color: rgba(51,51,51,.85);
         border: solid thin black;
         padding: 5px 10px 10px 5px;
-        pointer-events: none;   
+        pointer-events: all;   
         overflow-y:scroll; 
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -219,8 +217,6 @@ img{
         padding-bottom:3%;
         padding-left:2.5vh;
         padding-right:4.5vh
-  
-
     }
 
     ::-webkit-scrollbar {
@@ -338,7 +334,6 @@ background-color:red;
 
 #map{
     height:100%;
-
 }
 
 #content{
