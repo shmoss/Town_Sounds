@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     var sfData = "./data/sf_events.json" 
     var nycData = "./data/nyc_events.json" 
+    var madisonData = "./data/madison_events.json" 
+    var chicagoData = "./data/chicago_events.json"
 
    
         var selectedDate
@@ -186,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-             console.log(selectedDate, data.Date)
+             //console.log(selectedDate, data.Date)
             if (selectedDate === data.Date) {
                //console.log('datematch')
                 return 'inline'
@@ -296,20 +298,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
        
                 d3.selectAll(".events")
                     .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i]))
+                        return (d.Genre.toLowerCase().includes(genreType[i]))
                     })
                     .style("fill", display)
 
             }  
 
-            for (i=0; i<genreType.length; i++){
+            // for (i=0; i<genreType.length; i++){
        
-                d3.selectAll(".events")
-                    .filter(function(d) {       
-                        return (d.Genre.includes(genreType[i])==true)
-                    })
-                    .style("pointer-events", all)
-            } 
+            //     d3.selectAll(".events")
+            //         .filter(function(d) {       
+            //             return (d.Genre.includes(genreType[i])==true)
+            //         })
+            //         .style("pointer-events", all)
+            // } 
 
         }  
 
@@ -355,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             resetAll()
             resetVisibility()
+            x = "all"
+
         });
 
         var currentValue = 0;
@@ -365,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             currentValue = bluesRadioValue
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Blues"]
+            x = ["blues"]
             genreMatch(x)
         });
 
@@ -374,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Classical"]
+            x = ["classical"]
             genreMatch(x)
         });
 
@@ -383,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Electronic", "Electronica", "House", "DJ", "Techno", "Trance", "Dance"]
+            x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance"]
             genreMatch(x)
         });
 
@@ -392,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Bluegrass","Folk","Singer Songwriter","Americana","Country","Acoustic"]
+            x = ["bluegrass","folk","singer songwriter","americana","country","acoustic","singer-songwriter"]
             genreMatch(x)   
         });
 
@@ -401,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Hip Hop", "Rap"]
+            x = ["hip hop", "rap", "hip-hop"]
             genreMatch(x)
         });
 
@@ -410,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Jazz", "Swing", "Big Band"]
+            x = ["jazz", "wwing", "big band"]
             genreMatch(x)
         });
 
@@ -419,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["Metal", "Black Metal", "Hardcore"]
+            x = ["metal", "black Metal", "hardcore"]
             genreMatch(x)
         });
 
@@ -428,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["R&B", "Rnb", "Soul", "Disco", "Reggae", "rnb", "funk"]
+            x = ["r&b", "rnb", "soul", "disco", "reggae", "rnb", "funk"]
             genreMatch(x)
         });
 
@@ -439,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
             pointerEvents = this.checked ? "all" : "all";
-            x = ["Rock", "Pop","Indie", "Ska", "Punk"]
+            x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock"]
             genreMatch(x)
             removePoints(x)  
         });
@@ -449,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["No genre available"]
+            x = ["no genre available"]
             genreMatch(x)
         });
 
@@ -482,17 +486,145 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         //LA
+         d3.selectAll("#LosAngeles_CA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([34.0522, -118.2437], 13);
+            resetDisplay()
+            
+            loadData(LA_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
         //Chicago
+        d3.selectAll("#Chicago_IL_data").on("click", function() {
+            console.log("SF!")
+            map.setView([41.8781, -87.6298], 13);
+            resetDisplay()
+            
+            loadData(chicago_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Austin
+        d3.selectAll("#Austin_TX_data").on("click", function() {
+            console.log("SF!")
+            map.setView([30.2672, -97.7431], 13);
+            resetDisplay()
+            
+            loadData(austin_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+        });
+
         //Denver
+        d3.selectAll("#Denver_CO_data").on("click", function() {
+            console.log("SF!")
+            map.setView([39.7392, -104.9903], 13);
+            resetDisplay()
+            
+            loadData(denver_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
+
         //Nashville
+        d3.selectAll("#Nashville_TN_data").on("click", function() {
+            console.log("SF!")
+            map.setView([36.1627, -86.7816], 13);
+            resetDisplay()
+            
+            loadData(nashville_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+
+        });
+
         //Boston
+        
         //Madison
+        d3.selectAll("#Madison_WI_data").on("click", function() {
+            console.log("SF!")
+            map.setView([43.0731, -89.4012], 13);
+            resetDisplay()
+            
+            loadData(madison_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Milwaukee
+        d3.selectAll("#Milwaukee_WI_data").on("click", function() {
+            console.log("SF!")
+            map.setView([43.0389, -87.9065], 13);
+            resetDisplay()
+            
+            loadData(milwaukee_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Minneapolis
+        d3.selectAll("#Minneapolis_MN_data").on("click", function() {
+            console.log("SF!")
+            map.setView([44.9778, -93.2650], 13);
+            resetDisplay()
+            
+            loadData(minneapolis_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+            
+        });
+
         //Atlanta
         //New Orleans
+        d3.selectAll("#NewOrleans_LA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([29.9511, -90.0715], 13);
+            resetDisplay()
+            
+            loadData(neworleans_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+        });
+
         //Seattle
+        d3.selectAll("#Seattle_WA_data").on("click", function() {
+            console.log("SF!")
+            map.setView([47.6062, -122.3321], 13);
+            resetDisplay()
+            
+            loadData(seattle_events)
+
+            $("#allGenre").click()
+            $("#allTimes").click()
+            //combineArray(nyc_events)
+
+            });
         
         function resetGenreAndTime(){
             document.getElementById("#allGenre").checked = true;
@@ -685,16 +817,38 @@ document.addEventListener('DOMContentLoaded', function(e) {
     loadData(sf_events)
 
     var LeafletDiv = d3.select("#content").append("div")   
-            .attr("class", "county2014Tooltip")               
+            .attr("class", "county2014Tooltip")  
+            .attr("id", "Tooltip")             
             .style("opacity", 1)
             .style("scrollTop", 0)
+
+  //   var data = ["Hello World!"];
+
+
+  //   var countydiv = d3.selectAll(".county2014Tooltip")
+
+  // var update = function (txt) {
+
+  //       var spn = countydiv.selectAll('span').data([txt]);
+  //     spn.enter()
+  //       .append("span")
+  //       .text(function(d){return d})
+  //       console.log(data[0])
+  //   }
+
+  //       update(data[0])
+
+
+
+
+
     
     function loadData(eventArray) {
         //remove instances where coordinates are blank
-        eventArray = eventArray.filter(function(d){ return d.Coordinates != "" })
-        console.log(eventArray.length)
-        console.log(eventArray)
-        console.log(selectedDate)
+        eventArray = eventArray.filter(function(d){ return d.Coordinates[0] != "" })
+        //console.log(eventArray.length)
+        //console.log(eventArray)
+        //console.log(d.Coordinates)
         var time_window = ["00:00", "24:00"]
         
         d3.selectAll(".events").remove()
@@ -763,8 +917,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("scrollTop", 0)
 
 
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo + '<br/>'
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
                     
 
                     LeafletDiv
@@ -809,10 +963,28 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
-                   //this_time = d.Time
+                   this_lat = d.latitude
+                   this_long = d.longitude
+                   this_coordinates = d.coordinates
+                   this_address = d.Address
+                   this_genre = d.Genre
+                   //console.log('this_genre is ', this_genre, "and x is ", x)
+
+
+                   // display = "#ffba00"
+                   // all = "all"
+                   // genreMatch(this_genre)
+
+                    //let array1 = d.Genre, array2 = x;
+
+                    //console.log(array2.some(ele => array1.includes(ele)));
             
 
                     selections = d3.selectAll(".events").filter(function(d){
+
+                     
+
+
                     var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
@@ -826,22 +998,36 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     if (minutes < 10) sMinutes = "0" + sMinutes;
                     var showStartTime = (sHours + ":" + sMinutes);
                     
+                    //if 'all' genres not selected, then popup should only reflect genres that ARE selected
+                    if (x == null) {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else if (x == 'all') {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date && (d.Genre.toLowerCase().includes(x[0]) || d.Genre.toLowerCase().includes(x[1]) || d.Genre.toLowerCase().includes(x[2]) || d.Genre.toLowerCase().includes(x[3]) || d.Genre.toLowerCase().includes(x[4]) || d.Genre.toLowerCase().includes(x[5]) || d.Genre.toLowerCase().includes(x[6]) || d.Genre.toLowerCase().includes(x[7]) || d.Genre.toLowerCase().includes(x[8]) || d.Genre.toLowerCase().includes(x[9]) || d.Genre.toLowerCase().includes(x[10]))
 
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
+                    }                 
 
+
+                    
                     })
                     var appendText = []
+                    var popClose = "<span id='closeCountyPopup'>X</span>" 
+                    appendText.push(popClose)
                     selections.each(function(d){
+
+                    
                  
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
-               
-          
+                              
                
                     })
-                
+
+
+                    
                  
                 LeafletDiv
                     .html( appendText.join(""))
@@ -854,16 +1040,32 @@ document.addEventListener('DOMContentLoaded', function(e) {
  
             $('.county2014Tooltip').scrollTop(0);
 
+        d3.select("#closeCountyPopup").style("pointer-events", 'all')
+
+       //                d3.selectAll("#spanDiv").on("click", function() { 
+       //                  console.log("mouseing")
+       //                    LeafletDiv.transition()        
+       //                  .duration(200)      
+       //                  .style("opacity", 0)
+       //                  .style("pointer-events", 'none') 
+       //                  .attr("scrollTop", 0) 
+       // })
+
+  d3.selectAll("spanDiv").on("mouseover", function() { 
+        console.log("mouseing")
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;
+       })
+
             d3.event.stopPropagation();
 
             // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("body").on("click", function(d) { 
+            d3.selectAll("#closeCountyPopup").on("click", function(d) {
                 console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
-                if (this !== currentCircle) {
-                    console.log("not on current circle")
+              
+                    //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
@@ -891,15 +1093,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(200)      
                             .style("opacity", .9);
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
+                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
                         )
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                }          
+                          
             })
         })
 
@@ -945,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         var today  = new Date();
         var todayString = today.toString().split(" " ,4)
         var todayClean = todayString.toString().replace(/,/g, ' ')
-        console.log(todayClean)
+        //console.log(todayClean)
         
 
         function updateTime(start, end) {
@@ -1128,9 +1330,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                         .duration(200) 
                         .style("opacity",1) 
+                        .style("pointer-events","all") 
+                        .style("scrollTop", 0)
+
+            str_linkedin = 'LinkedIn'.fontcolor( "#ffba00")
+            str_website = 'starrmoss.com'.fontcolor( "#ffba00")
 
             LeafletDiv
-                    .html('<br/>'+'<b>'+ '<font size="3em">'+"What is TownSounds?"+ '</font>'+ '</b>' + '<br/>' + "</br>" + "Townsounds is an app for finding live music! ")  
+                    .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds is an app for finding live music!" +
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds displays music events listed on bandsintown.com. Currently, I'm only able to pull events for specific cities, but I hope to expand TownSounds to include more metro areas. If you want to see your city on here, drop me a line! "+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown! You can also feel free to contribute financially to help keep this app up and running (@Starr-Moss on venmo). Your contribution will help cover overhead costs of this app such as data storage, geocoding services, and cloud computing."+
+                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"About".fontcolor( "#ffba00")+ 
+                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Hello! I'm Starr Moss. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as the format of live music (live-streams, etc.) has been altered by the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to " +  "starrmoss1@gmail.com".fontcolor( "#ffba00")+  " for any questions." + '</br>' + '<br/>' + "Find me on " + str_linkedin.link("https://www.linkedin.com/in/starrmoss/") + " or " +  str_website.link("https://www.starrmoss.com") )  
                     .style("top", "1.5vh")
 
                     .style("text-align", 'left')
@@ -1143,6 +1357,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     LeafletDiv.transition()        
                         .duration(200) 
                         .style("opacity",0)
+                        .style("pointer-events","none")
 
                 d3.selectAll(".events")
                 .style("pointer-events","all")  
@@ -1224,12 +1439,52 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //alert('More than 960');
         }
      
+// function toggleZoomScreen() {document.body.style.zoom = "100%";}
+// toggleZoomScreen()
+//         window.blockMenuHeaderScroll = false;
+// $(window).on('touchstart', function(e)
+// {
+//     if ($(e.target).closest('#map').length == 1)
+//     {
+//         blockMenuHeaderScroll = true;
+//     }
+// });
+// $(window).on('touchend', function()
+// {
+//     blockMenuHeaderScroll = false;
+// });
+// $(window).on('touchmove', function(e)
+// {
+//     if (blockMenuHeaderScroll)
+//     {
+//         e.preventDefault();
+//     }
+// });
 
 
-        
+//this works -------------------------------
+// document.addEventListener("touchstart", function(e){
+// e.preventDefault();
+// },{passive: false});
+
+// document.getElementById('map').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('sidebar').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('folkGenre').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
+// document.getElementById('dropdownMenuButton').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('sidebarCollapse').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('NewYorkCity_NY_data').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+// document.getElementById('about').addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
+// eventsElement = document.getElementsByClassName('events')[0].addEventListener('touchstart', function(e){e.stopPropagation()}, false);
+
+//this works -------------------------------
+
+
 
 
         
 
     }
 })
+
