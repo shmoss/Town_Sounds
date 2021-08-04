@@ -1096,7 +1096,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseover", function(d) { 
                         LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", .9);
+                            .style("opacity", .9)
+                            .attr("class", "county2014Tooltip visible")
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                         + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
@@ -1116,7 +1117,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", 0)
-                .style("scrollTop", 0)  
+                .style("scrollTop", 0)
+                .attr("class", "county2014Tooltip invisible")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
