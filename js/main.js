@@ -1072,11 +1072,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     elements.scrollTop = 0
            
                     LeafletDiv.transition()        
-                        .duration(200)      
+                        .duration(0)      
                         .style("opacity", 0)
                         .style("width", '0 px')
                         .style("height", '0 px')
-                        .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
@@ -1105,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke-width", '3px')
                     })
                 } 
-                d3.event.stopPropagation();         
+
             })
         })
 
