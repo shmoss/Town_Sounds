@@ -1013,8 +1013,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                     var appendText = []
                     var popClose = "<span id='closeCountyPopup' class='sticky-top'>X</span>" 
-                     var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
-                    appendText.push(popClose+popCloseBottom)
+                     //var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
+                    appendText.push(popClose)
                     selections.each(function(d){
 
                     
@@ -1059,13 +1059,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             d3.event.stopPropagation();
 
-            // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.selectAll("#map").on("click", function(d) {
-                console.log("clicking off popup")
+              // if user clicks a SECOND time, anywhere, make popup disappear
+            d3.select("body").on("click", function(d) { 
+                //console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
-              
+                if (this !== currentCircle) {
                     //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
@@ -1102,7 +1102,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                          
+                }          
             })
         })
 
