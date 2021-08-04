@@ -145,14 +145,15 @@ img{
 
 #closeCountyPopup{
   
-  padding: 10px;
-  position: relative;
-
+  
+  margin-left:100%;
+  position: sticky; 
+  top:0;
   cursor:pointer;
   pointer-events:all;
   color: #fff;
   font: 30px Baskerville;  
-  float:right;    
+  padding-left:1vh;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
@@ -185,7 +186,7 @@ img{
         position: absolute;
         text-align: center;
         border-radius: 15px;           
-        padding: 2px;               
+        padding: 4px;               
         font-size: .9em ; 
         line-height: 1.5em;
         font-family:'poppins';  
@@ -203,8 +204,8 @@ img{
         margin-left:1vh;
         opacity:.2;
         padding-bottom:3%;
-        padding-left:1.5vh;
-        padding-right:1.5vh
+        padding-left:2.5vh;
+        padding-right:4.5vh
   
 
     }
@@ -251,7 +252,7 @@ img{
   div.county2014Tooltip  {
         min-height:50vh;
         min-width: 25vh;    
-        max-width: 50vh; 
+        max-width: 60vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
         word-wrap: break-word;
@@ -265,7 +266,7 @@ img{
  div.county2014Tooltip  {
         min-height:50vh;
         min-width: 25vh;    
-        max-width: 50vh; 
+        max-width: 60vh; 
         max-height:70vh; 
         overflow-wrap: break-word; 
         word-wrap: break-word;
