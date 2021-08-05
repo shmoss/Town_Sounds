@@ -934,7 +934,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         
-  .on("click", function(d) { 
+  
+        .on("click", function(d) { 
             console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
@@ -949,13 +950,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             //add popup   
             var value2014 = currentMap.get(d.location);  
-
-            //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
-                    //create empty array and append to popup
-                    appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
 
             LeafletDiv.transition()        
                 .duration(200)      
@@ -1089,7 +1083,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
-                        //.attr("class", "county2014Tooltip invisible");
+                        .attr("class", "county2014Tooltip invisible");
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);
@@ -1119,7 +1113,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
-                        //d3.event.stopPropagation();
+                        d3.event.stopPropagation();
 
         })
 
