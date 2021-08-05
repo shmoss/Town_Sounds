@@ -207,7 +207,7 @@ img{
         font-family:'poppins';  
         font-weight: 150;
         color: green;
-        pointer-events:none;
+       
         margin-top:11vh;
         background-color: rgba(51,51,51,.85);
         pointer-events:none;
@@ -315,13 +315,13 @@ img{
         
         pointer-events: all;
         opacity:.9;
+       
         
     }
 
         div.county2014Tooltip.invisible { 
+
         
-        pointer-events: none;
-         opacity:0;
         
     }
 

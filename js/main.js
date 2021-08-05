@@ -909,6 +909,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
+                    .style("background-color","green")
+                    .style("transform","scale(1)")
 
                    
 
@@ -951,17 +953,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //add popup   
             var value2014 = currentMap.get(d.location);  
 
-            //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
-                    //create empty array and append to popup
-                    appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
-
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
-                .attr("class", "county2014Tooltip visible");
+                .style("background-color","green")
+                .style("transform","scale(1)")
+             
              
 
 
@@ -1077,20 +1074,22 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
-                    appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
+                    // appendText = []
+                    // console.log(appendText)
+                    // LeafletDiv
+                    //     .html( appendText.join(""))
 
 
                                    
            
                     LeafletDiv.transition()        
                         .duration(200)      
-                        .style("opacity", 0)
+                        .style("opacity", 1)
+                        .style("background-color","red")
+                        .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
-                        //.attr("class", "county2014Tooltip invisible");
+                     
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);
@@ -1108,7 +1107,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         LeafletDiv.transition()        
                             .duration(200)      
                             .style("opacity", .9)
-                            .attr("class", "county2014Tooltip visible")
+                            .style("background-color","green")
+                            .style("transform","scale(1)")
+                           
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                         + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
@@ -1120,7 +1121,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
-                        
+                        d3.event.stopPropagation();
 
         })
 
@@ -1129,9 +1130,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
-                //.attr("class", "county2014Tooltip invisible")
+                .style("background-color","green")
+                .style("transform","scale(0)")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
+
         })
 
         var todaysDate = new Date 
