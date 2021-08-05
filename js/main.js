@@ -1112,7 +1112,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
-                        d3.event.stopPropagation();
+                        //d3.event.stopPropagation();
 
         })
 
