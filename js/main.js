@@ -909,7 +909,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
-                    .style("background-color","green")
+                    .style("background-color","rgba(51,51,51,.85)")
                     .style("transform","scale(1)")
 
                    
@@ -956,7 +956,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
-                .style("background-color","green")
+                .style("background-color","rgba(51,51,51,.85)")
                 .style("transform","scale(1)")
              
              
@@ -1085,7 +1085,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 1)
-                        .style("background-color","red")
+                        .style("background-color","rgba(51,51,51,.85)")
                         .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
@@ -1107,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         LeafletDiv.transition()        
                             .duration(200)      
                             .style("opacity", .9)
-                            .style("background-color","green")
+                            .style("background-color","rgba(51,51,51,.85)")
                             .style("transform","scale(1)")
                            
 
@@ -1130,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
-                .style("background-color","green")
+                .style("background-color","rgba(51,51,51,.85)")
                 .style("transform","scale(0)")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
