@@ -934,8 +934,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         
-
-        .on("click", function(d) { 
+  .on("click", function(d) { 
             console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
@@ -1336,47 +1335,47 @@ document.addEventListener('DOMContentLoaded', function(e) {
         })
     
 
-        d3.select("#about").on("click", function() {
-            d3.selectAll(".events")
-                .style("pointer-events","none")    
-            console.log('hello') 
-            LeafletDiv.transition()        
-                        .duration(200) 
-                        .style("opacity",1) 
-                        .style("pointer-events","all") 
-                        .style("scrollTop", 0)
+        // d3.select("#about").on("click", function() {
+        //     d3.selectAll(".events")
+        //         .style("pointer-events","none")    
+        //     console.log('hello') 
+        //     LeafletDiv.transition()        
+        //                 .duration(200) 
+        //                 .style("opacity",1) 
+        //                 .style("pointer-events","all") 
+        //                 .style("scrollTop", 0)
 
-            str_linkedin = 'LinkedIn'.fontcolor( "#ffba00")
-            str_website = 'starrmoss.com'.fontcolor( "#ffba00")
+        //     str_linkedin = 'LinkedIn'.fontcolor( "#ffba00")
+        //     str_website = 'starrmoss.com'.fontcolor( "#ffba00")
 
-            LeafletDiv
-                    .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?".fontcolor( "#ffba00")+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds is an app for finding live music!" +
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?".fontcolor( "#ffba00")+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds displays music events listed on bandsintown.com. Currently, I'm only able to pull events for specific cities, but I hope to expand TownSounds to include more metro areas. If you want to see your city on here, drop me a line! "+
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?".fontcolor( "#ffba00")+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown! You can also feel free to contribute financially to help keep this app up and running (@Starr-Moss on venmo). Your contribution will help cover overhead costs of this app such as data storage, geocoding services, and cloud computing."+
-                        '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"About".fontcolor( "#ffba00")+ 
-                        '</font>'+ '</b>' + '<br/>' + "</br>" + "Hello! I'm Starr Moss. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as the format of live music (live-streams, etc.) has been altered by the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to " +  "starrmoss1@gmail.com".fontcolor( "#ffba00")+  " for any questions." + '</br>' + '<br/>' + "Find me on " + str_linkedin.link("https://www.linkedin.com/in/starrmoss/") + " or " +  str_website.link("https://www.starrmoss.com") )  
-                    .style("top", "1.5vh")
+        //     LeafletDiv
+        //             .html('<br/>'+'<b>'+ '<font size="2.5em">'+"What is TownSounds?".fontcolor( "#ffba00")+ 
+        //                 '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds is an app for finding live music!" +
+        //                 '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"Why are only certain cities shown?".fontcolor( "#ffba00")+ 
+        //                 '</font>'+ '</b>' + '<br/>' + "</br>" + "TownSounds displays music events listed on bandsintown.com. Currently, I'm only able to pull events for specific cities, but I hope to expand TownSounds to include more metro areas. If you want to see your city on here, drop me a line! "+
+        //                 '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"How can I help?".fontcolor( "#ffba00")+ 
+        //                 '</font>'+ '</b>' + '<br/>' + "</br>" + "Put your band's events on bandintown! You can also feel free to contribute financially to help keep this app up and running (@Starr-Moss on venmo). Your contribution will help cover overhead costs of this app such as data storage, geocoding services, and cloud computing."+
+        //                 '<br/>' + '<br/>' + '<b>' + '<font size="2.5em">'+"About".fontcolor( "#ffba00")+ 
+        //                 '</font>'+ '</b>' + '<br/>' + "</br>" + "Hello! I'm Starr Moss. I'm a musician, and always thought it would be a cool idea to be able to see local live music options on a map. This is an ever-evolving project, as the format of live music (live-streams, etc.) has been altered by the pandemic. Now that things are looking up, I'm hoping this app can be a tool for music-lovers to find great music!" + '</br>' + '<br/>' + "Please reach out to " +  "starrmoss1@gmail.com".fontcolor( "#ffba00")+  " for any questions." + '</br>' + '<br/>' + "Find me on " + str_linkedin.link("https://www.linkedin.com/in/starrmoss/") + " or " +  str_website.link("https://www.starrmoss.com") )  
+        //             .style("top", "1.5vh")
 
-                    .style("text-align", 'left')
+        //             .style("text-align", 'left')
 
-                d3.event.stopPropagation();
+        //         d3.event.stopPropagation();
 
-               d3.select("body").on("click", function(d) { 
-                console.log("clicking off popup")
+        //        d3.select("body").on("click", function(d) { 
+        //         console.log("clicking off popup")
                 
-                    LeafletDiv.transition()        
-                        .duration(200) 
-                        .style("opacity",0)
-                        .style("pointer-events","none")
+        //             LeafletDiv.transition()        
+        //                 .duration(200) 
+        //                 .style("opacity",0)
+        //                 .style("pointer-events","none")
 
                 
                
-                })
+        //         })
 
-        });
+        // });
 
         // var el = document.getElementById("aboutTooltip"); // Or whatever method to get the element
 
