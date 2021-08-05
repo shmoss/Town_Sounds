@@ -223,6 +223,92 @@ img{
         padding-right:4.5vh
     }
 
+        #aboutTooltip { 
+
+    word-wrap: normal;
+   
+
+    margin-top:1vh;
+            position: absolute;
+          width:400px;
+        text-align: left;
+        border-radius: 4px;           
+        padding: 5px 0         
+        font-size: 14px ; 
+        line-height: 1.5em;
+        font-family:'Poppins';  
+        font-weight: 150;
+        color: #AAAAAA;
+        background-color: #202020;
+        border: solid thin #AAAAAA;
+        overflow-y:scroll; 
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        margin-left:1vh;
+        padding-bottom:3%;
+        padding-left:2.5vh;
+        padding-right:4.5vh
+    }
+
+     #aboutTooltip::-webkit-scrollbar-thumb {
+    background:#202020 !important;
+}
+
+  @media all and (min-width:0px) and (max-width: 576px) {
+    #aboutTooltip {
+          height:60vh;
+          overflow-y:auto;
+          margin-left: -22vh; 
+          min-width: 25vh;    
+         max-width: 35vh; 
+       }
+}
+
+@media (min-width: 576px) {
+
+ #aboutTooltip {
+          height:50vh;
+          overflow-y:auto;
+          margin-left: -22%; 
+          min-width: 45vh;    
+         max-width: 55vh; 
+
+       }
+}
+
+@media (min-width: 768px) {
+
+ #aboutTooltip {
+          height:50vh;
+          overflow-y:auto;
+          margin-left: -22%; 
+          min-width: 45vh;    
+         max-width: 55vh; 
+
+       }
+
+
+ }
+
+
+    @media (min-width: 992px) {
+    #aboutTooltip {
+          height:50vh;
+          overflow-y:auto;
+          margin-left: -22%; 
+          min-width: 45vh;    
+         max-width: 55vh; 
+       }
+    }
+
+           .aboutTooltipHeader { 
+
+        color: #ffba00;
+        font-weight:600;    
+    }
+
+
+
 
         div.county2014Tooltip.visible { 
         
@@ -526,6 +612,8 @@ padding-left:2%;
    margin-left: -132%; 
 
 }
+
+
 
 .dropdown-menu.show {
    background-color: #202020;

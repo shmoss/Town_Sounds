@@ -1372,12 +1372,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("opacity",0)
                         .style("pointer-events","none")
 
-                d3.selectAll(".events")
-                .style("pointer-events","all")  
+                
                
                 })
 
         });
+
+        // var el = document.getElementById("aboutTooltip"); // Or whatever method to get the element
+
+        // // To set the scroll
+        // el.scrollTop = 0;
+        //     el.scrollLeft = 0;
+
+        var aboutScroll = d3.select("#aboutTooltip")
+            .style("scrollTop", 0)
 
 
         function removePoints (genreType) {
