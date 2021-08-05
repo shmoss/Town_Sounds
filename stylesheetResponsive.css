@@ -8,6 +8,10 @@
         min-width:100%;
         overflow: hidden;
         position:fixed;
+        -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
 
     }
 
@@ -375,6 +379,22 @@ background-color:red;
     font-size:14px;
 }
 
+.qs-active {
+   font-weight: 800;
+   color:black;
+}
+
+.qs-current{
+   font-weight: 300 !important;
+   color:black;
+}
+
+.qs-current.qs-active{
+   font-weight: 800 !important;
+   color:black;
+}
+
+
 .qs-num{
     font-family:'Poppins';
 }
@@ -462,7 +482,8 @@ padding-left:2%;
 
 
 #about.btn {
-    background-color:#5A6268
+    background-color:#5A6268;
+    pointer-events: all
     
 }
 
