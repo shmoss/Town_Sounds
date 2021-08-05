@@ -1082,7 +1082,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("opacity", 0)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
-                        .attr("class", "county2014Tooltip invisible");
+                        //.attr("class", "county2014Tooltip invisible");
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);

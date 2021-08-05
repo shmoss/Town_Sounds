@@ -312,13 +312,15 @@ img{
 
         div.county2014Tooltip.visible { 
         
-        pointer-events: all
+        pointer-events: all;
+        opacity:.9;
         
     }
 
         div.county2014Tooltip.invisible { 
         
-        pointer-events: none
+        pointer-events: none;
+         opacity:0;
         
     }
 
