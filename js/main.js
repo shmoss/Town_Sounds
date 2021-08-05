@@ -950,6 +950,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //add popup   
             var value2014 = currentMap.get(d.location);  
 
+            //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
+                    //create empty array and append to popup
+                    appendText = []
+                    console.log(appendText)
+                    LeafletDiv
+                        .html( appendText.join(""))
+
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
