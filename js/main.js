@@ -907,8 +907,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                 LeafletDiv.transition()        
                     .duration(200)      
-                    .style("opacity", 1.7)
+                    .style("opacity", .9)
                     .style("scrollTop", 0)
+
+                   
+
 
 
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
@@ -919,6 +922,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .html(popInfo)
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
+
                     d3.select(this).style("stroke", 'black')
                     d3.select(this).style("stroke-width", '3px')    
 
@@ -1118,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
-                .attr("class", "county2014Tooltip invisible")
+                //.attr("class", "county2014Tooltip invisible")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
         })
