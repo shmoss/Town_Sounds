@@ -1384,8 +1384,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         // el.scrollTop = 0;
         //     el.scrollLeft = 0;
 
-        var aboutScroll = d3.select("#aboutTooltip")
-            .style("scrollTop", 0)
+       
 
 
         function removePoints (genreType) {
