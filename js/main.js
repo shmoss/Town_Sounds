@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["classical"]
+            x = ["classical", "chamber", "baroque", "choral", "orchestra"]
             genreMatch(x)
         });
 
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance"]
+            x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance", "dubstep", "dub", "rave"]
             genreMatch(x)
         });
 
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["hip hop", "rap", "hip-hop"]
+            x = ["hip hop", "rap", "hip-hop", "trap", "gangsta", "freestyle"]
             genreMatch(x)
         });
 
@@ -414,7 +414,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["jazz", "wwing", "big band"]
+            x = ["jazz", "swing", "big band", "manouche", "fusion", "bop", "dixieland"]
+            genreMatch(x)
+        });
+
+        d3.selectAll("#latinGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["latin", "cumbia", "brazilian", "reggaeton", "salsa", "choro", "samba", "bachata", "mexican", "urbano", "merengue"]
             genreMatch(x)
         });
 
@@ -423,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["metal", "black Metal", "hardcore"]
+            x = ["metal", "black Metal", "hardcore", "deathcore", "death metal"]
             genreMatch(x)
         });
 
@@ -443,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
             pointerEvents = this.checked ? "all" : "all";
-            x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock"]
+            x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock", "emo", "alt-rock", "rock and roll", "rock n roll", "surf"]
             genreMatch(x)
             removePoints(x)  
         });
@@ -913,11 +921,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .attr("hidden",null)
 
                    
-
+                    str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                    str_currentUrl.link(d.currentUrl)
 
 
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
                     
 
                     LeafletDiv
@@ -987,6 +996,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     selections = d3.selectAll(".events").filter(function(d){
 
+
+
                      
 
 
@@ -1022,10 +1033,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     // appendText.push(popClose)
                     selections.each(function(d){
 
-                    
+
+                    str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                    str_currentUrl.link(d.currentUrl)
+
                  
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
                               
@@ -1112,7 +1126,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                            
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
+                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
                         )
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
@@ -1470,7 +1484,43 @@ document.addEventListener('DOMContentLoaded', function(e) {
         } else {
         //alert('More than 960');
         }
+
+
+$(function() {
+
+  $('.btn btn-info.calendar').on('click', function(event) {
+    $('.dropdown-menu').slideToggle();
+    event.stopPropagation();
+  });
+
+  $('.dropdown-menu.calendar').on('click', function(event) {
+    event.stopPropagation();
+  });
+
+
+
+  $(window).on('click', function() {
+    $('.dropdown-menu.calendar').slideUp();
+  });
+
+});
+
+//         $('.btn.btn-info.calendar').on('click', function (event) {
+//             $('.dropdown-menu.calendar').css("display","inline");
+//             console.log('calendar clicked')
+//     $(this).parent().toggleClass('open');
+// });
      
+//      $('body').on('click', function (e) {
+//     if (!$('.btn.btn-info.calendar').is(e.target) 
+//         && $('.btn.btn-info.calendar').has(e.target).length === 0 
+//         && $('.open').has(e.target).length === 0
+//     ) {
+//         $('.btn.btn-info.calendar').removeClass('open');
+//         console.log("clicked off")
+//      $('.dropdown-menu.calendar').css("display","none");
+//     }
+// });
 // function toggleZoomScreen() {document.body.style.zoom = "100%";}
 // toggleZoomScreen()
 //         window.blockMenuHeaderScroll = false;
