@@ -910,7 +910,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("background-color","rgba(51,51,51,.85)")
-                    .style("transform","scale(1)")
+                    .attr("hidden",null)
 
                    
 
@@ -957,7 +957,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", .9)
                 .style("background-color","rgba(51,51,51,.85)")
-                .style("transform","scale(1)")
+                .attr("hidden",null)
              
              
 
@@ -1086,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .duration(200)      
                         .style("opacity", 1)
                         .style("background-color","rgba(51,51,51,.85)")
-                        .style("transform","scale(0)")
+                        .attr("hidden",true)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
                      
@@ -1108,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(200)      
                             .style("opacity", .9)
                             .style("background-color","rgba(51,51,51,.85)")
-                            .style("transform","scale(1)")
+                            .attr("hidden",null)
                            
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
@@ -1131,9 +1131,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("background-color","rgba(51,51,51,.85)")
-                .style("transform","scale(0)")
+                .attr("hidden",true)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
+
+
 
         })
 
