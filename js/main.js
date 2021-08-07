@@ -673,7 +673,24 @@ document.addEventListener('DOMContentLoaded', function(e) {
         autoclose: true,
         todayHighlight: true,
         disableTouchKeyboard: true,
-        format: 'yyyy-mm-dd',
+       format: {
+    /*
+     * Say our UI should display a week ahead,
+     * but textbox should store the actual date.
+     * This is useful if we need UI to select local dates,
+     * but store in UTC
+     */
+    toDisplay: function (date, format, language) {
+        var d = new Date(date);
+        d.setDate(d.getDate());
+        return d.toString();
+    },
+    toValue: function (date, format, language) {
+        var d = new Date(date);
+        d.setDate(d.getDate() + 7);
+        return new Date(d);
+    }
+  },
         startDate: new Date(),
         Readonly: true,
         endDate: new Date(new Date().setDate(new Date().getDate() + 3))
@@ -1149,7 +1166,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
-                    
+
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
                     // appendText = []
