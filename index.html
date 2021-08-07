@@ -10,6 +10,9 @@
 
     <title>Town Sounds!</title>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+
       <!-- favicon -->
     <link href="img/note.png" rel="shortcut icon">
 
@@ -58,8 +61,8 @@
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
     <script src="./js/datepicker.min.js"></script>
     <script src="./js/datepick.js"></script>
-    <script src="https://unpkg.com/js-datepicker"></script> 
-    <script src="./data/austin_events.json"></script>
+<!--     <script src="https://unpkg.com/js-datepicker"></script> 
+ -->    <script src="./data/austin_events.json"></script>
     <script src="./data/chicago_events.json"></script>
     <script src="./data/denver_events.json"></script>
     <script src="./data/LA_events.json"></script>
@@ -75,7 +78,36 @@
     <script src="./js/main.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.3/mapbox-gl.js'></script>
     <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+   
 
+
+
+<!-- <main class="container">
+    <div class="row" style="padding-top: 100px">
+        <div class="col">
+           x
+        </div>
+    </div>
+</main> -->
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<style type="text/css">
+        .datepicker {
+            font-size: 0.875em;
+        }
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+        
+        .datepicker td, .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        
+    </style>
+<script type="text/javascript">
+   
+</script>
 
 
     <!-- Content Starts here -->
@@ -239,7 +271,6 @@
             </div>
 
            
-
                 
 
         </nav>
@@ -348,20 +379,18 @@
 
   <div class="btn-group" role="group" aria-label="Third group" >
      <div class="dropdown show">
-                    <button class="btn btn-info calendar" type="button" id="dropdownMenuButton"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                   <span class="glyphicon glyphicon-map-marker"></span> About
-                    </button>
-                <div class="dropdown-menu calendar" id="aboutTooltip"  style="overflow-y:scroll; margin-top:6vh"aria-labelledby="dropdownMenuButton">
- 
-             <div id="datepicker" style="height:0px"></div>
-
-                <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-                </div>
+              <input id="datepicker">    
     </div>
   </div>
 
   
-
+<!-- <main class="container">
+    <div class="row" style="padding-top: 100px">
+        <div class="col">
+            <input data-date-format="dd/mm/yyyy" id="datepicker">
+        </div>
+    </div>
+</main> -->
 
 </div>
                 <div id="map" class="tiles" style="min-width: 100vh; min-height: 100vh" pointer-events="all">

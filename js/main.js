@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         
 
         function dateMatch(data) {  
-             //console.log(selectedDate, data.Date)
+             console.log("selectedDate in dateMatch", selectedDate)
             if (selectedDate === data.Date) {
                //console.log('datematch')
                 return 'inline'
@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         } 
 
         function update(value) {
+            console.log('updating')
 
             //resetStroke ()
             //filter by current date selected
@@ -665,65 +666,126 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 });
             }; 
     
-      
-        const picker = datepicker(document.querySelector('#datepicker'), {
+       $('#datepicker').datepicker({
 
-            // Event callbacks.
-            onSelect: function(instance) {
+
+        weekStart: 1,
+        autoclose: true,
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        startDate: new Date(),
+        endDate: new Date(new Date().setDate(new Date().getDate() + 3))
+
+           // Event callbacks.
+        //     onSelect: function(instance) {
     
-                var instanceSplit = instance.dateSelected.toString().split(" " ,4)
-                var dayofMonth = instanceSplit[2]
+        //         var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+        //         var dayofMonth = instanceSplit[2]
     
-                var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
-                var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
-                    .replace(/02/g, '2')
-                    .replace(/03/g, '3')
-                    .replace(/04/g, '4')
-                    .replace(/05/g, '5')
-                    .replace(/06/g, '6')
-                    .replace(/07/g, '7')
-                    .replace(/08/g, '8')
-                    .replace(/09/g, '9')
+        //         var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
+        //         var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
+        //             .replace(/02/g, '2')
+        //             .replace(/03/g, '3')
+        //             .replace(/04/g, '4')
+        //             .replace(/05/g, '5')
+        //             .replace(/06/g, '6')
+        //             .replace(/07/g, '7')
+        //             .replace(/08/g, '8')
+        //             .replace(/09/g, '9')
 
-                    var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
+        //             var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
 
-                    selectedDate = finalDate
-                    selectedDate = formatDate(selectedDate)
-                    console.log(selectedDate)
+        //             selectedDate = finalDate
+        //             selectedDate = formatDate(selectedDate)
+        //             console.log(selectedDate)
  
-                update()
+        //         update()
        
-            },
+        //     },
 
-            onShow: function(instance) {
-            },
-            onHide: function(instance) {
-            },
-            onMonthChange: function(instance) {
-            },
+
+    });
+    $('#datepicker').datepicker("setDate", new Date());
+
+    $(function() {
+    $("#datepicker").datepicker();
+    
+    $("#datepicker").val();
+    
+    $("#datepicker").on("change",function(){
+        
+        selectedDate = $(this).val();
+        update(selectedDate)
+        console.log("datepicker selectedDate is", selectedDate)
+        return selectedDate
+    });
+});
+
+
+        // const picker = datepicker(document.querySelector('#datepicker'), {
+
+        //     // Event callbacks.
+        //     onSelect: function(instance) {
+    
+        //         var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+        //         var dayofMonth = instanceSplit[2]
+    
+        //         var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
+        //         var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
+        //             .replace(/02/g, '2')
+        //             .replace(/03/g, '3')
+        //             .replace(/04/g, '4')
+        //             .replace(/05/g, '5')
+        //             .replace(/06/g, '6')
+        //             .replace(/07/g, '7')
+        //             .replace(/08/g, '8')
+        //             .replace(/09/g, '9')
+
+        //             var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
+
+        //             selectedDate = finalDate
+        //             selectedDate = formatDate(selectedDate)
+        //             console.log(selectedDate)
  
-            // Customizations.
-            formatter: function(el, date, instance) {
-                el.value = date.toDateString();
-                dat = new Date()
-            },
+        //         update()
+       
+        //     },
+
+        //     onShow: function(instance) {
+        //     },
+        //     onHide: function(instance) {
+        //     },
+        //     onMonthChange: function(instance) {
+        //     },
+ 
+        //     // Customizations.
+        //     formatter: function(el, date, instance) {
+        //         el.value = date.toDateString();
+        //         dat = new Date()
+        //     },
   
-            position: 'tr', // Top right.
-            startDay: 1, // Calendar week starts on a Monday.
-            customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
-            customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            overlayButton: 'Go!',
-            overlayPlaceholder: 'Enter a 4-digit year',
+        //     position: 'tr', // Top right.
+        //     startDay: 1, // Calendar week starts on a Monday.
+        //     customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
+        //     customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        //     overlayButton: 'Go!',
+        //     overlayPlaceholder: 'Enter a 4-digit year',
  
-            // Settings.
-            alwaysShow: true, // Never hide the calendar.
-            dateSelected: new Date(), // Today is selected.
-            maxDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-            minDate: new Date(new Date().getTime()), // June 1st, 2016.
-            startDate: new Date(), // This month.
+        //     // Settings.
+        //     alwaysShow: true, // Never hide the calendar.
+        //     dateSelected: new Date(), // Today is selected.
+        //     maxDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+        //     minDate: new Date(new Date().getTime()), // June 1st, 2016.
+        //     startDate: new Date(), // This month.
    
 
-        });
+        // });
+
+//         $("#datepicker").click( function() {
+//     $('btn.btn-info.calendar').click(function(e){
+//        e.stopPropagation();
+//     })
+// })
 
         function removeSidebar(){
             $('#sidebar').removeClass('active');
@@ -1362,6 +1424,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         })
     
 
+
         // d3.select("#about").on("click", function() {
         //     d3.selectAll(".events")
         //         .style("pointer-events","none")    
@@ -1486,24 +1549,55 @@ document.addEventListener('DOMContentLoaded', function(e) {
         }
 
 
-$(function() {
 
-  $('.btn btn-info.calendar').on('click', function(event) {
-    $('.dropdown-menu').slideToggle();
-    event.stopPropagation();
-  });
+// document.addEventListener('DOMContentLoaded', function(e) {
+//     $('[name="date"]')
+//         .datepicker({
+//             format: 'dd/mm/yyyy'
+//         })
+//         .on('changeDate', function(e) {
+//             // do somwthing here
+//         });
+// });
+// $('#datepicker').datepicker().on('click', function () {
+//     console.log("clickin")
+//         $('.datepicker').click(function(e) {
+//             e.stopPropagation(); // prevent clicks on datepicker from collapsing 'parent'
+//         });
+//     });
+// $(function() {
 
-  $('.dropdown-menu.calendar').on('click', function(event) {
-    event.stopPropagation();
-  });
+//   $('.btn btn-info.calendar').on('click', function(event) {
+//     $('.dropdown-menu').slideToggle();
+//     event.stopPropagation();
+//   });
+
+//   $('.dropdown-menu.calendar').on('click', function(event) {
+//     event.stopPropagation();
+//   });
 
 
 
-  $(window).on('click', function() {
-    $('.dropdown-menu.calendar').slideUp();
-  });
+//   $(window).on('click', function() {
+//     $('.dropdown-menu.calendar').slideUp();
+//   });
 
-});
+// });
+
+// $('.datepicker').on('hide', function(event) {
+//     event.stopPropagation();
+//     $(this).closest('.dropdown-menu.calendar').one('.dropdown-menu.calendar', function(ev) {
+//        return false;
+//    });
+// });
+
+// jQuery('.btn btn-info.calendar').on('click', function (e) {
+//   $(this).next().toggle();
+// });
+// jQuery('.dropdown-menu.calendar').on('click', function (e) {
+//     console.log("stop")
+//   e.stopPropagation();
+// });
 
 //         $('.btn.btn-info.calendar').on('click', function (event) {
 //             $('.dropdown-menu.calendar').css("display","inline");
@@ -1563,6 +1657,7 @@ $(function() {
 //this works -------------------------------
 
 
+// Data Picker Initialization
 
 
         
