@@ -492,8 +492,29 @@ background-color:red;
     
 }
 
-#datepicker{
+#calendarContainer {
+  max-width:30%;
+}
 
+#datepicker{
+max-width:100%,
+
+
+}
+
+.datepicker.datepicker-dropdown{
+ padding:5px;
+
+}
+
+td.day{
+  font-family: 'Poppins';
+font-size:12px;
+}
+
+
+td.today.day {
+background:blue;
 }
 
 .qs-squares{

@@ -672,8 +672,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
         weekStart: 1,
         autoclose: true,
         todayHighlight: true,
+        disableTouchKeyboard: true,
         format: 'yyyy-mm-dd',
         startDate: new Date(),
+        Readonly: true,
         endDate: new Date(new Date().setDate(new Date().getDate() + 3))
 
            // Event callbacks.
