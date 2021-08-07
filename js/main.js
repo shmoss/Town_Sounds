@@ -1149,7 +1149,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
-                     $('.county2014Tooltip').scrollTop(0);
+                    
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
                     // appendText = []
@@ -1164,11 +1164,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .duration(200)      
                         .style("opacity", 1)
                         .style("background-color","rgba(51,51,51,.85)")
+                        .attr("hidden",true)
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
-                        .attr("hidden",true)
-                       
-                        
                      
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);

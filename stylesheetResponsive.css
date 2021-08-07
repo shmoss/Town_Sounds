@@ -457,6 +457,8 @@ img{
         pointer-events: auto ;
     }
 
+
+
     .containerID {
       width: 500px;
       height: 200px;
@@ -497,7 +499,7 @@ background-color:red;
 }
 
 #datepicker{
-max-width:100%,
+width:15vh
 
 
 }
@@ -712,6 +714,31 @@ padding-left:2%;
 
 .buttons{
     position: relative;
+}
+
+
+
+   @media all and (min-width:0px) and (max-width: 576px) {
+    .btn-toolbar{
+      margin-left:1vh !important;
+    }
+
+    .leaflet-control-zoom{
+      margin-top:10vh !important;
+    }
+     
+}
+
+@media (min-width: 576px) {
+.btn-toolbar{
+
+margin-left:1vh;
+}
+
+.leaflet-control-zoom{
+      margin-top:10vh !important;
+    }
+ 
 }
 
 
