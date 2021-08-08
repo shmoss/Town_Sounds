@@ -658,64 +658,64 @@ document.addEventListener('DOMContentLoaded', function(e) {
             }; 
     
       
-        const picker = datepicker(document.querySelector('#datepicker'), {
+        // const picker = datepicker(document.querySelector('#datepicker'), {
 
-            // Event callbacks.
-            onSelect: function(instance) {
+        //     // Event callbacks.
+        //     onSelect: function(instance) {
     
-                var instanceSplit = instance.dateSelected.toString().split(" " ,4)
-                var dayofMonth = instanceSplit[2]
+        //         var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+        //         var dayofMonth = instanceSplit[2]
     
-                var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
-                var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
-                    .replace(/02/g, '2')
-                    .replace(/03/g, '3')
-                    .replace(/04/g, '4')
-                    .replace(/05/g, '5')
-                    .replace(/06/g, '6')
-                    .replace(/07/g, '7')
-                    .replace(/08/g, '8')
-                    .replace(/09/g, '9')
+        //         var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
+        //         var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
+        //             .replace(/02/g, '2')
+        //             .replace(/03/g, '3')
+        //             .replace(/04/g, '4')
+        //             .replace(/05/g, '5')
+        //             .replace(/06/g, '6')
+        //             .replace(/07/g, '7')
+        //             .replace(/08/g, '8')
+        //             .replace(/09/g, '9')
 
-                    var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
+        //             var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
 
-                    selectedDate = finalDate
-                    selectedDate = formatDate(selectedDate)
-                    console.log(selectedDate)
+        //             selectedDate = finalDate
+        //             selectedDate = formatDate(selectedDate)
+        //             console.log(selectedDate)
  
-                update()
+        //         update()
        
-            },
+        //     },
 
-            onShow: function(instance) {
-            },
-            onHide: function(instance) {
-            },
-            onMonthChange: function(instance) {
-            },
+        //     onShow: function(instance) {
+        //     },
+        //     onHide: function(instance) {
+        //     },
+        //     onMonthChange: function(instance) {
+        //     },
  
-            // Customizations.
-            formatter: function(el, date, instance) {
-                el.value = date.toDateString();
-                dat = new Date()
-            },
+        //     // Customizations.
+        //     formatter: function(el, date, instance) {
+        //         el.value = date.toDateString();
+        //         dat = new Date()
+        //     },
   
-            position: 'tr', // Top right.
-            startDay: 1, // Calendar week starts on a Monday.
-            customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
-            customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            overlayButton: 'Go!',
-            overlayPlaceholder: 'Enter a 4-digit year',
+        //     position: 'tr', // Top right.
+        //     startDay: 1, // Calendar week starts on a Monday.
+        //     customDays: ['S', 'M', 'T', 'W', 'Th', 'F', 'S'],
+        //     customMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        //     overlayButton: 'Go!',
+        //     overlayPlaceholder: 'Enter a 4-digit year',
  
-            // Settings.
-            alwaysShow: true, // Never hide the calendar.
-            dateSelected: new Date(), // Today is selected.
-            maxDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
-            minDate: new Date(new Date().getTime()), // June 1st, 2016.
-            startDate: new Date(), // This month.
+        //     // Settings.
+        //     alwaysShow: true, // Never hide the calendar.
+        //     dateSelected: new Date(), // Today is selected.
+        //     maxDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000), // Jan 1st, 2099.
+        //     minDate: new Date(new Date().getTime()), // June 1st, 2016.
+        //     startDate: new Date(), // This month.
    
 
-        });
+        // });
 
         function removeSidebar(){
             $('#sidebar').removeClass('active');
