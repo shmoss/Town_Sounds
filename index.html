@@ -10,7 +10,7 @@
 
     <title>Town Sounds!</title>
 
-   <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 
       <!-- favicon -->
@@ -59,8 +59,8 @@
     <!-- <script src="./js/d3.slider.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-   <!--  <script src="./js/datepicker.min.js"></script>
-    <script src="./js/datepick.js"></script> -->
+    <script src="./js/datepicker.min.js"></script>
+    <script src="./js/datepick.js"></script>
 <!--     <script src="https://unpkg.com/js-datepicker"></script> 
  -->    <script src="./data/austin_events.json"></script>
     <script src="./data/chicago_events.json"></script>
@@ -91,7 +91,23 @@
 </main> -->
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<style type="text/css">
+        .datepicker {
+            font-size: 0.875em;
+        }
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+        
+        .datepicker td, .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        
+    </style>
+<script type="text/javascript">
+   
+</script>
 
 
     <!-- Content Starts here -->
@@ -309,11 +325,11 @@
   </div>
 
 
-<!--   <div class="btn-group" style="max-width:25%" id="calendarContainer" role="group" aria-label="Third group" >
+  <div class="btn-group" style="max-width:25%" id="calendarContainer" role="group" aria-label="Third group" >
 
-              <input data-date-format="MM/DD/YYYY" style= "font-size:14px"id="datepicker">    
+              <input id="datepicker">    
    
-  </div> -->
+  </div>
 
 
  <div class="btn-group mr-2" role="group" aria-label="First group">

@@ -656,6 +656,65 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 "top": y + "px"
                 });
             }; 
+
+
+      $('#datepicker').datepicker({
+
+
+        weekStart: 1,
+        autoclose: true,
+        todayHighlight: true,
+        disableTouchKeyboard: true,
+        format: 'yyyy-mm-dd',
+        startDate: new Date(),
+        Readonly: true,
+        endDate: new Date(new Date().setDate(new Date().getDate() + 3))
+
+           // Event callbacks.
+        //     onSelect: function(instance) {
+    
+        //         var instanceSplit = instance.dateSelected.toString().split(" " ,4)
+        //         var dayofMonth = instanceSplit[2]
+    
+        //         var instanceClean = instanceSplit.toString().replace(/,/g, ' ')
+        //         var dayofMonthClean = dayofMonth.toString().replace(/01/g, '1')
+        //             .replace(/02/g, '2')
+        //             .replace(/03/g, '3')
+        //             .replace(/04/g, '4')
+        //             .replace(/05/g, '5')
+        //             .replace(/06/g, '6')
+        //             .replace(/07/g, '7')
+        //             .replace(/08/g, '8')
+        //             .replace(/09/g, '9')
+
+        //             var finalDate = instanceSplit[0] + " " + instanceSplit[1] + " " + dayofMonthClean + " " + instanceSplit[3]
+
+        //             selectedDate = finalDate
+        //             selectedDate = formatDate(selectedDate)
+        //             console.log(selectedDate)
+ 
+        //         update()
+       
+        //     },
+
+
+    });
+    $('#datepicker').datepicker("setDate", new Date());
+
+    $(function() {
+    $("#datepicker").datepicker();
+    
+    $("#datepicker").val();
+    
+    $("#datepicker").on("change",function(){
+        
+        selectedDate = $(this).val();
+        update(selectedDate)
+        console.log("datepicker selectedDate is", selectedDate)
+        return selectedDate
+    });
+});
+
     
       
         // const picker = datepicker(document.querySelector('#datepicker'), {
