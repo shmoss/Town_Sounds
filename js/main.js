@@ -673,9 +673,25 @@ document.addEventListener('DOMContentLoaded', function(e) {
      * but store in UTC
      */
     toDisplay: function (date, format, language) {
-        var d = new Date(date);
+        d = new Date(date)
+        todayDate = (d.toISOString().split('T')[0])
+        console.log(todayDate)
+        var dateArray = todayDate.split("-");
+        var year = dateArray[0];
+        var month = parseInt(dateArray[1], 10) - 1;
+        var date = dateArray[2];
+        var _entryDate = new Date(year, month, date);
+        console.log(_entryDate)
+        _entryDateStr = _entryDate.toString()
+        console.log(_entryDateStr)
+        thing = _entryDateStr.split(" ")
+        console.log(thing)
+        todayDateString = (thing[1] + " " + thing[2] + " " + thing[3])
+        console.log(todayDateString)
+        return todayDateString
+        //alert(_entryDate);
         
-        return (d.toDateString()+ d.getTimezoneOffset() * 60000)
+        //return d.toDateString();
     },
     toValue: function (date, format, language) {
         // var d = new Date(date);
