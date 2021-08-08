@@ -665,7 +665,24 @@ document.addEventListener('DOMContentLoaded', function(e) {
         autoclose: true,
         todayHighlight: true,
         disableTouchKeyboard: true,
-        format: 'yyyy-mm-dd',
+        format: {
+    /*
+     * Say our UI should display a week ahead,
+     * but textbox should store the actual date.
+     * This is useful if we need UI to select local dates,
+     * but store in UTC
+     */
+    toDisplay: function (date, format, language) {
+        var d = new Date(date);
+        
+        return (d.toDateString()+ d.getTimezoneOffset() * 60000)
+    },
+    toValue: function (date, format, language) {
+        // var d = new Date(date);
+        // selectedDate = d.setDate(d.getDate() + 0);
+        // return new Date(d);
+    }
+  },
         startDate: new Date(),
         Readonly: true,
         endDate: new Date(new Date().setDate(new Date().getDate() + 3))
@@ -706,12 +723,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
     
     $("#datepicker").val();
     
-    $("#datepicker").on("change",function(){
+       $('#datepicker').on('changeDate', function(e){
+        var date = e.date;
+        var day = ('0' + date.getDate()).slice(-2);
+        var month = ('0' + (date.getMonth() + 1)).slice(-2);
+        var year = date.getFullYear();
+        selectedDate = year + '-' + month + '-' + day
         
-        selectedDate = $(this).val();
+        $(this).next('input[type=hidden]').val(year + '-' + month + '-' + day);
+
         update(selectedDate)
         console.log("datepicker selectedDate is", selectedDate)
         return selectedDate
+
+
     });
 });
 
