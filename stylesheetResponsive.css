@@ -1,4 +1,4 @@
-    @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+ @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
     body {
         font-family: 'Poppins', sans-serif;
@@ -37,17 +37,12 @@ img{
 
     /* HOVER functionality for points!
     .events{}
-
-
     .events:hover{
         stroke-width:10px;
     }
-
-
     .events:focus{
         stroke-width:10px;
     }
-
     */
 
 
@@ -60,11 +55,6 @@ img{
 
     #test {
         color:black;
-    }
-
-
-    .btn.btn-info.calendar{
-
     }
 
     #sidebar {
@@ -211,7 +201,8 @@ img{
         line-height: 1.5em;
         font-family:'poppins';  
         font-weight: 150;
-        color: #fff; 
+        color: yellow;
+       
         margin-top:11vh;
         background-color: rgba(51,51,51,.85);
         pointer-events:none;
@@ -329,34 +320,6 @@ img{
         
     }
 
-
-    #calendarTooltip { 
-
- word-wrap: normal;
-   
-
-    margin-top:1vh;
-            position: absolute;
-          width:400px;
-        text-align: left;
-        border-radius: 4px;           
-        padding: 5px 0;        
-        font-size: 14px ; 
-        line-height: 1.5em;
-        font-family:'Poppins';  
-        font-weight: 150;
-        color: #AAAAAA;
-        background-color: #202020;
-        border: solid thin #AAAAAA;
-        overflow-y:scroll; 
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        margin-left:1vh;
-        padding-bottom:3%;
-        padding-left:2.5vh;
-        padding-right:4.5vh
-    }
-
     ::-webkit-scrollbar {
     width: 13px;
     height: 13px;
@@ -457,8 +420,6 @@ img{
         pointer-events: auto ;
     }
 
-
-
     .containerID {
       width: 500px;
       height: 200px;
@@ -494,29 +455,8 @@ background-color:red;
     
 }
 
-#calendarContainer {
-  max-width:30%;
-}
-
 #datepicker{
-width:15vh
 
-
-}
-
-.datepicker.datepicker-dropdown{
- padding:5px;
-
-}
-
-td.day{
-  font-family: 'Poppins';
-font-size:12px;
-}
-
-
-td.today.day {
-background:blue;
 }
 
 .qs-squares{
@@ -717,31 +657,6 @@ padding-left:2%;
 }
 
 
-
-   @media all and (min-width:0px) and (max-width: 576px) {
-    .btn-toolbar{
-      margin-left:1vh !important;
-    }
-
-    .leaflet-control-zoom{
-      margin-top:10vh !important;
-    }
-     
-}
-
-@media (min-width: 576px) {
-.btn-toolbar{
-
-margin-left:1vh;
-}
-
-.leaflet-control-zoom{
-      margin-top:10vh !important;
-    }
- 
-}
-
-
 button:focus{
  outline:none !important;
  }
@@ -905,11 +820,9 @@ input[type=radio]:checked ~ label{
  /*   #sidebarCollapse  {
       margin-left:6.2vh;
     }
-
     #dropdownMenuButton  {
       margin-left:19vh;
     }
-
     #about  {
       margin-left:30vh;
     }*/
@@ -921,11 +834,9 @@ input[type=radio]:checked ~ label{
 /*  #sidebarCollapse  {
       margin-left:8.2vh;
     }
-
   #dropdownMenuButton  {
       margin-left:21vh;
     }
-
   #about  {
       margin-left:32vh;
     }*/
@@ -943,11 +854,9 @@ input[type=radio]:checked ~ label{
    #sidebarCollapse  {
     margin-left:60vh;
   }
-
   #dropdownMenuButton  {
     margin-left:14vh;
   }
-
   #about  {
     margin-left:35vh;
   }
@@ -959,11 +868,9 @@ input[type=radio]:checked ~ label{
 /*    #sidebarCollapse  {
     margin-left:60vh;
   }
-
   #dropdownMenuButton  {
     margin-left:14vh;
   }
-
   #about  {
     margin-left:55vh;
   }*/
@@ -971,4 +878,3 @@ input[type=radio]:checked ~ label{
  }
 
 }
-
