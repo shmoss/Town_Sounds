@@ -254,7 +254,7 @@ img{
     #aboutTooltip {
           height:60vh;
           overflow-y:auto;
-          margin-left: -22vh; 
+          margin-left: -26vh; 
           min-width: 25vh;    
          max-width: 35vh; 
        }
@@ -343,6 +343,14 @@ img{
         overflow-wrap: break-word; 
         word-wrap: break-word;
   }
+
+  .leaflet-control-zoom{
+      margin-top:90vh !important;
+    }
+
+    .btn-toolbar{
+      margin-left:.5vh !important;
+    }
 }
 
 @media (min-width: 576px) {
@@ -355,6 +363,14 @@ img{
         overflow-wrap: break-word; 
         word-wrap: break-word;
   }
+
+ /* .leaflet-control-zoom{
+      margin-top:90vh !important;
+    }
+
+    .btn-toolbar{
+      margin-left:.5vh !important;
+    }*/
 }
 
 @media (min-width: 768px) {
@@ -460,11 +476,23 @@ background-color:red;
 }
 
 #calendarContainer {
-  max-width:30%;
+
+  width:23% !important;
+  text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #datepicker{
-max-width:100%,
+ width:100% !important;
+ height:100% !important;
+font-size: 14px;
+margin:0 auto;
+display: inline-block;
+top:50%;
+padding:0px;
+
 
 
 }
