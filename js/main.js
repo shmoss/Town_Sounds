@@ -1091,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(200)      
+                        .duration(0)      
                         .style("opacity", 1)
                         .style("background-color","rgba(51,51,51,.85)")
                         .attr("hidden",true)
