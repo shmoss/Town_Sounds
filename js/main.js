@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["classical"]
+            x = ["classical", "chamber", "baroque", "choral", "orchestra"]
             genreMatch(x)
         });
 
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance"]
+             x = ["electronic", "electronica", "house", "dj", "techno", "trance", "dance", "dubstep", "dub", "rave"]
             genreMatch(x)
         });
 
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["hip hop", "rap", "hip-hop"]
+            x = ["hip hop", "rap", "hip-hop", "trap", "gangsta", "freestyle"]
             genreMatch(x)
         });
 
@@ -414,7 +414,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["jazz", "wwing", "big band"]
+            x = ["jazz", "swing", "big band", "manouche", "fusion", "bop", "dixieland"]
+            genreMatch(x)
+        });
+
+         d3.selectAll("#latinGenre").on("change", function() {
+            resetDisplay()
+            display = this.checked ? "#ffba00" : "none";
+            display2 = this.checked ? "black" : "none";
+            x = ["latin", "cumbia", "brazilian", "reggaeton", "salsa", "choro", "samba", "bachata", "mexican", "urbano", "merengue"]
             genreMatch(x)
         });
 
@@ -423,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             resetDisplay()
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
-            x = ["metal", "black Metal", "hardcore"]
+            x = ["metal", "black Metal", "hardcore", "deathcore", "death metal"]
             genreMatch(x)
         });
 
@@ -443,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             display = this.checked ? "#ffba00" : "none";
             display2 = this.checked ? "black" : "none";
             pointerEvents = this.checked ? "all" : "all";
-            x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock"]
+             x = ["rock", "pop","indie", "ska", "punk", "alternative", "indie rock", "emo", "alt-rock", "rock and roll", "rock n roll", "surf"]
             genreMatch(x)
             removePoints(x)  
         });
