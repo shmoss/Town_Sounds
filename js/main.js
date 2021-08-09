@@ -1005,23 +1005,20 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke-width", '0px')
                 var value2014 = currentMap.get(d.location);   
 
-                LeafletDiv.transition()                          
+                LeafletDiv.transition()        
                     .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
-                    .style("background-color","rgba(51,51,51,.85)")
+                    .style("background-color","green")
                     .style("transform","scale(1)")
 
                    
-                str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
-                str_currentUrl.link(d.currentUrl)
+
 
 
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
                     
-
-
 
                     LeafletDiv
                     .html(popInfo)
@@ -1040,7 +1037,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         
   
-          .on("click", function(d) { 
+        .on("click", function(d) { 
             console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
@@ -1056,16 +1053,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //add popup   
             var value2014 = currentMap.get(d.location);  
 
-
-            appendText = []
-            console.log(appendText)
-            LeafletDiv
-                .html( appendText.join(""))
-
             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
-                .style("background-color","rgba(51,51,51,.85)")
+                .style("background-color","green")
                 .style("transform","scale(1)")
              
              
@@ -1183,10 +1174,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
-                    appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
+                    // appendText = []
+                    // console.log(appendText)
+                    // LeafletDiv
+                    //     .html( appendText.join(""))
 
 
                                    
@@ -1194,7 +1185,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 1)
-                        .style("background-color","rgba(51,51,51,.85)")
+                        .style("background-color","red")
                         .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
@@ -1216,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         LeafletDiv.transition()        
                             .duration(200)      
                             .style("opacity", .9)
-                            .style("background-color","rgba(51,51,51,.85)")
+                            .style("background-color","green")
                             .style("transform","scale(1)")
                            
 
@@ -1239,12 +1230,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
-                .style("background-color","rgba(51,51,51,.85)")
+                .style("background-color","green")
                 .style("transform","scale(0)")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
 
         })
+
 
         var todaysDate = new Date 
         var date
