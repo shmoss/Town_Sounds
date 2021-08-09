@@ -201,7 +201,7 @@ img{
         line-height: 1.5em;
         font-family:'poppins';  
         font-weight: 150;
-        color: purple;
+        color: blue;
        
         margin-top:11vh;
         background-color: rgba(51,51,51,.85);
@@ -349,12 +349,17 @@ img{
     }
 
     .btn-toolbar{
-      margin-left:.5vh !important;
+      margin-left:1.5vh !important;
+      padding:0px!important;
+    }
+
+    .btn-group{
+      margin-left:.2vh !important;
     }
 
     #calendarContainer {
 
-  width:20%;
+  width:23%;
   text-align: center;
     display: flex;
   justify-content: center;
