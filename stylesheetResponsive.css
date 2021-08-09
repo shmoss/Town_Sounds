@@ -351,6 +351,10 @@ img{
     .btn-toolbar{
       margin-left:.5vh !important;
     }
+
+    
+
+
 }
 
 @media (min-width: 576px) {
@@ -477,7 +481,7 @@ background-color:red;
 
 #calendarContainer {
 
-  width:23% !important;
+  width:23%;
   text-align: center;
     display: flex;
   justify-content: center;
