@@ -45,9 +45,6 @@ img{
     }
     */
 
-    #timeContainer{
-      padding-bottom:35%;
-    }
     
 
     .wrapper {
@@ -205,7 +202,7 @@ img{
         line-height: 1.5em;
         font-family:'poppins';  
         font-weight: 150;
-        color: red;
+        color: purple;
        
         margin-top:11vh;
         background-color: rgba(51,51,51,.85);
@@ -371,6 +368,11 @@ img{
 }
 
 
+    #timeContainer{
+      padding-bottom:45%;
+    }
+
+
 }
 
 @media (min-width: 576px) {
@@ -401,6 +403,13 @@ img{
   align-items: center;
 }
 
+    #timeContainer{
+      padding-bottom:35%;
+    }
+
+
+}
+
 
 }
 
@@ -424,6 +433,10 @@ img{
   align-items: center;
 }
 
+#timeContainer{
+      padding-bottom:35%;
+    }
+
 
  }
 
@@ -446,6 +459,10 @@ img{
   justify-content: center;
   align-items: center;
 }
+
+#timeContainer{
+      padding-bottom:35%;
+    }
 
 }
 
