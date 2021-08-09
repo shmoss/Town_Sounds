@@ -1013,12 +1013,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("transform","scale(1)")
 
                    
-
+                    str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                    str_currentUrl.link(d.currentUrl)
 
 
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
                     
+
+
 
                     LeafletDiv
                     .html(popInfo)
@@ -1122,11 +1125,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     // appendText.push(popClose)
                     selections.each(function(d){
 
-                    
+                    str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                    str_currentUrl.link(d.currentUrl)
+
                  
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
-                    
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                 
+                 
                     appendText.push(popInfo+ '<br/>' + '<br/>')
                               
                
@@ -1209,11 +1215,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .style("opacity", .9)
                             .style("background-color","green")
                             .style("transform","scale(1)")
+
+
+                            str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                            str_currentUrl.link(d.currentUrl)
+
+                 
+                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + str_currentUrl.link(d.currentUrl) + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                 
                            
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
-                        )
+                        
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
