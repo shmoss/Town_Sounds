@@ -1006,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-             .on("mouseover", function(d) { 
+              .on("mouseover", function(d) { 
            
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
@@ -1017,13 +1017,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 // str_currentUrl.link(d.currentUrl) 
 
                 LeafletDiv.transition()        
-                    .duration(200)      
+                    .duration(0)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("background-color","green")
-                   
-                    .style("width", "100%")
-                    .style("height", "100%")
+                    .style("transform","scale(1)")
 
                    
                     
@@ -1069,12 +1067,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var value2014 = currentMap.get(d.location);  
 
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(0)      
                 .style("opacity", .9)
                 .style("background-color","green")
-                .style("width", "100%")
-                .style("height", "100%")
-
+                .style("transform","scale(1)")
              
              
 
@@ -1205,12 +1201,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(200)      
-                        .style("opacity", 0)
+                        .duration(0)      
+                        .style("opacity", 1)
                         .style("background-color","red")
-                        .style("width", "0%")
-                         .style("height", "0%")
-
+                        .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
                      
@@ -1220,9 +1214,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseout", function(d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
-                            .duration(200)  
-                            .style("width", "0%")
-                            .style("height", "0%")    
+                            .duration(0)      
                             .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
@@ -1244,24 +1236,14 @@ document.addEventListener('DOMContentLoaded', function(e) {
                            
 
                         LeafletDiv.transition()        
-                            .duration(200)      
+                            .duration(0)      
                             .style("opacity", .9)
                             .style("background-color","green")
-                           .style("width", "100%")
-                            .style("height", "100%")
+                            .style("transform","scale(1)")
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
-
-
-                            LeafletDiv
-                    .html(popInfo)
-                    .style("top", "1.5vh")
-                    .style("text-align", 'left')
-
-                    d3.select(this).style("stroke", 'black')
-                    d3.select(this).style("stroke-width", '3px')  
                     })
                 }          
             })
@@ -1271,13 +1253,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(0)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("background-color","green")
-                .style("width", "0%")
-                .style("height", "0%")
-
+                .style("transform","scale(0)")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
 
