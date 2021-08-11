@@ -1006,32 +1006,34 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-            .on("mouseover", function(d) { 
+             .on("mouseover", function(d) { 
            
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
-                var value2014 = currentMap.get(d.location);   
+                var value2014 = currentMap.get(d.location);  
 
-                appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
+                // str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                // str_currentUrl.link(d.currentUrl) 
 
                 LeafletDiv.transition()        
+                    .duration(0)      
+                    .style("transform","scale(1)")
+
+                 LeafletDiv.transition()        
                     .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
-                    .style("background-color","rgba(51,51,51,.85)")
-                    .style("visibility","visible")
+                    .style("background-color","green")
 
-                   
-
+                    
 
 
                     var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo + '<br/>'
-                    
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                 
+
+
 
                     LeafletDiv
                     .html(popInfo)
@@ -1067,12 +1069,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var value2014 = currentMap.get(d.location);  
 
             LeafletDiv.transition()        
+                .duration(0)      
+                .style("transform","scale(1)")
+             
+             
+             LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", .9)
-                .style("background-color","rgba(51,51,51,.85)")
-                .style("visibility","visible")
+                .style("background-color","green")
 
-             
              
 
 
@@ -1131,20 +1136,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     
                     })
                     var appendText = []
-
-                    LeafletDiv
-                        .html( appendText.join(""))
-
                     // var popClose = "<span id='closeCountyPopup' class='sticky-top'>X</span>" 
                     //  //var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
                     // appendText.push(popClose)
+                    // str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                    // str_currentUrl.link(d.currentUrl)
+
                     selections.each(function(d){
 
                     
+
                  
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
-                    
+                    var popInfo = '<br>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br>'+ '<br>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
+                    + '<br>'+d.Time + '<br>' + d.Venue + '<br>' +d.Address +  '<br>' + '<br>' +'<br>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br>'
+                 
+                 
                     appendText.push(popInfo+ '<br/>' + '<br/>')
                               
                
@@ -1184,6 +1190,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
+                if (this !== currentCircle) {
                     //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
@@ -1191,56 +1198,76 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
-                    appendText = []
-                    console.log(appendText)
-                    LeafletDiv
-                        .html( appendText.join(""))
+                    // appendText = []
+                    // console.log(appendText)
+                    // LeafletDiv
+                    //     .html( appendText.join(""))
 
 
                                    
            
                     LeafletDiv.transition()        
-                        .duration(200)      
-                        .style("opacity", 0)
-                        .attr("scrollTop", 0) 
-                        .style("background-color","rgba(51,51,51,.85)")
-                        //.attr("hidden",true)
-                        .style("pointer-events", 'none') 
-                        .style("visibility","hidden")
+                        .duration(0)      
+                        .style("transform","scale(0)")
 
-                        
                      
+
+                    LeafletDiv.transition()        
+                        .duration(200)      
+                        .style("opacity", 1)
+                        .style("background-color","red")
+                        .style("pointer-events", 'none') 
+                        .attr("scrollTop", 0) 
+
+
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);
                         d3.selectAll(".events").on("mouseout", function(d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
+                            .duration(0)      
+                            .style("transform","scale(0)") 
+
+                        LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", 0)
-                            .style("visibility","hidden")
+                            .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
-                            d3.selectAll(".events").style("stroke-width", '0px')        
+                            d3.selectAll(".events").style("stroke-width", '0px')   
+
                         })
 
                         // mouseover event listers added back in
                         d3.selectAll(".events").on("mouseover", function(d) { 
+
+                        // str_currentUrl = 'Full event info and tickets'.fontcolor( "#ffba00")
+                        // str_currentUrl.link(d.currentUrl)
+
+                        
+
+
+                 
+                    var popInfo = '<br>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br>'+ '<br>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '<b>'  + '<br>'+d.EventDate
+                    + '<br>'+d.Time + '<br>' + d.Venue + '<br>' +d.Address +  '<br>' +  '<br>' +'<br>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                 
+                           
+
+                        LeafletDiv.transition()        
+                            .duration(0)      
+                            .style("transform","scale(1)")
+
+
                         LeafletDiv.transition()        
                             .duration(200)      
                             .style("opacity", .9)
-                            .style("background-color","rgba(51,51,51,.85)")
-                            .style("visibility","visible")
-                           
-
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo
-                        )
+                            .style("background-color","green")
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
+
                     })
-                          
+                }          
             })
                         d3.event.stopPropagation();
 
@@ -1248,15 +1275,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
+                .duration(0)      
+                .style("transform","scale(0)")
+
+
+            LeafletDiv.transition()        
                 .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
-                .style("background-color","rgba(51,51,51,.85)")
-                .style("visibility","hidden")
+                .style("background-color","green")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
-
-
 
         })
 
