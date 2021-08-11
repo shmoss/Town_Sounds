@@ -1023,7 +1023,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("background-color","rgba(51,51,51,.85)")
-                    .attr("hidden",null)
+                    .style("visibility","visible")
 
                    
 
@@ -1070,7 +1070,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .duration(200)      
                 .style("opacity", .9)
                 .style("background-color","rgba(51,51,51,.85)")
-                .attr("hidden",null)
+                .style("visibility","visible")
+
              
              
 
@@ -1201,10 +1202,13 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     LeafletDiv.transition()        
                         .duration(200)      
                         .style("opacity", 0)
-                        .style("background-color","rgba(51,51,51,.85)")
-                        .attr("hidden",true)
-                        .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
+                        .style("background-color","rgba(51,51,51,.85)")
+                        //.attr("hidden",true)
+                        .style("pointer-events", 'none') 
+                        .style("visibility","hidden")
+
+                        
                      
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
@@ -1213,7 +1217,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", 0);  
+                            .style("opacity", 0)
+                            .style("visibility","hidden")
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
                         })
@@ -1224,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(200)      
                             .style("opacity", .9)
                             .style("background-color","rgba(51,51,51,.85)")
-                            .attr("hidden",null)
+                            .style("visibility","visible")
                            
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
@@ -1247,7 +1252,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("background-color","rgba(51,51,51,.85)")
-                .attr("hidden",true)
+                .style("visibility","hidden")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
 
