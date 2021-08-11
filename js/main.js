@@ -1017,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 // str_currentUrl.link(d.currentUrl) 
 
                 LeafletDiv.transition()        
-                    .duration(2)      
+                    .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("background-color","green")
@@ -1067,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var value2014 = currentMap.get(d.location);  
 
             LeafletDiv.transition()        
-                .duration(2)      
+                .duration(200)      
                 .style("opacity", .9)
                 .style("background-color","green")
                 .style("transform","scale(1)")
@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(2)      
+                        .duration(200)      
                         .style("opacity", 1)
                         .style("background-color","red")
                         .style("transform","scale(0)")
@@ -1236,7 +1236,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                            
 
                         LeafletDiv.transition()        
-                            .duration(2)      
+                            .duration(200)      
                             .style("opacity", .9)
                             .style("background-color","green")
                             .style("transform","scale(1)")
@@ -1253,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
-                .duration(2)      
+                .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("background-color","green")
