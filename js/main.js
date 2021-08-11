@@ -1183,7 +1183,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
-                if (this !== currentCircle) {
                     //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
@@ -1236,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
                     })
-                }          
+                          
             })
                         d3.event.stopPropagation();
 
