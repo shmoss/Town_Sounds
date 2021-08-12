@@ -1136,8 +1136,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", 0)
-                            .style("pointer-events", 'none') 
+                            .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
                         })
@@ -1146,8 +1145,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseover", function(d) { 
                         LeafletDiv.transition()        
                             .duration(200)      
-                            .style("opacity", .9)
-                            .style("pointer-events", 'auto') 
+                            .style("opacity", .9);
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
                         + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
