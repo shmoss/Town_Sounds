@@ -1189,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                                    
            
                     LeafletDiv.transition()        
-                        .duration(200)      
+                        .duration(1)      
                         .style("opacity", 1)
                         .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
