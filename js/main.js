@@ -1103,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .html( appendText.join(""))
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
-                    .style("pointer-events", 'all')
+                    .style("pointer-events", 'auto')
                     d3.select(this).style("stroke", 'black')  
                     d3.select(this).style("stroke-width", '3px')
                 
