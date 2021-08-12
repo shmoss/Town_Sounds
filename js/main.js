@@ -1061,7 +1061,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             var value2014 = currentMap.get(d.location);  
 
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(1)      
                 .style("opacity", .9)
                 .style("transform","scale(1)")
              
