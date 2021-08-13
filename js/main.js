@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
-            map.setView([40.7428, -73.9060], 12);
+            map.setView([40.7428, -73.9060], 9);
             resetDisplay()
             //resetGenreAndTime()
             loadData(nyc_events)
