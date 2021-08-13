@@ -1035,10 +1035,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     d3.select(this).style("stroke", 'black')
                     d3.select(this).style("stroke-width", '3px')    
 
-
-                     // enable link
-                    var eventLinks = d3.selectAll(".eventUrl")
-                    eventLinks.style("color","red")
                     
                    
                    //deal with point overlap
@@ -1070,8 +1066,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 .style("transform","scale(1)")
              
              
-             
-            
+
 
 
                //deal with point overlap
@@ -1139,8 +1134,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address + '<br/>' + '<a class=eventUrl href='+d.currentUrl+'>Full event info and tickets</a>' +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
-
-                    
                               
                
                     })
@@ -1155,12 +1148,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     .style("pointer-events", 'all')
                     d3.select(this).style("stroke", 'black')  
                     d3.select(this).style("stroke-width", '3px')
-
-                // enable link
-                    var eventLinks = d3.selectAll(".eventUrl")
-                    eventLinks
-                    .style("color","green")
-                    .style("pointer-events","auto")
                 
  
             $('.county2014Tooltip').scrollTop(0);
@@ -1207,10 +1194,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
-
-                    // disable link
-                    var eventLinks = d3.selectAll(".eventUrl")
-                    eventLinks.style("pointer-events","none")     
                      
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
@@ -1221,12 +1204,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(60)      
                             .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
-                            d3.selectAll(".events").style("stroke-width", '0px')   
-
-
-                            // disable link
-                            var eventLinks = d3.selectAll(".eventUrl")
-                            eventLinks.style("pointer-events","none")     
+                            d3.selectAll(".events").style("stroke-width", '0px')        
                         })
 
                         // mouseover event listers added back in
@@ -1244,11 +1222,6 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
-
-
-                        // enable link
-                            var eventLinks = d3.selectAll(".eventUrl")
-                            eventLinks.style("pointer-events","auto")  
                     })
                 }          
             })
@@ -1265,15 +1238,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
 
-            // disable link
-            var eventLinks = d3.selectAll(".eventUrl")
-            eventLinks.style("pointer-events","none")  
-
         })
-
-
-
-       
 
 
         var todaysDate = new Date 
