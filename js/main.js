@@ -1013,6 +1013,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 d3.selectAll(".events").style("stroke-width", '0px')
                 var value2014 = currentMap.get(d.location);   
 
+                appendText = []
+                console.log(appendText)
+                LeafletDiv
+                    .html( appendText.join(""))
+
                 LeafletDiv.transition()        
                     .duration(100)      
                     .style("opacity", .9)
@@ -1059,6 +1064,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
             //add popup   
             var value2014 = currentMap.get(d.location);  
+
+            appendText = []
+            console.log(appendText)
+            LeafletDiv
+                .html( appendText.join(""))
 
             LeafletDiv.transition()        
                 .duration(1)      
@@ -1180,10 +1190,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                     //create empty array and append to popup
-                    // appendText = []
-                    // console.log(appendText)
-                    // LeafletDiv
-                    //     .html( appendText.join(""))
+                    appendText = []
+                    console.log(appendText)
+                    LeafletDiv
+                        .html( appendText.join(""))
 
 
                                    
@@ -1209,6 +1219,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                         // mouseover event listers added back in
                         d3.selectAll(".events").on("mouseover", function(d) { 
+
+                        //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
+                        //create empty array and append to popup
+                        appendText = []
+                        console.log(appendText)
+                        LeafletDiv
+                            .html( appendText.join(""))
+
+
                         LeafletDiv.transition()        
                             .duration(100)      
                             .style("opacity", .9)
