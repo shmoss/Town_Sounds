@@ -1014,7 +1014,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 var value2014 = currentMap.get(d.location);   
 
                 LeafletDiv.transition()        
-                    .duration(200)      
+                    .duration(1)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("transform","scale(1)")
@@ -1210,7 +1210,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         // mouseover event listers added back in
                         d3.selectAll(".events").on("mouseover", function(d) { 
                         LeafletDiv.transition()        
-                            .duration(200)      
+                            .duration(1)      
                             .style("opacity", .9)
                             .style("transform","scale(1)")
                            
@@ -1231,7 +1231,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         .on("mouseout", function(d) {       
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(1)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("transform","scale(0)")
