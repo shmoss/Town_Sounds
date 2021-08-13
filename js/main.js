@@ -1006,14 +1006,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-            .on("mouseover", function(d) { 
+             .on("mouseover", function(d) { 
            
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
                 var value2014 = currentMap.get(d.location);   
 
-                LeafletDiv       
+                LeafletDiv.transition()        
+                    .duration(200)      
                     .style("opacity", .9)
                     .style("scrollTop", 0)
                     .style("transform","scale(1)")
@@ -1059,7 +1060,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
             //add popup   
             var value2014 = currentMap.get(d.location);  
 
-            LeafletDiv  
+            LeafletDiv.transition()        
+                .duration(1)      
                 .style("opacity", .9)
                 .style("transform","scale(1)")
              
@@ -1186,7 +1188,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                                    
            
-                    LeafletDiv      
+                    LeafletDiv.transition()        
+                        .duration(1)      
                         .style("opacity", 1)
                         .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
@@ -1197,7 +1200,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         d3.selectAll(".events").on("mouseover", true);
                         d3.selectAll(".events").on("mouseout", function(d) { 
                         //mousing out!     
-                        LeafletDiv     
+                        LeafletDiv.transition()        
+                            .duration(200)      
                             .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
@@ -1205,7 +1209,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                         // mouseover event listers added back in
                         d3.selectAll(".events").on("mouseover", function(d) { 
-                        LeafletDiv     
+                        LeafletDiv.transition()        
+                            .duration(200)      
                             .style("opacity", .9)
                             .style("transform","scale(1)")
                            
@@ -1225,7 +1230,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
         })
 
         .on("mouseout", function(d) {       
-            LeafletDiv    
+            LeafletDiv.transition()        
+                .duration(200)      
                 .style("opacity", 0)
                 .style("scrollTop", 0)
                 .style("transform","scale(0)")
