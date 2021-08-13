@@ -1036,7 +1036,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     d3.select(this).style("stroke-width", '3px')    
 
                     
-                   
+                   $('.county2014Tooltip').scrollTop(0);
                    //deal with point overlap
      
               })
@@ -1213,6 +1213,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .duration(60)      
                             .style("opacity", .9)
                             .style("transform","scale(1)")
+                            .attr("scrollTop", 0) 
                            
 
                         LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
@@ -1222,6 +1223,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
                             d3.select(this).style("stroke-width", '3px')
+
+                         $('.county2014Tooltip').scrollTop(0);
                     })
                 }          
             })
