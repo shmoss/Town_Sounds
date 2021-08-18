@@ -177,7 +177,6 @@ img{
 .eventUrl {
   color: #ffba00;
   font:14px;
-  pointer-events:auto 
 }
 
 
@@ -208,7 +207,7 @@ img{
         line-height: 1.5em;
         font-family:'poppins';  
         font-weight: 150;
-        color: pink;
+        color: white;
         
         margin-top:11vh;
         background-color: rgba(51,51,51,.85);

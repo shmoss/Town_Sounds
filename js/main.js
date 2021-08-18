@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
-            map.setView([40.7428, -73.60], 10);
+            map.setView([40.7428, -73.70], 10);
             resetDisplay()
             //resetGenreAndTime()
             loadData(nyc_events)
@@ -1144,7 +1144,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                     
                      var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist.fontcolor( "#ffba00")+ '</font>'+ '</b>'  + '<br/>'+d.EventDate
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + '<a href="https://google.com">This is a link to google</a>' + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
+                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +  '<br/>' + '<a class = eventUrl href="'+ d.currentUrl + '">Full event info and tickets</a>' + '<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp".fontcolor( "#ffba00")+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp".fontcolor( "#ffba00") + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp".fontcolor( "#ffba00") + '</b>'+d.moreBioInfo+ '<br/>'
                  
                  
                     
