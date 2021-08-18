@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#NewYorkCity_NY_data").on("click", function() {
             console.log("NY!")
-            map.setView([40.7428, -73.9060], 9);
+            map.setView([40.7428, -73.60], 10);
             resetDisplay()
             //resetGenreAndTime()
             loadData(nyc_events)
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         d3.selectAll("#SanFrancisco_CA_data").on("click", function() {
             console.log("SF!")
-            map.setView([37.7778532, -122.382303], 12);
+            map.setView([37.7778532, -122.362303], 12);
             resetDisplay()
             
             loadData(sf_events)
@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //LA
          d3.selectAll("#LosAngeles_CA_data").on("click", function() {
             console.log("SF!")
-            map.setView([34.0522, -118.2437], 11);
+            map.setView([34.0522, -118.1337], 11);
             resetDisplay()
             
             loadData(LA_events)
@@ -509,7 +509,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Chicago
         d3.selectAll("#Chicago_IL_data").on("click", function() {
             console.log("SF!")
-            map.setView([41.8781, -87.6298], 11);
+            map.setView([41.8781, -87.5398], 11);
             resetDisplay()
             
             loadData(chicago_events)
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Austin
         d3.selectAll("#Austin_TX_data").on("click", function() {
             console.log("SF!")
-            map.setView([30.2672, -97.7431], 11);
+            map.setView([30.2672, -97.6031], 11);
             resetDisplay()
             
             loadData(austin_events)
@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Denver
         d3.selectAll("#Denver_CO_data").on("click", function() {
             console.log("SF!")
-            map.setView([39.7392, -104.9903], 11);
+            map.setView([39.7392, -104.9003], 11);
             resetDisplay()
             
             loadData(denver_events)
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Nashville
         d3.selectAll("#Nashville_TN_data").on("click", function() {
             console.log("SF!")
-            map.setView([36.1627, -86.7816], 11);
+            map.setView([36.1627, -86.6416], 11);
             resetDisplay()
             
             loadData(nashville_events)
@@ -566,7 +566,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Madison
         d3.selectAll("#Madison_WI_data").on("click", function() {
             console.log("SF!")
-            map.setView([43.0731, -89.3412], 12);
+            map.setView([43.0731, -89.3112], 12);
             resetDisplay()
             
             loadData(madison_events)
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Milwaukee
         d3.selectAll("#Milwaukee_WI_data").on("click", function() {
             console.log("SF!")
-            map.setView([43.0389, -87.9065], 11);
+            map.setView([43.0389, -87.8065], 11);
             resetDisplay()
             
             loadData(milwaukee_events)
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Minneapolis
         d3.selectAll("#Minneapolis_MN_data").on("click", function() {
             console.log("SF!")
-            map.setView([44.9778, -93.2650], 12);
+            map.setView([44.9778, -93.1950], 12);
             resetDisplay()
             
             loadData(minneapolis_events)
@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //New Orleans
         d3.selectAll("#NewOrleans_LA_data").on("click", function() {
             console.log("SF!")
-            map.setView([29.9511, -90.0715], 11);
+            map.setView([29.9511, -89.95], 11);
             resetDisplay()
             
             loadData(neworleans_events)
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
         //Seattle
         d3.selectAll("#Seattle_WA_data").on("click", function() {
             console.log("SF!")
-            map.setView([47.6062, -122.3021], 11);
+            map.setView([47.6062, -122.2321], 11);
             resetDisplay()
             
             loadData(seattle_events)
@@ -898,7 +898,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
          
          //getLocation()
 
-        var map = L.map('map').setView([37.7778532, -122.382303], 12);
+        var map = L.map('map').setView([37.7778532, -122.362303], 12);
 
         function mapLocation(){
             var my_location = map.latLngToLayerPoint([43.0830543, -89.3628494])
@@ -1469,6 +1469,21 @@ document.addEventListener('DOMContentLoaded', function(e) {
             })
         })
     
+
+        $('#dropdownMenuButton').scrollTop(0);
+        d3.selectAll("#dropdownMenuButton").on("click", function() {
+
+            var about = d3.selectAll('#dropdownMenuButton')
+
+
+             $('#dropdownMenuButton').scrollTop(0);
+
+             console.log("about")
+           
+           about
+                .style("scrollTop", 0)
+
+                 })
 
         // d3.select("#about").on("click", function() {
         //     d3.selectAll(".events")
