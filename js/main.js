@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
     //Set values for time range slider
     var inputValue = null;
-    var currentMap = d3.map();
+    //var currentMap = d3.map();
 
 
 
@@ -1006,12 +1006,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-             .on("mouseover", function(d) { 
+             .on("mouseover", function(event, d) { 
            
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
-                var value2014 = currentMap.get(d.location);   
+                //var value2014 = currentMap.get(d.location);   
 
                 appendText = []
                 console.log(appendText)
@@ -1049,7 +1049,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         
   
-        .on("click", function(d) { 
+        .on("click", function(event, d) { 
             console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
@@ -1063,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.selectAll(".events").on("mouseover", null);
 
             //add popup   
-            var value2014 = currentMap.get(d.location);  
+            //var value2014 = currentMap.get(d.location);  
 
             appendText = []
             console.log(appendText)
@@ -1175,10 +1175,10 @@ document.addEventListener('DOMContentLoaded', function(e) {
        // })
 
 
-            d3.event.stopPropagation();
+            event.stopPropagation();
 
               // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("body").on("click", function(d) { 
+            d3.select("body").on("click", function(event, d) { 
                 console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
@@ -1209,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);
-                        d3.selectAll(".events").on("mouseout", function(d) { 
+                        d3.selectAll(".events").on("mouseout", function(event, d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
                             .duration(100)      
@@ -1219,7 +1219,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                         })
 
                         // mouseover event listers added back in
-                        d3.selectAll(".events").on("mouseover", function(d) { 
+                        d3.selectAll(".events").on("mouseover", function(event, d) { 
 
                         //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
                         //create empty array and append to popup
@@ -1245,11 +1245,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
-                        d3.event.stopPropagation();
+                        event.stopPropagation();
 
         })
 
-        .on("mouseout", function(d) {       
+        .on("mouseout", function(event, d) {       
             LeafletDiv.transition()        
                 .duration(100)      
                 .style("opacity", 0)
