@@ -1006,27 +1006,36 @@ document.addEventListener('DOMContentLoaded', function(e) {
             .style("display", dateMatch)
             .style("pointer-events", "auto")
             .attr("classed", "visible")
-              .on("mouseover", function(event, d) { 
+             .on("mouseover", function(event, d) { 
            
                 //console.log(x)
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
                 //var value2014 = currentMap.get(d.location);   
 
+                appendText = []
+                console.log(appendText)
+                LeafletDiv
+                    .html( appendText.join(""))
+
                 LeafletDiv.transition()        
-                    .duration(200)      
-                    .style("opacity", 1.7)
+                    .duration(100)      
+                    .style("opacity", .9)
                     .style("scrollTop", 0)
+                    .style("transform","scale(1)")
+
+                   
 
 
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo + '<br/>'
-                    
+
+                    var popInfo = '<br/><a href="https://google.com">hello</a>'
+
 
                     LeafletDiv
                     .html(popInfo)
                     .style("top", "1.5vh")
                     .style("text-align", 'left')
+
                     d3.select(this).style("stroke", 'black')
                     d3.select(this).style("stroke-width", '3px')    
 
@@ -1038,8 +1047,9 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 
         
-
+  
         .on("click", function(event, d) { 
+            console.log('first click!')
             $('body').css({
                 overflow: 'hidden'
             });
@@ -1052,11 +1062,19 @@ document.addEventListener('DOMContentLoaded', function(e) {
             d3.selectAll(".events").on("mouseover", null);
 
             //add popup   
-           // var value2014 = currentMap.get(d.location);  
+            //var value2014 = currentMap.get(d.location);  
+
+            appendText = []
+            console.log(appendText)
+            LeafletDiv
+                .html( appendText.join(""))
 
             LeafletDiv.transition()        
-                .duration(200)      
-                .style("opacity", .9);
+                .duration(1)      
+                .style("opacity", .9)
+                .style("transform","scale(1)")
+             
+             
 
 
 
@@ -1065,10 +1083,28 @@ document.addEventListener('DOMContentLoaded', function(e) {
                    this_venue = d.Venue
                    this_date = d.Date
                    this_artist = d.Artist
-                   //this_time = d.Time
+                   this_lat = d.latitude
+                   this_long = d.longitude
+                   this_coordinates = d.coordinates
+                   this_address = d.Address
+                   this_genre = d.Genre
+                   //console.log('this_genre is ', this_genre, "and x is ", x)
+
+
+                   // display = "#ffba00"
+                   // all = "all"
+                   // genreMatch(this_genre)
+
+                    //let array1 = d.Genre, array2 = x;
+
+                    //console.log(array2.some(ele => array1.includes(ele)));
             
 
                     selections = d3.selectAll(".events").filter(function(d){
+
+                     
+
+
                     var selected_time = d.Time
         
                     var hours = Number(selected_time.match(/^(\d+)/)[1]);
@@ -1082,22 +1118,36 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     if (minutes < 10) sMinutes = "0" + sMinutes;
                     var showStartTime = (sHours + ":" + sMinutes);
                     
+                    //if 'all' genres not selected, then popup should only reflect genres that ARE selected
+                    if (x == null) {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else if (x == 'all') {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date
+                    } else {
+                        return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Address.toLowerCase() == this_address.toLowerCase() && d.Date == this_date && (d.Genre.toLowerCase().includes(x[0]) || d.Genre.toLowerCase().includes(x[1]) || d.Genre.toLowerCase().includes(x[2]) || d.Genre.toLowerCase().includes(x[3]) || d.Genre.toLowerCase().includes(x[4]) || d.Genre.toLowerCase().includes(x[5]) || d.Genre.toLowerCase().includes(x[6]) || d.Genre.toLowerCase().includes(x[7]) || d.Genre.toLowerCase().includes(x[8]) || d.Genre.toLowerCase().includes(x[9]) || d.Genre.toLowerCase().includes(x[10]))
 
-                    return time_window[0] <= showStartTime && showStartTime <= time_window[1] && d.Venue == this_venue && d.Date == this_date 
+                    }                 
 
+
+                    
                     })
                     var appendText = []
+                    // var popClose = "<span id='closeCountyPopup' class='sticky-top'>X</span>" 
+                    //  //var popCloseBottom = "<span id='closeCountyPopupBottom'>X</span>"
+                    // appendText.push(popClose)
                     selections.each(function(d){
+
+                    
+                    var popInfo = '<br/><a href="https://google.com">hello</a>'
                  
-                    var popInfo = '<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                    + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo+ '<br/>'
                     
                     appendText.push(popInfo+ '<br/>' + '<br/>')
-               
-          
+                              
                
                     })
-                
+
+
+                    
                  
                 LeafletDiv
                     .html( appendText.join(""))
@@ -1110,32 +1160,56 @@ document.addEventListener('DOMContentLoaded', function(e) {
  
             $('.county2014Tooltip').scrollTop(0);
 
+        //d3.select("#closeCountyPopup").style("pointer-events", 'all')
+
+       //                d3.selectAll("#spanDiv").on("click", function() { 
+       //                  console.log("mouseing")
+       //                    LeafletDiv.transition()        
+       //                  .duration(200)      
+       //                  .style("opacity", 0)
+       //                  .style("pointer-events", 'none') 
+       //                  .attr("scrollTop", 0) 
+       // })
+
+
             event.stopPropagation();
 
-            // if user clicks a SECOND time, anywhere, make popup disappear
-            d3.select("body").on("click", function(d) { 
+              // if user clicks a SECOND time, anywhere, make popup disappear
+            d3.select("body").on("click", function(event, d) { 
                 console.log("clicking off popup")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
  
                 if (this !== currentCircle) {
-                    console.log("not on current circle")
+                    //console.log("not on current circle")
                     //hide popup
                     var elements = d3.select(LeafletDiv)
                     elements.scrollTop = 0
+
+                    //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
+                    //create empty array and append to popup
+                    appendText = []
+                    console.log(appendText)
+                    LeafletDiv
+                        .html( appendText.join(""))
+
+
+                                   
            
                     LeafletDiv.transition()        
-                        .duration(200)      
-                        .style("opacity", 0)
+                        .duration(1)      
+                        .style("opacity", 1)
+                        .style("transform","scale(0)")
                         .style("pointer-events", 'none') 
                         .attr("scrollTop", 0) 
+                     
                         //revert back to hover, unless user clicks again!
                         d3.selectAll(".events").on("mouseout", true);
                         d3.selectAll(".events").on("mouseover", true);
-                        d3.selectAll(".events").on("mouseout", function(d) { 
+                        d3.selectAll(".events").on("mouseout", function(event, d) { 
                         //mousing out!     
                         LeafletDiv.transition()        
-                            .duration(200)      
+                            .duration(100)      
                             .style("opacity", 0);  
                             d3.selectAll(".events").style("stroke", 'none')
                             d3.selectAll(".events").style("stroke-width", '0px')        
@@ -1143,13 +1217,22 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
                         // mouseover event listers added back in
                         d3.selectAll(".events").on("mouseover", function(event, d) { 
-                        LeafletDiv.transition()        
-                            .duration(200)      
-                            .style("opacity", .9);
 
-                        LeafletDiv .html('<br/>' + "<img src='"+d.ArtistImage+"''width='300px' height = '150px'>" + '<br/>'+ '<br/>'+ '<b>'+ '<font size="3em">'+d.Artist+ '</font>'+ '</b>'  + '<br/>'+d.Date
-                        + '<br/>'+d.Time + '<br/>' + d.Venue + '<br/>' +d.Address +'<br/>' +'<br/>'+ '<b>'+"Genre: &nbsp"+ '</b>' + d.Genre + '<p>' + '</p>' + '<b>'+" Info: &nbsp" + '</b>'+d.otherInfo + '<p>' + '</p>' +'<b>'+"Artist Bio: &nbsp" + '</b>'+d.moreBioInfo
-                        )
+                        //we want to take away the prior html because it's causing issues with panning map once user clicks off pop-up
+                        //create empty array and append to popup
+                        appendText = []
+                        console.log(appendText)
+                        LeafletDiv
+                            .html( appendText.join(""))
+
+
+                        LeafletDiv.transition()        
+                            .duration(100)      
+                            .style("opacity", .9)
+                            .style("transform","scale(1)")
+                           
+
+                        LeafletDiv .html('<br/><a href="https://google.com">hello</a>')
                             .style("top", "1.5vh")
                             .style("text-align", 'left')
                             d3.select(this).style("stroke", 'black')  
@@ -1157,15 +1240,19 @@ document.addEventListener('DOMContentLoaded', function(e) {
                     })
                 }          
             })
+                        event.stopPropagation();
+
         })
 
         .on("mouseout", function(event, d) {       
             LeafletDiv.transition()        
-                .duration(200)      
+                .duration(100)      
                 .style("opacity", 0)
-                .style("scrollTop", 0)  
+                .style("scrollTop", 0)
+                .style("transform","scale(0)")
                 d3.selectAll(".events").style("stroke", 'none')
                 d3.selectAll(".events").style("stroke-width", '0px')
+
         })
 
 
